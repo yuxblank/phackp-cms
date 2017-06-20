@@ -1,7 +1,8 @@
 <?php
-namespace controller;
+namespace cms\controller;
 
 use model\User;
+use Psr\Http\Message\ServerRequestInterface;
 use yuxblank\phackp\core\Controller;
 use yuxblank\phackp\core\Crypto;
 use yuxblank\phackp\core\Logger;
@@ -71,9 +72,9 @@ class Secured extends Controller {
         }
     }
 
-     public function authenticate($params) {
-       $email = filter_var($params['email'],FILTER_SANITIZE_EMAIL);
-       $password = filter_var($params['password'],FILTER_SANITIZE_STRING);
+     public function authenticate(ServerRequestInterface $serverRequest) {
+       $email = filter_var($serverRequest->getParsedBody()['email'],FILTER_SANITIZE_EMAIL);
+       $password = filter_var($serverRequest->getParsedBody()['password'],FILTER_SANITIZE_STRING);
        if ($email!== null && $password!== null) {
            // check user
            $User = new User();

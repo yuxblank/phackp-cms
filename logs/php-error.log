@@ -1,0 +1,274 @@
+[20-Jun-2017 22:30:37 UTC] PHP Fatal error:  Uncaught Error: Call to a member function item() on boolean in E:\PHP\phackp-cms\src\view\app\novita.php:25
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(101): include()
+#1 E:\PHP\phackp-cms\src\view\main.php(185): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\src\view\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(85): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(123): yuxblank\phackp\core\View->render('app/novita')
+#5 [internal function]: controller\App->novita()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(313): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(294): yuxblank\p in E:\PHP\phackp-cms\src\view\app\novita.php on line 25
+[20-Jun-2017 22:30:49 UTC] PHP Notice:  Trying to get property of non-object in E:\PHP\phackp-cms\src\view\app\chi_siamo.php on line 13
+[20-Jun-2017 22:30:49 UTC] PHP Stack trace:
+[20-Jun-2017 22:30:49 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[20-Jun-2017 22:30:49 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[20-Jun-2017 22:30:49 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:294
+[20-Jun-2017 22:30:49 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:313
+[20-Jun-2017 22:30:49 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[20-Jun-2017 22:30:49 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:30:49 UTC] PHP   7. controller\App->chiSiamo() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:30:49 UTC] PHP   8. yuxblank\phackp\core\View->render($view = *uninitialized*) E:\PHP\phackp-cms\src\controller\App.php:200
+[20-Jun-2017 22:30:49 UTC] PHP   9. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:85
+[20-Jun-2017 22:30:49 UTC] PHP  10. include() E:\PHP\phackp-cms\src\view\app\main.php:2
+[20-Jun-2017 22:30:49 UTC] PHP  11. yuxblank\phackp\core\View->content() E:\PHP\phackp-cms\src\view\main.php:185
+[20-Jun-2017 22:30:49 UTC] PHP  12. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:101
+[20-Jun-2017 22:30:53 UTC] PHP Notice:  Trying to get property of non-object in E:\PHP\phackp-cms\src\view\app\chi_siamo.php on line 13
+[20-Jun-2017 22:30:53 UTC] PHP Stack trace:
+[20-Jun-2017 22:30:53 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[20-Jun-2017 22:30:53 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[20-Jun-2017 22:30:53 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:294
+[20-Jun-2017 22:30:53 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:313
+[20-Jun-2017 22:30:53 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[20-Jun-2017 22:30:53 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:30:53 UTC] PHP   7. controller\App->chiSiamo() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:30:53 UTC] PHP   8. yuxblank\phackp\core\View->render($view = *uninitialized*) E:\PHP\phackp-cms\src\controller\App.php:200
+[20-Jun-2017 22:30:53 UTC] PHP   9. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:85
+[20-Jun-2017 22:30:53 UTC] PHP  10. include() E:\PHP\phackp-cms\src\view\app\main.php:2
+[20-Jun-2017 22:30:53 UTC] PHP  11. yuxblank\phackp\core\View->content() E:\PHP\phackp-cms\src\view\main.php:185
+[20-Jun-2017 22:30:53 UTC] PHP  12. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:101
+[20-Jun-2017 22:31:05 UTC] PHP Notice:  Trying to get property of non-object in E:\PHP\phackp-cms\src\controller\Admin.php on line 80
+[20-Jun-2017 22:31:05 UTC] PHP Stack trace:
+[20-Jun-2017 22:31:05 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[20-Jun-2017 22:31:05 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[20-Jun-2017 22:31:05 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:294
+[20-Jun-2017 22:31:05 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:312
+[20-Jun-2017 22:31:05 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[20-Jun-2017 22:31:05 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:31:05 UTC] PHP   7. controller\Admin->onBefore() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:31:05 UTC] PHP   8. controller\Admin->buildMenu() E:\PHP\phackp-cms\src\controller\Admin.php:51
+[20-Jun-2017 22:31:05 UTC] PHP Fatal error:  Uncaught Error: Call to a member function isCustomer() on null in E:\PHP\phackp-cms\src\controller\Admin.php:90
+Stack trace:
+#0 [internal function]: controller\Admin->index(Object(Zend\Diactoros\ServerRequest), Object(model\User))
+#1 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#2 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(313): DI\Container->call(Array)
+#4 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(294): yuxblank\phackp\core\Application->callController('index')
+#5 E:\PHP\phackp-cms\index.php(10): yuxblank\phackp\core\Application->run()
+#6 {main}
+  thrown in E:\PHP\phackp-cms\src\controller\Admin.php on line 90
+[20-Jun-2017 22:31:10 UTC] PHP Fatal error:  Uncaught Invoker\Exception\NotEnoughParametersException: Unable to invoke the callable because no value was given for parameter 1 ($params) in E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:75
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#1 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(313): DI\Container->call(Array)
+#2 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(294): yuxblank\phackp\core\Application->callController('authenticate')
+#3 E:\PHP\phackp-cms\index.php(10): yuxblank\phackp\core\Application->run()
+#4 {main}
+  thrown in E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php on line 75
+[20-Jun-2017 22:31:55 UTC] PHP Notice:  Undefined index: id in E:\PHP\phackp-cms\src\controller\Admin.php on line 410
+[20-Jun-2017 22:31:55 UTC] PHP Stack trace:
+[20-Jun-2017 22:31:55 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[20-Jun-2017 22:31:55 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[20-Jun-2017 22:31:55 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:294
+[20-Jun-2017 22:31:55 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:313
+[20-Jun-2017 22:31:55 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[20-Jun-2017 22:31:55 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:31:55 UTC] PHP   7. controller\Admin->saveCategory($serverRequest = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:31:55 UTC] PHP Notice:  Undefined index: title in E:\PHP\phackp-cms\src\controller\Admin.php on line 412
+[20-Jun-2017 22:31:55 UTC] PHP Stack trace:
+[20-Jun-2017 22:31:55 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[20-Jun-2017 22:31:55 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[20-Jun-2017 22:31:55 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:294
+[20-Jun-2017 22:31:55 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:313
+[20-Jun-2017 22:31:55 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[20-Jun-2017 22:31:55 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:31:55 UTC] PHP   7. controller\Admin->saveCategory($serverRequest = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:31:55 UTC] PHP Notice:  Undefined index: description in E:\PHP\phackp-cms\src\controller\Admin.php on line 414
+[20-Jun-2017 22:31:55 UTC] PHP Stack trace:
+[20-Jun-2017 22:31:55 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[20-Jun-2017 22:31:55 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[20-Jun-2017 22:31:55 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:294
+[20-Jun-2017 22:31:55 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:313
+[20-Jun-2017 22:31:55 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[20-Jun-2017 22:31:55 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:31:55 UTC] PHP   7. controller\Admin->saveCategory($serverRequest = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:31:55 UTC] PHP Notice:  Undefined index: meta_description in E:\PHP\phackp-cms\src\controller\Admin.php on line 416
+[20-Jun-2017 22:31:55 UTC] PHP Stack trace:
+[20-Jun-2017 22:31:55 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[20-Jun-2017 22:31:55 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[20-Jun-2017 22:31:55 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:294
+[20-Jun-2017 22:31:55 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:313
+[20-Jun-2017 22:31:55 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[20-Jun-2017 22:31:55 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:31:55 UTC] PHP   7. controller\Admin->saveCategory($serverRequest = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:31:56 UTC] PHP Notice:  Undefined index: meta_tags in E:\PHP\phackp-cms\src\controller\Admin.php on line 418
+[20-Jun-2017 22:31:56 UTC] PHP Stack trace:
+[20-Jun-2017 22:31:56 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[20-Jun-2017 22:31:56 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[20-Jun-2017 22:31:56 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:294
+[20-Jun-2017 22:31:56 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:313
+[20-Jun-2017 22:31:56 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[20-Jun-2017 22:31:56 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:31:56 UTC] PHP   7. controller\Admin->saveCategory($serverRequest = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:31:57 UTC] PHP Notice:  Undefined index: title in E:\PHP\phackp-cms\src\controller\Admin.php on line 432
+[20-Jun-2017 22:31:57 UTC] PHP Stack trace:
+[20-Jun-2017 22:31:57 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[20-Jun-2017 22:31:57 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[20-Jun-2017 22:31:57 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:294
+[20-Jun-2017 22:31:57 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:313
+[20-Jun-2017 22:31:57 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[20-Jun-2017 22:31:57 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:31:57 UTC] PHP   7. controller\Admin->saveCategory($serverRequest = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:31:57 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at E:\PHP\phackp-cms\src\controller\Admin.php:412) in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Controller.php on line 36
+[20-Jun-2017 22:31:57 UTC] PHP Stack trace:
+[20-Jun-2017 22:31:57 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[20-Jun-2017 22:31:57 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[20-Jun-2017 22:31:57 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:294
+[20-Jun-2017 22:31:57 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:313
+[20-Jun-2017 22:31:57 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[20-Jun-2017 22:31:57 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:31:57 UTC] PHP   7. controller\Admin->saveCategory($serverRequest = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:31:57 UTC] PHP   8. yuxblank\phackp\core\Controller->keep($name = *uninitialized*, $value = *uninitialized*, $expire = *uninitialized*) E:\PHP\phackp-cms\src\controller\Admin.php:473
+[20-Jun-2017 22:31:57 UTC] PHP   9. setcookie(*uninitialized*, *uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Controller.php:36
+[20-Jun-2017 22:31:57 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at E:\PHP\phackp-cms\src\controller\Admin.php:412) in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Router.php on line 159
+[20-Jun-2017 22:31:57 UTC] PHP Stack trace:
+[20-Jun-2017 22:31:57 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[20-Jun-2017 22:31:57 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[20-Jun-2017 22:31:57 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:294
+[20-Jun-2017 22:31:57 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:313
+[20-Jun-2017 22:31:57 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[20-Jun-2017 22:31:57 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:31:57 UTC] PHP   7. controller\Admin->saveCategory($serverRequest = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:31:57 UTC] PHP   8. yuxblank\phackp\core\Router->switchAction($url = *uninitialized*, $params = *uninitialized*) E:\PHP\phackp-cms\src\controller\Admin.php:475
+[20-Jun-2017 22:31:57 UTC] PHP   9. header(*uninitialized*, *uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Router.php:159
+[20-Jun-2017 22:32:37 UTC] PHP Fatal error:  Uncaught Invoker\Exception\NotCallableException: controller\Admin::ditBanner() is not a callable. in E:\PHP\phackp-cms\vendor\php-di\invoker\src\Exception\NotCallableException.php:33
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\invoker\src\CallableResolver.php(44): Invoker\Exception\NotCallableException::fromInvalidCallable(Array, true)
+#1 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(53): Invoker\CallableResolver->resolve(Array)
+#2 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(313): DI\Container->call(Array)
+#4 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(294): yuxblank\phackp\core\Application->callController('ditBanner')
+#5 E:\PHP\phackp-cms\index.php(10): yuxblank\phackp\core\Application->run()
+#6 {main}
+  thrown in E:\PHP\phackp-cms\vendor\php-di\invoker\src\Exception\NotCallableException.php on line 33
+[20-Jun-2017 22:33:25 UTC] PHP Fatal error:  Uncaught Invoker\Exception\NotEnoughParametersException: Unable to invoke the callable because no value was given for parameter 1 ($params) in E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:75
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#1 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(313): DI\Container->call(Array)
+#2 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(294): yuxblank\phackp\core\Application->callController('editBanner')
+#3 E:\PHP\phackp-cms\index.php(10): yuxblank\phackp\core\Application->run()
+#4 {main}
+  thrown in E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php on line 75
+[20-Jun-2017 22:37:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method yuxblank\phackp\core\Application::getAppUrl() in E:\PHP\phackp-cms\src\view\app\pizze.php:59
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(101): include()
+#1 E:\PHP\phackp-cms\src\view\main.php(185): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\src\view\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(85): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(184): yuxblank\phackp\core\View->render('app/pizze')
+#5 [internal function]: controller\App->pizze()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(313): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Applicat in E:\PHP\phackp-cms\src\view\app\pizze.php on line 59
+[20-Jun-2017 22:38:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method yuxblank\phackp\core\Application::getAppUrl() in E:\PHP\phackp-cms\src\view\app\pizze.php:59
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(101): include()
+#1 E:\PHP\phackp-cms\src\view\main.php(185): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\src\view\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(85): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(184): yuxblank\phackp\core\View->render('app/pizze')
+#5 [internal function]: controller\App->pizze()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(313): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Applicat in E:\PHP\phackp-cms\src\view\app\pizze.php on line 59
+[20-Jun-2017 22:38:02 UTC] PHP Notice:  Trying to get property of non-object in E:\PHP\phackp-cms\src\view\app\chi_siamo.php on line 13
+[20-Jun-2017 22:38:02 UTC] PHP Stack trace:
+[20-Jun-2017 22:38:02 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[20-Jun-2017 22:38:02 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[20-Jun-2017 22:38:02 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:294
+[20-Jun-2017 22:38:02 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:313
+[20-Jun-2017 22:38:02 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[20-Jun-2017 22:38:02 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:38:02 UTC] PHP   7. controller\App->chiSiamo() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 22:38:02 UTC] PHP   8. yuxblank\phackp\core\View->render($view = *uninitialized*) E:\PHP\phackp-cms\src\controller\App.php:200
+[20-Jun-2017 22:38:02 UTC] PHP   9. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:85
+[20-Jun-2017 22:38:02 UTC] PHP  10. include() E:\PHP\phackp-cms\src\view\app\main.php:2
+[20-Jun-2017 22:38:02 UTC] PHP  11. yuxblank\phackp\core\View->content() E:\PHP\phackp-cms\src\view\main.php:185
+[20-Jun-2017 22:38:02 UTC] PHP  12. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:101
+[20-Jun-2017 22:38:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method yuxblank\phackp\core\Application::getAppUrl() in E:\PHP\phackp-cms\src\view\app\pizze.php:59
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(101): include()
+#1 E:\PHP\phackp-cms\src\view\main.php(185): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\src\view\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(85): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(184): yuxblank\phackp\core\View->render('app/pizze')
+#5 [internal function]: controller\App->pizze()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(313): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Applicat in E:\PHP\phackp-cms\src\view\app\pizze.php on line 59
+[20-Jun-2017 22:38:06 UTC] PHP Fatal error:  Uncaught Error: Call to a member function item() on boolean in E:\PHP\phackp-cms\src\view\app\novita.php:25
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(101): include()
+#1 E:\PHP\phackp-cms\src\view\main.php(185): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\src\view\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(85): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(123): yuxblank\phackp\core\View->render('app/novita')
+#5 [internal function]: controller\App->novita()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(313): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(294): yuxblank\p in E:\PHP\phackp-cms\src\view\app\novita.php on line 25
+[20-Jun-2017 22:41:31 UTC] PHP Fatal error:  Uncaught yuxblank\phackp\exceptions\InvocationException: Class controller\Admin is not a controller, extend yuxblank\phackp\core\Controller is required by controllers in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:284
+Stack trace:
+#0 E:\PHP\phackp-cms\index.php(10): yuxblank\phackp\core\Application->run()
+#1 {main}
+  thrown in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php on line 284
+[20-Jun-2017 22:57:32 UTC] PHP Fatal error:  Uncaught yuxblank\phackp\exceptions\InvocationException: Class cms\controller\Admin is not a controller, extend yuxblank\phackp\core\Controller is required by controllers in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:284
+Stack trace:
+#0 E:\PHP\phackp-cms\index.php(10): yuxblank\phackp\core\Application->run()
+#1 {main}
+  thrown in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php on line 284
+[20-Jun-2017 22:57:57 UTC] PHP Fatal error:  Uncaught yuxblank\phackp\exceptions\InvocationException: Class cms\controller\Admin is not a controller, extend yuxblank\phackp\core\Controller is required by controllers in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:284
+Stack trace:
+#0 E:\PHP\phackp-cms\index.php(10): yuxblank\phackp\core\Application->run()
+#1 {main}
+  thrown in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php on line 284
+[20-Jun-2017 22:58:19 UTC] PHP Fatal error:  Uncaught yuxblank\phackp\exceptions\InvocationException: Class cms\controller\Admin is not a controller, extend yuxblank\phackp\core\Controller is required by controllers in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:284
+Stack trace:
+#0 E:\PHP\phackp-cms\index.php(10): yuxblank\phackp\core\Application->run()
+#1 {main}
+  thrown in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php on line 284
+[20-Jun-2017 22:58:54 UTC] PHP Fatal error:  Uncaught yuxblank\phackp\exceptions\InvocationException: Class cms\controller\Admin is not a controller, extend yuxblank\phackp\core\Controller is required by controllers in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:284
+Stack trace:
+#0 E:\PHP\phackp-cms\index.php(10): yuxblank\phackp\core\Application->run()
+#1 {main}
+  thrown in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php on line 284
+[20-Jun-2017 22:59:06 UTC] PHP Fatal error:  Uncaught yuxblank\phackp\exceptions\InvocationException: Class cms\controller\Admin is not a controller, extend yuxblank\phackp\core\Controller is required by controllers in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:284
+Stack trace:
+#0 E:\PHP\phackp-cms\index.php(10): yuxblank\phackp\core\Application->run()
+#1 {main}
+  thrown in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php on line 284
+[20-Jun-2017 22:59:12 UTC] PHP Fatal error:  Uncaught yuxblank\phackp\exceptions\InvocationException: Class cms\controller\Admin is not a controller, extend yuxblank\phackp\core\Controller is required by controllers in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:284
+Stack trace:
+#0 E:\PHP\phackp-cms\index.php(10): yuxblank\phackp\core\Application->run()
+#1 {main}
+  thrown in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php on line 284
+[20-Jun-2017 22:59:38 UTC] PHP Fatal error:  Uncaught yuxblank\phackp\exceptions\InvocationException: Class cms\controller\Admin is not a controller, extend yuxblank\phackp\core\Controller is required by controllers in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:284
+Stack trace:
+#0 E:\PHP\phackp-cms\index.php(10): yuxblank\phackp\core\Application->run()
+#1 {main}
+  thrown in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php on line 284
+[20-Jun-2017 22:59:51 UTC] PHP Fatal error:  Uncaught Invoker\Exception\NotCallableException: Cannot call onBefore on cms\controller\Admin because it is not a class nor a valid container entry in E:\PHP\phackp-cms\vendor\php-di\invoker\src\CallableResolver.php:98
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\invoker\src\CallableResolver.php(41): Invoker\CallableResolver->resolveFromContainer(Array)
+#1 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(53): Invoker\CallableResolver->resolve(Array)
+#2 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(312): DI\Container->call(Array)
+#4 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(294): yuxblank\phackp\core\Application->callController('index')
+#5 E:\PHP\phackp-cms\index.php(10): yuxblank\phackp\core\Application->run()
+#6 {main}
+  thrown in E:\PHP\phackp-cms\vendor\php-di\invoker\src\CallableResolver.php on line 98
