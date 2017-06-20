@@ -1,0 +1,22 @@
+{
+  "name": "yuxblank/phackp-cms",
+  "description": "description_text",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "author's name",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "yuxblank/phackp": "dev-master",
+    "evert/sitemap-php": "1.2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "controller\\": "src/controller",
+      "model\\": "src/model"
+    }
+  }
+}

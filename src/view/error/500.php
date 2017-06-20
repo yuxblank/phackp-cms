@@ -1,0 +1,1 @@
+<h1><b>Oops,</b> l'applicazione ha incontrato un errore.</h1><p>Errore durante l'esecuzione.</p><p><a class="uk-button uk-button-large uk-button-primary" href="<?php echo $this->router->link('/')?>" role="button">Ritorna alla home</a></p>

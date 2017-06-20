@@ -1,0 +1,73 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+?> 
+<div class="uk-panel uk-panel-box">
+<ul class="uk-tab uk-tab-grid uk-tab-bottom" data-uk-tab="{connect:'#tab-content'}">
+    <li class="uk-width-1-3 uk-active"><a href="">Generale</a></li>
+    <li class="uk-width-1-3"><a href="">Plugins</a></li>
+    <li class="uk-width-1-3"><a href="">Info</a></li>
+</ul>
+
+    <!-- This is the container of the content items -->
+<ul id="tab-content" class="uk-switcher uk-margin">
+    <li>
+        <form class="uk-form uk-form-stacked">
+            <fieldset>
+                <legend>Informazioni </legend>
+                <div class="uk-form-row uk-grid">
+                    <div class="uk-width-4-10">
+                        <label class="uk-form-label" for="maintainance">Sito in manutenzione</label>
+                        <select id="maintainance" name="maintainance" class="uk-form-large">
+                            <option>no</option>
+                            <option>si</option>
+                        </select>
+                    </div>
+                    <div class="uk-width-3-10">
+                        <label class="uk-form-label" for="appname">Nome applicazione</label>
+                        <input type="text" name="appname" id="appname" class="uk-form-large">
+                    </div>
+                    <div class="uk-width-3-10">
+                        <label class="uk-form-label" for="appname">Versione</label>
+                        <input type="text" name="appname" id="appname" class="uk-form-large" disabled>
+                    </div>
+                </div>
+          
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Analisi e metadati </legend>
+                <div class="uk-form-row uk-grid">
+                    <div class="uk-width-2-10">
+                        <label class="uk-form-label" for="analisi">Analisi del traffico</label>
+                        <select id="maintainance" name="analisi" class="uk-form-large">
+                            <option>no</option>
+                            <option>si</option>
+                        </select>
+                    </div>
+                    <div class="uk-width-3-10">
+                        <label class="uk-form-label" for="gacode">Google Analytics code</label>
+                        <input type="text" id="gacode">
+                    </div>
+                    <div class="uk-width-3-10">
+                        <label class="uk-form-label" for="meta_desc">Descrizione App</label>
+                        <textarea id="meta_desc"></textarea>
+                    </div>
+                    <div class="uk-width-2-10">
+                        <label class="uk-form-label" for="meta_tags">Meta Tags</label>
+                        <textarea class="meta_tags"></textarea>
+                    </div>
+
+                </div>
+
+            </fieldset>
+        </form>
+    </li>
+    
+ 
+</ul>   
+</div>

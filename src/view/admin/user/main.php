@@ -1,0 +1,1 @@
+<?php include_once \yuxblank\phackp\core\Application::$ROOT  . '/' . $this->viewConfig['ROOT'].'/admin/main.php';

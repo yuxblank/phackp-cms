@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /cgi-bin
+Disallow: /fileman
+Disallow: /logs
+Disallow: /config
+Disallow: /.settings
+Disallow: /resource/css
+Disallow: /resource/fonts
+Disallow: /resource/js

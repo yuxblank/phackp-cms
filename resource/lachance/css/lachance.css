@@ -1,0 +1,280 @@
+
+@font-face {
+    font-family: 'alluraregular';
+    src: url('../fonts/allura-regular-webfont.eot');
+    src: url('../fonts/allura-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/allura-regular-webfont.woff2') format('woff2'),
+    url('../fonts/allura-regular-webfont.woff') format('woff'),
+    url('../fonts/allura-regular-webfont.ttf') format('truetype'),
+    url('../fonts/allura-regular-webfont.svg#alluraregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+html, body {
+        background-color: #1F170B;
+    /*
+    background-color: #4D984C;
+    background: #4d984c;
+    background: -moz-linear-gradient(top,  #4d984c 0%, #80e572 100%);
+    background: -webkit-linear-gradient(top,  #4d984c 0%,#80e572 100%);
+    background: linear-gradient(to bottom,  #4d984c 0%,#80e572 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d984c', endColorstr='#80e572',GradientType=0 );
+    */
+    height: 100%;
+    background-repeat: no-repeat;
+    color: #dedede;
+    font-size:16px;
+}
+@media screen and (min-width: 768px) {
+    html,body {
+        overflow-y: auto;
+    }
+    .yx-maincontainer{
+        margin-top: 10px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+    }
+    .yx-errorcontainer {
+        margin-top: 100px;
+    }
+
+}
+h1,h2,h3,h4,h5,h6 {
+    color: #414627;
+    font-family: alluraregular, sans-serif;
+}
+h2 {
+    font-size:32px;
+    font-weight: 800;
+}
+h3 {
+    font-size:24px;
+}
+
+
+
+.yx-maincontainer {
+    /* background-color: #fff;
+    background-color: rgba(255,255,255,0.3);*/
+    background-color: #4D984C;
+
+    box-shadow: 3px 3px 14px #22421E;
+
+    /*
+    background: #4d984c;
+    background: -moz-linear-gradient(top,  #4d984c 0%, #80e572 100%);
+    background: -webkit-linear-gradient(top,  #4d984c 0%,#80e572 100%);
+    background: linear-gradient(to bottom,  #4d984c 0%,#80e572 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d984c', endColorstr='#80e572',GradientType=0 );
+    */
+    }
+
+.yx-errorcontainer {
+    background-color: #4D984C;
+    border-radius: 6px;
+    box-shadow: 3px 3px 14px #22421E;
+    min-height: 400px;
+}
+.yx-errortitle {
+    font-family: inherit;
+    font-size: 80px;
+    line-height: 120px;
+}
+.yx-errorblock {
+    font-family: alluraregular, sans-serif;
+    color: #EFEFEF;
+    font-size: 33px;
+}
+
+
+.yx-logo {
+    max-width: 85%;
+}
+
+.uk-navbar-toggle {
+    color:#EFEFEF;
+
+    text-shadow: 0 1px 0 #969696;
+}
+
+.uk-navbar-toggle:hover {
+    color:#EFEFEF;
+    text-shadow: 0 1px 0 #969696;
+}
+
+
+.uk-navbar {
+    background: none;
+    border: none;
+}
+.uk-navbar-nav {
+
+}
+.uk-navbar-nav>li>a {
+    color: #fff;
+    font-size: 32px;
+    font-family: alluraregular, sans-serif;
+
+}
+.uk-navbar-nav > li.uk-open > a, .uk-navbar-nav > li:hover > a, .uk-navbar-nav > li > a:focus {
+    color: #fff;
+    box-shadow: inset 0 2px 4px rgba(215, 215, 215, 0.63);
+    border-radius: 6px;
+}
+.uk-navbar-nav > li > a:active {
+    background: none;
+}
+
+
+
+.yx-page-content {
+}
+.yx-header {
+
+}
+
+.yx-darker-band {
+    background-color: #8bd05b;
+
+}
+.yx-lighter-band {
+    background-color: #b6ee8b;
+}
+
+
+.yx-maintop {
+
+}
+.yx-top-a {
+    /*background-color: #99cb76;*/
+}
+.yx-slideshow > ul > li > img {
+
+    max-height: 400px;
+}
+.yx-banner{
+
+}
+.yx-container-secondary{
+    background-color: #000;
+}
+.yx-footer {
+
+}
+/*
+.yx-footer {
+    background-color: #8bd05b;
+}*/
+
+.uk-panel-box-primary {
+    background-color: #5aab58;
+    color: #dedede;
+    border-color: rgba(60, 138, 78, 0.85);
+}
+.uk-panel-header .uk-panel-title {
+    color: #EFEFEF;
+    border-bottom: 1px solid #187B24;
+    border-radius: 6px;
+    text-shadow: 1px 1px 9px #21420C;
+    font-family: alluraregular, sans-serif;
+    font-size: 32px;
+
+}
+.uk-panel-title i {
+    font-size: 12px;
+}
+
+
+.uk-panel-box-secondary .uk-panel-header .uk-panel-title {
+    color: #232323;
+    border-bottom: 1px solid #767577;
+    border-radius: 6px;
+    text-shadow: none;
+}
+
+a,
+.uk-link {
+    color:#ffb915;
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover,
+.uk-link:hover {
+    color: #FFD166;
+    text-decoration: underline;
+}
+.uk-accordion-title {
+    border: 1px solid rgb(63, 142, 78);
+    background: rgba(38, 107, 36, 0.36);
+}
+.uk-article+.uk-article {
+    border-top:none;
+}
+.uk-offcanvas-bar {
+    background-color: #1F170B;
+    font-size: 28px;
+    color:#EFEFEF;
+    font-family: alluraregular, sans-serif;
+}
+.uk-link {
+    color: #ddc300;
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover,
+.uk-link:hover {
+    color: #ddc300;
+    text-decoration: underline;
+}
+.uk-nav>li>a {
+    background-color: rgba(17, 27, 18, 0.2);
+}
+.uk-nav>li>a, .uk-link {
+    color: #EFEFEF;
+}
+.uk-nav>li>a:hover{
+    color: #ffd300;
+}
+em {
+    color: #f3ff59;
+}
+
+/** jQuery Cookie Bar */
+
+#cookie-bar{
+    background-color: #19130a;
+    color:#d6dbd6;
+    border-bottom: 2px solid #4a8e48 ;
+}
+#cookie-bar .cb-enable {
+    color: #313631;
+    background-color: #59ab57;
+    background-image: linear-gradient(to bottom,#59ab57,#4a8e48);
+}
+#cookie-bar .cb-enable:hover {
+    color: #313631;
+    background-color: #84ab55;
+    background-image: linear-gradient(to bottom, #84ab55, #778e56);
+}
+#cookie-bar .cb-disable {
+    color: #313631;
+    background-color: #ab2f25;
+    background-image: linear-gradient(to bottom, #ab2f25, #8e1215);
+}
+#cookie-bar .cb-disable:hover {
+    color: #313631;
+    background-color: #ab582d;
+    background-image: linear-gradient(to bottom, #ab582d, #8e3413);
+}
+#cookie-bar .cb-policy {
+    color: #313631;
+    background-color: #59ab57;
+    background-image: linear-gradient(to bottom, #4882ab, #476e8e);
+}
+#cookie-bar .cb-policy:hover {
+    color: #313631;
+    background-color: #84ab55;
+    background-image: linear-gradient(to bottom, #227eab, #2c6a8e);
+}
