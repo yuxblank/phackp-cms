@@ -10,4 +10,10 @@ use Psr\Container\ContainerInterface;
 
 return [
 
+    \cms\overrides\View::class => function (ContainerInterface $container) {
+            return new \cms\overrides\View($container->get('cms.view'),
+                array_merge($container->get('cms.globals'), ['APP_ROOT' => \yuxblank\phackp\core\Application::$ROOT]),
+                $container->get(\yuxblank\phackp\core\Router::class));
+    }
+
 ];

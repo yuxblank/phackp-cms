@@ -5,9 +5,9 @@ namespace controller;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-    use model\Banner;
-    use model\Category;
-    use model\Item;
+    use cms\model\Banner;
+    use cms\model\Category;
+    use cms\model\Item;
     use Psr\Http\Message\ServerRequestInterface;
     use yuxblank\phackp\api\EventDrivenController;
     use yuxblank\phackp\core\Application;

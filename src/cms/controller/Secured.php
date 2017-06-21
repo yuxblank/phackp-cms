@@ -1,7 +1,7 @@
 <?php
 namespace cms\controller;
 
-use model\User;
+use cms\model\User;
 use Psr\Http\Message\ServerRequestInterface;
 use yuxblank\phackp\core\Controller;
 use yuxblank\phackp\core\Crypto;
@@ -28,11 +28,11 @@ class Secured extends Controller {
 
     /**
      * Secured constructor.
-     * @param View $view
+     * @param \cms\overrides\View $view
      * @param Session $session
      * @param Router $router
      */
-    public function __construct(View $view, Session $session, Router $router)
+    public function __construct(\cms\overrides\View $view, Session $session, Router $router)
     {
         parent::__construct();
         $this->view = $view;

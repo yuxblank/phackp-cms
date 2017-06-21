@@ -272,3 +272,365 @@ Stack trace:
 #5 E:\PHP\phackp-cms\index.php(10): yuxblank\phackp\core\Application->run()
 #6 {main}
   thrown in E:\PHP\phackp-cms\vendor\php-di\invoker\src\CallableResolver.php on line 98
+[20-Jun-2017 23:31:50 UTC] PHP Notice:  cms\controller\Admin::buildMenu(): The script tried to execute a method or access a property of an incomplete object. Please ensure that the class definition &quot;model\User&quot; of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide a __autoload() function to load the class definition  in E:\PHP\phackp-cms\src\cms\controller\Admin.php on line 80
+[20-Jun-2017 23:31:50 UTC] PHP Stack trace:
+[20-Jun-2017 23:31:50 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[20-Jun-2017 23:31:50 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[20-Jun-2017 23:31:50 UTC] PHP   3. yuxblank\phackp\core\Application->callController() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:294
+[20-Jun-2017 23:31:50 UTC] PHP   4. DI\Container->call() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:312
+[20-Jun-2017 23:31:50 UTC] PHP   5. Invoker\Invoker->call() E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[20-Jun-2017 23:31:50 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 23:31:50 UTC] PHP   7. cms\controller\Admin->onBefore() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[20-Jun-2017 23:31:50 UTC] PHP   8. cms\controller\Admin->buildMenu() E:\PHP\phackp-cms\src\cms\controller\Admin.php:51
+[20-Jun-2017 23:31:50 UTC] PHP Fatal error:  Uncaught ReflectionException: Class model\User does not exist in E:\PHP\phackp-cms\vendor\php-di\invoker\src\ParameterResolver\Container\TypeHintContainerResolver.php:42
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\invoker\src\ParameterResolver\Container\TypeHintContainerResolver.php(42): ReflectionParameter->getClass()
+#1 E:\PHP\phackp-cms\vendor\php-di\invoker\src\ParameterResolver\ResolverChain.php(34): Invoker\ParameterResolver\Container\TypeHintContainerResolver->getParameters(Object(ReflectionMethod), Array, Array)
+#2 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(65): Invoker\ParameterResolver\ResolverChain->getParameters(Object(ReflectionMethod), Array, Array)
+#3 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#4 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(313): DI\Container->call(Array)
+#5 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(294): yuxblank\phackp\core\Application->callCo in E:\PHP\phackp-cms\vendor\php-di\invoker\src\ParameterResolver\Container\TypeHintContainerResolver.php on line 42
+[21-Jun-2017 09:12:17 UTC] PHP Fatal error:  Uncaught Error: Class 'model\Category' not found in E:\PHP\phackp-cms\src\controller\App.php:98
+Stack trace:
+#0 E:\PHP\phackp-cms\src\controller\App.php(57): controller\App->buildMenu()
+#1 [internal function]: controller\App->onBefore()
+#2 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#3 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#4 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(312): DI\Container->call(Array)
+#5 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(294): yuxblank\phackp\core\Application->callController('index')
+#6 E:\PHP\phackp-cms\index.php(10): yuxblank\phackp\core\Application->run()
+#7 {main}
+  thrown in E:\PHP\phackp-cms\src\controller\App.php on line 98
+[21-Jun-2017 09:12:56 UTC] PHP Fatal error:  Uncaught Error: Call to a member function item() on boolean in E:\PHP\phackp-cms\src\view\app\novita.php:25
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(101): include()
+#1 E:\PHP\phackp-cms\src\view\main.php(185): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\src\view\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(85): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(123): yuxblank\phackp\core\View->render('app/novita')
+#5 [internal function]: controller\App->novita()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(313): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(294): yuxblank\p in E:\PHP\phackp-cms\src\view\app\novita.php on line 25
+[21-Jun-2017 09:12:58 UTC] PHP Notice:  Trying to get property of non-object in E:\PHP\phackp-cms\src\view\app\chi_siamo.php on line 13
+[21-Jun-2017 09:12:58 UTC] PHP Stack trace:
+[21-Jun-2017 09:12:58 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[21-Jun-2017 09:12:58 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[21-Jun-2017 09:12:58 UTC] PHP   3. yuxblank\phackp\core\Application->callController() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:294
+[21-Jun-2017 09:12:58 UTC] PHP   4. DI\Container->call() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:313
+[21-Jun-2017 09:12:58 UTC] PHP   5. Invoker\Invoker->call() E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[21-Jun-2017 09:12:58 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 09:12:58 UTC] PHP   7. controller\App->chiSiamo() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 09:12:58 UTC] PHP   8. yuxblank\phackp\core\View->render() E:\PHP\phackp-cms\src\controller\App.php:200
+[21-Jun-2017 09:12:58 UTC] PHP   9. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:85
+[21-Jun-2017 09:12:58 UTC] PHP  10. include() E:\PHP\phackp-cms\src\view\app\main.php:2
+[21-Jun-2017 09:12:58 UTC] PHP  11. yuxblank\phackp\core\View->content() E:\PHP\phackp-cms\src\view\main.php:185
+[21-Jun-2017 09:12:58 UTC] PHP  12. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:101
+[21-Jun-2017 09:13:00 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method yuxblank\phackp\core\Application::getAppUrl() in E:\PHP\phackp-cms\src\view\app\pizze.php:59
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(101): include()
+#1 E:\PHP\phackp-cms\src\view\main.php(185): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\src\view\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(85): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(184): yuxblank\phackp\core\View->render('app/pizze')
+#5 [internal function]: controller\App->pizze()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(313): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Applicat in E:\PHP\phackp-cms\src\view\app\pizze.php on line 59
+[21-Jun-2017 09:13:00 UTC] PHP Fatal error:  Uncaught Error: Call to a member function item() on boolean in E:\PHP\phackp-cms\src\view\app\novita.php:25
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(101): include()
+#1 E:\PHP\phackp-cms\src\view\main.php(185): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\src\view\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(85): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(123): yuxblank\phackp\core\View->render('app/novita')
+#5 [internal function]: controller\App->novita()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(313): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(294): yuxblank\p in E:\PHP\phackp-cms\src\view\app\novita.php on line 25
+[21-Jun-2017 09:42:51 UTC] PHP Notice:  Trying to get property of non-object in E:\PHP\phackp-cms\src\cms\controller\Admin.php on line 80
+[21-Jun-2017 09:42:51 UTC] PHP Stack trace:
+[21-Jun-2017 09:42:51 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[21-Jun-2017 09:42:51 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[21-Jun-2017 09:42:51 UTC] PHP   3. yuxblank\phackp\core\Application->callController() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[21-Jun-2017 09:42:51 UTC] PHP   4. DI\Container->call() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:316
+[21-Jun-2017 09:42:51 UTC] PHP   5. Invoker\Invoker->call() E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[21-Jun-2017 09:42:51 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 09:42:51 UTC] PHP   7. cms\controller\Admin->onBefore() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 09:42:51 UTC] PHP   8. cms\controller\Admin->buildMenu() E:\PHP\phackp-cms\src\cms\controller\Admin.php:51
+[21-Jun-2017 09:42:51 UTC] PHP Fatal error:  Uncaught ReflectionException: Class model\User does not exist in E:\PHP\phackp-cms\vendor\php-di\invoker\src\ParameterResolver\Container\TypeHintContainerResolver.php:42
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\invoker\src\ParameterResolver\Container\TypeHintContainerResolver.php(42): ReflectionParameter->getClass()
+#1 E:\PHP\phackp-cms\vendor\php-di\invoker\src\ParameterResolver\ResolverChain.php(34): Invoker\ParameterResolver\Container\TypeHintContainerResolver->getParameters(Object(ReflectionMethod), Array, Array)
+#2 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(65): Invoker\ParameterResolver\ResolverChain->getParameters(Object(ReflectionMethod), Array, Array)
+#3 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#4 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(317): DI\Container->call(Array)
+#5 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(298): yuxblank\phackp\core\Application->callCo in E:\PHP\phackp-cms\vendor\php-di\invoker\src\ParameterResolver\Container\TypeHintContainerResolver.php on line 42
+[21-Jun-2017 09:43:53 UTC] PHP Fatal error:  Uncaught ReflectionException: Class cms\View does not exist in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php:213
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(213): ReflectionParameter->getClass()
+#1 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(176): DI\Definition\Source\AnnotationReader->getMethodParameter(0, Object(ReflectionParameter), Array)
+#2 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(139): DI\Definition\Source\AnnotationReader->getMethodInjection(Object(ReflectionMethod))
+#3 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(74): DI\Definition\Source\AnnotationReader->readMethods(Object(ReflectionClass), Object(DI\Definition\ObjectDefinition))
+#4 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\SourceChain.php(51): DI\Definition\Source\AnnotationReader->getDefinition('cms\\controll in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php on line 213
+[21-Jun-2017 09:44:07 UTC] PHP Fatal error:  Uncaught ReflectionException: Class cms\View does not exist in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php:213
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(213): ReflectionParameter->getClass()
+#1 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(176): DI\Definition\Source\AnnotationReader->getMethodParameter(0, Object(ReflectionParameter), Array)
+#2 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(139): DI\Definition\Source\AnnotationReader->getMethodInjection(Object(ReflectionMethod))
+#3 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(74): DI\Definition\Source\AnnotationReader->readMethods(Object(ReflectionClass), Object(DI\Definition\ObjectDefinition))
+#4 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\SourceChain.php(51): DI\Definition\Source\AnnotationReader->getDefinition('cms\\controll in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php on line 213
+[21-Jun-2017 09:44:54 UTC] PHP Fatal error:  Uncaught ReflectionException: Class cms\View does not exist in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php:213
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(213): ReflectionParameter->getClass()
+#1 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(176): DI\Definition\Source\AnnotationReader->getMethodParameter(0, Object(ReflectionParameter), Array)
+#2 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(139): DI\Definition\Source\AnnotationReader->getMethodInjection(Object(ReflectionMethod))
+#3 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(74): DI\Definition\Source\AnnotationReader->readMethods(Object(ReflectionClass), Object(DI\Definition\ObjectDefinition))
+#4 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\SourceChain.php(51): DI\Definition\Source\AnnotationReader->getDefinition('cms\\controll in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php on line 213
+[21-Jun-2017 09:46:02 UTC] PHP Fatal error:  Uncaught ReflectionException: Class cms\View does not exist in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php:213
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(213): ReflectionParameter->getClass()
+#1 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(176): DI\Definition\Source\AnnotationReader->getMethodParameter(0, Object(ReflectionParameter), Array)
+#2 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(139): DI\Definition\Source\AnnotationReader->getMethodInjection(Object(ReflectionMethod))
+#3 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(74): DI\Definition\Source\AnnotationReader->readMethods(Object(ReflectionClass), Object(DI\Definition\ObjectDefinition))
+#4 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\SourceChain.php(51): DI\Definition\Source\AnnotationReader->getDefinition('cms\\controll in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php on line 213
+[21-Jun-2017 09:47:09 UTC] PHP Fatal error:  Uncaught ReflectionException: Class cms\View does not exist in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php:213
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(213): ReflectionParameter->getClass()
+#1 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(176): DI\Definition\Source\AnnotationReader->getMethodParameter(0, Object(ReflectionParameter), Array)
+#2 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(139): DI\Definition\Source\AnnotationReader->getMethodInjection(Object(ReflectionMethod))
+#3 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(74): DI\Definition\Source\AnnotationReader->readMethods(Object(ReflectionClass), Object(DI\Definition\ObjectDefinition))
+#4 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\SourceChain.php(51): DI\Definition\Source\AnnotationReader->getDefinition('cms\\controll in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php on line 213
+[21-Jun-2017 09:49:15 UTC] PHP Fatal error:  Uncaught ReflectionException: Class cms\View does not exist in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php:213
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(213): ReflectionParameter->getClass()
+#1 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(176): DI\Definition\Source\AnnotationReader->getMethodParameter(0, Object(ReflectionParameter), Array)
+#2 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(139): DI\Definition\Source\AnnotationReader->getMethodInjection(Object(ReflectionMethod))
+#3 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(74): DI\Definition\Source\AnnotationReader->readMethods(Object(ReflectionClass), Object(DI\Definition\ObjectDefinition))
+#4 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\SourceChain.php(51): DI\Definition\Source\AnnotationReader->getDefinition('cms\\controll in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php on line 213
+[21-Jun-2017 09:51:17 UTC] PHP Fatal error:  Uncaught ReflectionException: Class cms\View does not exist in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php:213
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(213): ReflectionParameter->getClass()
+#1 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(176): DI\Definition\Source\AnnotationReader->getMethodParameter(0, Object(ReflectionParameter), Array)
+#2 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(139): DI\Definition\Source\AnnotationReader->getMethodInjection(Object(ReflectionMethod))
+#3 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(74): DI\Definition\Source\AnnotationReader->readMethods(Object(ReflectionClass), Object(DI\Definition\ObjectDefinition))
+#4 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\SourceChain.php(51): DI\Definition\Source\AnnotationReader->getDefinition('cms\\controll in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php on line 213
+[21-Jun-2017 09:51:53 UTC] PHP Fatal error:  Uncaught ReflectionException: Class cms\View does not exist in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php:213
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(213): ReflectionParameter->getClass()
+#1 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(176): DI\Definition\Source\AnnotationReader->getMethodParameter(0, Object(ReflectionParameter), Array)
+#2 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(139): DI\Definition\Source\AnnotationReader->getMethodInjection(Object(ReflectionMethod))
+#3 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(74): DI\Definition\Source\AnnotationReader->readMethods(Object(ReflectionClass), Object(DI\Definition\ObjectDefinition))
+#4 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\SourceChain.php(51): DI\Definition\Source\AnnotationReader->getDefinition('cms\\controll in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php on line 213
+[21-Jun-2017 09:52:13 UTC] PHP Fatal error:  Uncaught ReflectionException: Class cms\View does not exist in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php:213
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(213): ReflectionParameter->getClass()
+#1 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(176): DI\Definition\Source\AnnotationReader->getMethodParameter(0, Object(ReflectionParameter), Array)
+#2 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(139): DI\Definition\Source\AnnotationReader->getMethodInjection(Object(ReflectionMethod))
+#3 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(74): DI\Definition\Source\AnnotationReader->readMethods(Object(ReflectionClass), Object(DI\Definition\ObjectDefinition))
+#4 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\SourceChain.php(51): DI\Definition\Source\AnnotationReader->getDefinition('cms\\controll in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php on line 213
+[21-Jun-2017 09:53:21 UTC] PHP Fatal error:  Uncaught ReflectionException: Class cms\View does not exist in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php:213
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(213): ReflectionParameter->getClass()
+#1 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(176): DI\Definition\Source\AnnotationReader->getMethodParameter(0, Object(ReflectionParameter), Array)
+#2 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(139): DI\Definition\Source\AnnotationReader->getMethodInjection(Object(ReflectionMethod))
+#3 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(74): DI\Definition\Source\AnnotationReader->readMethods(Object(ReflectionClass), Object(DI\Definition\ObjectDefinition))
+#4 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\SourceChain.php(51): DI\Definition\Source\AnnotationReader->getDefinition('cms\\controll in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php on line 213
+[21-Jun-2017 09:53:41 UTC] PHP Fatal error:  Uncaught ReflectionException: Class cms\View does not exist in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php:213
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(213): ReflectionParameter->getClass()
+#1 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(176): DI\Definition\Source\AnnotationReader->getMethodParameter(0, Object(ReflectionParameter), Array)
+#2 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(139): DI\Definition\Source\AnnotationReader->getMethodInjection(Object(ReflectionMethod))
+#3 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(74): DI\Definition\Source\AnnotationReader->readMethods(Object(ReflectionClass), Object(DI\Definition\ObjectDefinition))
+#4 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\SourceChain.php(51): DI\Definition\Source\AnnotationReader->getDefinition('cms\\controll in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php on line 213
+[21-Jun-2017 09:54:12 UTC] PHP Fatal error:  Uncaught ReflectionException: Class cms\View does not exist in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php:213
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(213): ReflectionParameter->getClass()
+#1 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(176): DI\Definition\Source\AnnotationReader->getMethodParameter(0, Object(ReflectionParameter), Array)
+#2 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(139): DI\Definition\Source\AnnotationReader->getMethodInjection(Object(ReflectionMethod))
+#3 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php(74): DI\Definition\Source\AnnotationReader->readMethods(Object(ReflectionClass), Object(DI\Definition\ObjectDefinition))
+#4 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\SourceChain.php(51): DI\Definition\Source\AnnotationReader->getDefinition('cms\\controll in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php on line 213
+[21-Jun-2017 09:54:41 UTC] PHP Notice:  Trying to get property of non-object in E:\PHP\phackp-cms\src\cms\controller\Admin.php on line 80
+[21-Jun-2017 09:54:41 UTC] PHP Stack trace:
+[21-Jun-2017 09:54:41 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[21-Jun-2017 09:54:41 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[21-Jun-2017 09:54:41 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[21-Jun-2017 09:54:41 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:316
+[21-Jun-2017 09:54:41 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[21-Jun-2017 09:54:41 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 09:54:41 UTC] PHP   7. cms\controller\Admin->onBefore() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 09:54:41 UTC] PHP   8. cms\controller\Admin->buildMenu() E:\PHP\phackp-cms\src\cms\controller\Admin.php:51
+[21-Jun-2017 09:54:41 UTC] PHP Fatal error:  Interface 'CrudModel' not found in E:\PHP\phackp-cms\src\cms\model\User.php on line 23
+[21-Jun-2017 09:54:41 UTC] PHP Stack trace:
+[21-Jun-2017 09:54:41 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[21-Jun-2017 09:54:41 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[21-Jun-2017 09:54:41 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[21-Jun-2017 09:54:41 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:317
+[21-Jun-2017 09:54:41 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[21-Jun-2017 09:54:41 UTC] PHP   6. Invoker\ParameterResolver\ResolverChain->getParameters($reflection = *uninitialized*, $providedParameters = *uninitialized*, $resolvedParameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:65
+[21-Jun-2017 09:54:41 UTC] PHP   7. Invoker\ParameterResolver\Container\TypeHintContainerResolver->getParameters($reflection = *uninitialized*, $providedParameters = *uninitialized*, $resolvedParameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\ParameterResolver\ResolverChain.php:34
+[21-Jun-2017 09:54:41 UTC] PHP   8. ReflectionParameter->getClass() E:\PHP\phackp-cms\vendor\php-di\invoker\src\ParameterResolver\Container\TypeHintContainerResolver.php:42
+[21-Jun-2017 09:54:41 UTC] PHP   9. spl_autoload_call(*uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\ParameterResolver\Container\TypeHintContainerResolver.php:42
+[21-Jun-2017 09:54:41 UTC] PHP  10. Composer\Autoload\ClassLoader->loadClass($class = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\ParameterResolver\Container\TypeHintContainerResolver.php:42
+[21-Jun-2017 09:54:41 UTC] PHP  11. Composer\Autoload\includeFile($file = *uninitialized*) E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:301
+[21-Jun-2017 09:54:41 UTC] PHP  12. include() E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:414
+[21-Jun-2017 09:54:48 UTC] PHP Warning:  include(src/cms/view//admin/main.php): failed to open stream: No such file or directory in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php on line 92
+[21-Jun-2017 09:54:48 UTC] PHP Stack trace:
+[21-Jun-2017 09:54:48 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[21-Jun-2017 09:54:48 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[21-Jun-2017 09:54:48 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[21-Jun-2017 09:54:48 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:317
+[21-Jun-2017 09:54:48 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[21-Jun-2017 09:54:48 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 09:54:48 UTC] PHP   7. cms\controller\Secured->login() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 09:54:48 UTC] PHP   8. yuxblank\phackp\core\View->render($view = *uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:60
+[21-Jun-2017 09:54:48 UTC] PHP Warning:  include(): Failed opening 'src/cms/view//admin/main.php' for inclusion (include_path='.;C:\php\pear') in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php on line 92
+[21-Jun-2017 09:54:48 UTC] PHP Stack trace:
+[21-Jun-2017 09:54:48 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[21-Jun-2017 09:54:48 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[21-Jun-2017 09:54:48 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[21-Jun-2017 09:54:48 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:317
+[21-Jun-2017 09:54:48 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[21-Jun-2017 09:54:48 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 09:54:48 UTC] PHP   7. cms\controller\Secured->login() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 09:54:48 UTC] PHP   8. yuxblank\phackp\core\View->render($view = *uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:60
+[21-Jun-2017 09:56:41 UTC] PHP Warning:  include(src/cms/view//admin/main.php): failed to open stream: No such file or directory in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php on line 92
+[21-Jun-2017 09:56:41 UTC] PHP Stack trace:
+[21-Jun-2017 09:56:41 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[21-Jun-2017 09:56:41 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[21-Jun-2017 09:56:41 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[21-Jun-2017 09:56:41 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:317
+[21-Jun-2017 09:56:41 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[21-Jun-2017 09:56:41 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 09:56:41 UTC] PHP   7. cms\controller\Secured->login() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 09:56:41 UTC] PHP   8. yuxblank\phackp\core\View->render($view = *uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:60
+[21-Jun-2017 09:56:41 UTC] PHP Warning:  include(): Failed opening 'src/cms/view//admin/main.php' for inclusion (include_path='.;C:\php\pear') in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php on line 92
+[21-Jun-2017 09:56:41 UTC] PHP Stack trace:
+[21-Jun-2017 09:56:41 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[21-Jun-2017 09:56:41 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[21-Jun-2017 09:56:41 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[21-Jun-2017 09:56:41 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:317
+[21-Jun-2017 09:56:41 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[21-Jun-2017 09:56:41 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 09:56:41 UTC] PHP   7. cms\controller\Secured->login() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 09:56:41 UTC] PHP   8. yuxblank\phackp\core\View->render($view = *uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:60
+[21-Jun-2017 10:03:07 UTC] PHP Fatal error:  Interface 'CrudModel' not found in E:\PHP\phackp-cms\src\cms\model\User.php on line 23
+[21-Jun-2017 10:03:07 UTC] PHP Stack trace:
+[21-Jun-2017 10:03:07 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[21-Jun-2017 10:03:07 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[21-Jun-2017 10:03:07 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[21-Jun-2017 10:03:07 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:317
+[21-Jun-2017 10:03:07 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[21-Jun-2017 10:03:07 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 10:03:07 UTC] PHP   7. cms\controller\Secured->authenticate($serverRequest = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 10:03:07 UTC] PHP   8. spl_autoload_call(*uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:80
+[21-Jun-2017 10:03:07 UTC] PHP   9. Composer\Autoload\ClassLoader->loadClass($class = *uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:80
+[21-Jun-2017 10:03:07 UTC] PHP  10. Composer\Autoload\includeFile($file = *uninitialized*) E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:301
+[21-Jun-2017 10:03:07 UTC] PHP  11. include() E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:414
+[21-Jun-2017 10:03:46 UTC] PHP Fatal error:  Interface 'CrudModel' not found in E:\PHP\phackp-cms\src\cms\model\User.php on line 24
+[21-Jun-2017 10:03:46 UTC] PHP Stack trace:
+[21-Jun-2017 10:03:46 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[21-Jun-2017 10:03:46 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[21-Jun-2017 10:03:46 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[21-Jun-2017 10:03:46 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:317
+[21-Jun-2017 10:03:46 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[21-Jun-2017 10:03:46 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 10:03:46 UTC] PHP   7. cms\controller\Secured->authenticate($serverRequest = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 10:03:46 UTC] PHP   8. spl_autoload_call(*uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:80
+[21-Jun-2017 10:03:46 UTC] PHP   9. Composer\Autoload\ClassLoader->loadClass($class = *uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:80
+[21-Jun-2017 10:03:46 UTC] PHP  10. Composer\Autoload\includeFile($file = *uninitialized*) E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:301
+[21-Jun-2017 10:03:46 UTC] PHP  11. include() E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:414
+[21-Jun-2017 10:03:51 UTC] PHP Fatal error:  Interface 'CrudModel' not found in E:\PHP\phackp-cms\src\cms\model\User.php on line 24
+[21-Jun-2017 10:03:51 UTC] PHP Stack trace:
+[21-Jun-2017 10:03:51 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[21-Jun-2017 10:03:51 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[21-Jun-2017 10:03:51 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[21-Jun-2017 10:03:51 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:317
+[21-Jun-2017 10:03:51 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[21-Jun-2017 10:03:51 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 10:03:51 UTC] PHP   7. cms\controller\Secured->authenticate($serverRequest = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 10:03:51 UTC] PHP   8. spl_autoload_call(*uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:80
+[21-Jun-2017 10:03:51 UTC] PHP   9. Composer\Autoload\ClassLoader->loadClass($class = *uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:80
+[21-Jun-2017 10:03:51 UTC] PHP  10. Composer\Autoload\includeFile($file = *uninitialized*) E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:301
+[21-Jun-2017 10:03:51 UTC] PHP  11. include() E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:414
+[21-Jun-2017 10:04:44 UTC] PHP Fatal error:  Interface 'CrudModel' not found in E:\PHP\phackp-cms\src\cms\model\User.php on line 24
+[21-Jun-2017 10:04:44 UTC] PHP Stack trace:
+[21-Jun-2017 10:04:44 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[21-Jun-2017 10:04:44 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[21-Jun-2017 10:04:44 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[21-Jun-2017 10:04:44 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:317
+[21-Jun-2017 10:04:44 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[21-Jun-2017 10:04:44 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 10:04:44 UTC] PHP   7. cms\controller\Secured->authenticate($serverRequest = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 10:04:44 UTC] PHP   8. spl_autoload_call(*uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:80
+[21-Jun-2017 10:04:44 UTC] PHP   9. Composer\Autoload\ClassLoader->loadClass($class = *uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:80
+[21-Jun-2017 10:04:44 UTC] PHP  10. Composer\Autoload\includeFile($file = *uninitialized*) E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:301
+[21-Jun-2017 10:04:44 UTC] PHP  11. include() E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:414
+[21-Jun-2017 10:06:02 UTC] PHP Fatal error:  Interface 'CrudModel' not found in E:\PHP\phackp-cms\src\cms\model\User.php on line 24
+[21-Jun-2017 10:06:02 UTC] PHP Stack trace:
+[21-Jun-2017 10:06:02 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[21-Jun-2017 10:06:02 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[21-Jun-2017 10:06:02 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[21-Jun-2017 10:06:02 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:317
+[21-Jun-2017 10:06:02 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[21-Jun-2017 10:06:02 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 10:06:02 UTC] PHP   7. cms\controller\Secured->authenticate($serverRequest = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 10:06:02 UTC] PHP   8. spl_autoload_call(*uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:80
+[21-Jun-2017 10:06:02 UTC] PHP   9. Composer\Autoload\ClassLoader->loadClass($class = *uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:80
+[21-Jun-2017 10:06:02 UTC] PHP  10. Composer\Autoload\includeFile($file = *uninitialized*) E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:301
+[21-Jun-2017 10:06:02 UTC] PHP  11. include() E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:414
+[21-Jun-2017 10:06:20 UTC] PHP Fatal error:  Interface 'cms\libary\CrudModel' not found in E:\PHP\phackp-cms\src\cms\model\User.php on line 24
+[21-Jun-2017 10:06:20 UTC] PHP Stack trace:
+[21-Jun-2017 10:06:20 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[21-Jun-2017 10:06:20 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[21-Jun-2017 10:06:20 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[21-Jun-2017 10:06:20 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:317
+[21-Jun-2017 10:06:20 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[21-Jun-2017 10:06:20 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 10:06:20 UTC] PHP   7. cms\controller\Secured->authenticate($serverRequest = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 10:06:20 UTC] PHP   8. spl_autoload_call(*uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:80
+[21-Jun-2017 10:06:20 UTC] PHP   9. Composer\Autoload\ClassLoader->loadClass($class = *uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:80
+[21-Jun-2017 10:06:20 UTC] PHP  10. Composer\Autoload\includeFile($file = *uninitialized*) E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:301
+[21-Jun-2017 10:06:20 UTC] PHP  11. include() E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:414
+[21-Jun-2017 10:06:44 UTC] PHP Fatal error:  Interface 'cms\libary\CrudModel' not found in E:\PHP\phackp-cms\src\cms\model\User.php on line 24
+[21-Jun-2017 10:06:44 UTC] PHP Stack trace:
+[21-Jun-2017 10:06:44 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[21-Jun-2017 10:06:44 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[21-Jun-2017 10:06:44 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[21-Jun-2017 10:06:44 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:317
+[21-Jun-2017 10:06:44 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[21-Jun-2017 10:06:44 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 10:06:44 UTC] PHP   7. cms\controller\Secured->authenticate($serverRequest = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 10:06:44 UTC] PHP   8. spl_autoload_call(*uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:80
+[21-Jun-2017 10:06:44 UTC] PHP   9. Composer\Autoload\ClassLoader->loadClass($class = *uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:80
+[21-Jun-2017 10:06:44 UTC] PHP  10. Composer\Autoload\includeFile($file = *uninitialized*) E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:301
+[21-Jun-2017 10:06:44 UTC] PHP  11. include() E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:414
+[21-Jun-2017 10:07:19 UTC] PHP Fatal error:  Interface 'cms\library\CrudModel' not found in E:\PHP\phackp-cms\src\cms\model\User.php on line 24
+[21-Jun-2017 10:07:19 UTC] PHP Stack trace:
+[21-Jun-2017 10:07:19 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[21-Jun-2017 10:07:19 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[21-Jun-2017 10:07:19 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[21-Jun-2017 10:07:19 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:317
+[21-Jun-2017 10:07:19 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[21-Jun-2017 10:07:19 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 10:07:19 UTC] PHP   7. cms\controller\Secured->authenticate($serverRequest = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 10:07:19 UTC] PHP   8. spl_autoload_call(*uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:80
+[21-Jun-2017 10:07:19 UTC] PHP   9. Composer\Autoload\ClassLoader->loadClass($class = *uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:80
+[21-Jun-2017 10:07:19 UTC] PHP  10. Composer\Autoload\includeFile($file = *uninitialized*) E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:301
+[21-Jun-2017 10:07:19 UTC] PHP  11. include() E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:414
+[21-Jun-2017 10:07:59 UTC] PHP Fatal error:  Interface 'cms\library\CrudModel' not found in E:\PHP\phackp-cms\src\cms\model\User.php on line 24
+[21-Jun-2017 10:07:59 UTC] PHP Stack trace:
+[21-Jun-2017 10:07:59 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[21-Jun-2017 10:07:59 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:10
+[21-Jun-2017 10:07:59 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[21-Jun-2017 10:07:59 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:317
+[21-Jun-2017 10:07:59 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[21-Jun-2017 10:07:59 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 10:07:59 UTC] PHP   7. cms\controller\Secured->authenticate($serverRequest = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[21-Jun-2017 10:07:59 UTC] PHP   8. spl_autoload_call(*uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:80
+[21-Jun-2017 10:07:59 UTC] PHP   9. Composer\Autoload\ClassLoader->loadClass($class = *uninitialized*) E:\PHP\phackp-cms\src\cms\controller\Secured.php:80
+[21-Jun-2017 10:07:59 UTC] PHP  10. Composer\Autoload\includeFile($file = *uninitialized*) E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:301
+[21-Jun-2017 10:07:59 UTC] PHP  11. include() E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:414

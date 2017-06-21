@@ -69,14 +69,11 @@ return [
 
     ],
     'app.view' => [
-
         'ROOT' => 'src/view',
         'HOOKS' =>
             [
                 'BANNER_BOX' => 'modules/banner_box.php',
                 'SLIDESHOW' => 'modules/slideshow.php'
             ]
-
-
     ]
 ];

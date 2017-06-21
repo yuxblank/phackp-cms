@@ -16,7 +16,10 @@
   "autoload": {
     "psr-4": {
       "cms\\controller\\": "src/cms/controller",
-      "cms\\classes\\": "src/cms/library",
+      "cms\\library\\": "src/cms/library",
+      "cms\\library\\crud": "src/cms/library/crud",
+      "cms\\overrides\\": "src/cms/override",
+      "cms\\model\\": "src/cms/model",
       "controller\\": "src/controller",
       "model\\": "src/model"
     }
