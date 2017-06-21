@@ -69,7 +69,7 @@ return [
 
     ],
     'app.view' => [
-        'ROOT' => 'src/view',
+        'ROOT' => 'themes/aostawork',
         'HOOKS' =>
             [
                 'BANNER_BOX' => 'modules/banner_box.php',
