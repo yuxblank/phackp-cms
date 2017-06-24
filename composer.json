@@ -15,11 +15,11 @@
   },
   "autoload": {
     "psr-4": {
-      "cms\\controller\\": "src/cms/controller",
-      "cms\\library\\": "src/cms/library",
-      "cms\\library\\crud": "src/cms/library/crud",
-      "cms\\overrides\\": "src/cms/override",
-      "cms\\model\\": "src/cms/model",
+      "cms\\controller\\": "admin/src/controller",
+      "cms\\library\\": "admin/src/library",
+      "cms\\library\\crud\\": "admin/src/library/crud",
+      "cms\\overrides\\": "admin/src/override",
+      "cms\\model\\": "admin/src/model",
       "controller\\": "src/controller",
       "model\\": "src/model"
     }

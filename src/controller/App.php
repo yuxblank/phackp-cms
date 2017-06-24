@@ -125,6 +125,7 @@ class App extends Controller implements EventDrivenController{
     }
 
     public function showNovita(ServerRequestInterface $request) {
+
         $id = filter_var($request->getQueryParams()['id'],FILTER_SANITIZE_NUMBER_INT);
         $Item = new Item();
         $Item = $Item->findById($id);
