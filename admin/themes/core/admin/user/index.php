@@ -23,7 +23,7 @@
             <td>
                 <a href="<?php echo $this->router->link('admin/user/edit/{id}', [$user->id]) ?>"><?php echo $user->email ?></a>
             </td>
-            <td><?php echo $user->getRole() ?></td>
+            <td><?php echo $user->role()->title ?></td>
             <td><?php echo $user->date_created ?></td>
             <td><?php echo $user->getStatus() ?></td>
 

@@ -26,4 +26,9 @@ class UserRole extends Model
     {
         return $this->count("WHERE level =?", 1);
     }
+
+    public function users(){
+        return $this->hasMany(User::class);
+    }
+
 }
