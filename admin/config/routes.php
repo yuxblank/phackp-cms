@@ -3,10 +3,6 @@
         'routes' => [
 
             'GET' => [
-
-                /**
-                 * Backend section
-                 */
                 [
                     'url' => '/admin/login',
                     'class' => cms\controller\Secured::class,
@@ -16,54 +12,50 @@
                     'url' => '/admin/logout',
                     'class' => cms\controller\Secured::class,
                     'method' => 'logout'
-
                 ],
                 [
                     'url' => '/admin',
                     'class' => cms\controller\Admin::class,
                     'method' => 'index'
                 ],
-
-                /**
-                 * Content
-                 */
                 [
                     'url' => '/admin/content',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'content'
+                    'class' => \cms\controller\ContentController::class,
+                    'method' => 'read',
+                    'alias' => 'content.list'
                 ],
                 [
                     'url' => '/admin/content/new',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'newContent'
+                    'class' => \cms\controller\ContentController::class,
+                    'method' => 'create',
+                     'alias' => 'content.create'
                 ],
                 [
                     'url' => '/admin/content/edit/{id}',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'editContent'
+                    'class' => \cms\controller\ContentController::class,
+                    'method' => 'read',
+                    'alias' => 'content.edit'
                 ],
                 /**
                  * Categories
                  */
                 [
                     'url' => '/admin/categories',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'categories'
+                    'class' => \cms\controller\CategoriesController::class,
+                    'method' => 'read',
+                    'alias' => 'category.list'
                 ],
                 [
                     'url' => '/admin/category/new',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'newCategory'
+                    'class' => \cms\controller\CategoriesController::class,
+                    'method' => 'create',
+                    'alias' => 'category.create'
                 ],
                 [
                     'url' => '/admin/category/edit/{id}',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'editCategory'
-                ],
-                [
-                    'url' => '/admin/content/filter/{id}',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'filterItemsByCat'
+                    'class' => \cms\controller\CategoriesController::class,
+                    'method' => 'read',
+                    'alias' => 'category.edit'
                 ],
 
                 /**
@@ -71,63 +63,43 @@
                  */
                 [
                     'url' => '/admin/user',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'user'
+                    'class' => cms\controller\UserController::class,
+                    'method' => 'read',
+                    'alias' => 'user.list'
                 ],
                 [
                     'url' => '/admin/user/new',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'newUser'
+                    'class' => cms\controller\UserController::class,
+                    'method' => 'create',
+                    'alias' => 'user.create'
                 ],
                 [
                     'url' => '/admin/user/edit/{id}',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'editUser'
+                    'class' => cms\controller\UserController::class,
+                    'method' => 'update',
+                    'alias' => 'user.edit'
                 ],
-
-                /**
-                 * Banner
-                 */
-
                 [
-
                     'url' => '/admin/banner',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'banner'
-
+                    'class' => \cms\controller\BannerController::class,
+                    'method' => 'read'
                 ],
-
                 [
-
                     'url' => '/admin/banner/new',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'newBanner'
-
+                    'class' => \cms\controller\BannerController::class,
+                    'method' => 'create'
                 ],
-
                 [
-
                     'url' => '/admin/banner/edit/{id}',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'editBanner'
-
+                    'class' => \cms\controller\BannerController::class,
+                    'method' => 'update'
                 ],
-
-                /**
-                 * Config
-                 */
-
                 [
-
                     'url' => '/admin/configuration',
                     'class' => cms\controller\Admin::class,
                     'method' => 'config'
-
                 ],
-
-
                 [
-
                     'url' => 'clienti',
                     'class' => cms\controller\Admin::class,
                     'method' => 'customers'
@@ -136,47 +108,36 @@
 
             'POST' => [
                 [
-                    /**
-                     * Secure
-                     */
                     'url' => '/admin/auth',
                     'class' => cms\controller\Secured::class,
                     'method' => 'authenticate',
-
                 ],
-
-                /**
-                 * Crud operations
-                 */
                 [
                     'url' => '/admin/content/save',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'saveContent',
+                    'class' => \cms\controller\ContentController::class,
+                    'method' => 'create',
                 ],
-
                 [
                     'url' => '/admin/content/delete',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'deleteContent',
+                    'class' => \cms\controller\ContentController::class,
+                    'method' => 'delete',
                 ],
-
                 [
                     'url' => '/admin/category/save',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'saveCategory',
+                    'class' => \cms\controller\CategoriesController::class,
+                    'method' => 'create',
                 ],
-
                 [
                     'url' => '/admin/category/delete',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'deleteCategory',
+                    'class' => \cms\controller\CategoriesController::class,
+                    'method' => 'delete',
                 ],
                 [
                     'url' => '/admin/user/save',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'saveUser',
+                    'class' => cms\controller\UserController::class,
+                    'method' => 'create',
+                    'alias' => 'user.save'
                 ],
-
                 [
                     'url' => '/admin/user/delete',
                     'class' => cms\controller\Admin::class,
@@ -239,8 +200,8 @@
                     ],
                 500 => [
                     'url' => '/error',
-                    'class' => \controller\Errors::class,
-                    'method' => 'page500'
+                    'class' => \cms\controller\Errors::class,
+                    'method' => 'error'
                 ]
             ]
         ]

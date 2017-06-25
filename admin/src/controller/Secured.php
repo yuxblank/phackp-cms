@@ -103,9 +103,10 @@ class Secured extends Controller {
     }
 
     /**
-     * @return null|User|User
+     * @return User
      */
-    public  function loadUser() {
+    public  function loadUser()
+    {
         return $this->session->getValue("user");
     }
 

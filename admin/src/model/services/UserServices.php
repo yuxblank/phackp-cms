@@ -11,6 +11,7 @@ namespace cms\model\services;
 
 use cms\model\User;
 use cms\model\UserRole;
+use yuxblank\phackp\database\Database;
 
 class UserServices
 {
@@ -27,6 +28,24 @@ class UserServices
     {
         $this->user = $user;
         $this->userRole = $userRole;
+    }
+
+    public function getUser(string $username){
+        return $this->user->find("WHERE email=?", $username);
+    }
+
+    public function saveUser(User $user){
+        // todo validate
+        return $user->save();
+    }
+
+    /**
+     * todo pagination
+     * @return array
+     */
+    public function listUsers(): array
+    {
+        return $this->user->findAll();
     }
 
 }

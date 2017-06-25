@@ -1146,3 +1146,257 @@ Stack trace:
 #7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
 #8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(317): DI\Container->call(Array)
 #9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\ in E:\PHP\phackp-cms\themes\aostawork\app\pizze.php on line 59
+[25-Jun-2017 18:54:34 UTC] PHP Fatal error:  Uncaught Error: Call to a member function item() on boolean in E:\PHP\phackp-cms\themes\aostawork\app\novita.php:25
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(104): include()
+#1 E:\PHP\phackp-cms\themes\aostawork\main.php(187): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\themes\aostawork\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(92): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(123): yuxblank\phackp\core\View->render('app/novita')
+#5 [internal function]: controller\App->novita()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(318): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Applicat in E:\PHP\phackp-cms\themes\aostawork\app\novita.php on line 25
+[25-Jun-2017 18:54:36 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method yuxblank\phackp\core\Application::getAppUrl() in E:\PHP\phackp-cms\themes\aostawork\app\pizze.php:59
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(104): include()
+#1 E:\PHP\phackp-cms\themes\aostawork\main.php(187): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\themes\aostawork\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(92): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(185): yuxblank\phackp\core\View->render('app/pizze')
+#5 [internal function]: controller\App->pizze()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(318): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\ in E:\PHP\phackp-cms\themes\aostawork\app\pizze.php on line 59
+[25-Jun-2017 18:54:37 UTC] PHP Notice:  Trying to get property of non-object in E:\PHP\phackp-cms\themes\aostawork\app\chi_siamo.php on line 13
+[25-Jun-2017 18:54:37 UTC] PHP Stack trace:
+[25-Jun-2017 18:54:37 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[25-Jun-2017 18:54:37 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[25-Jun-2017 18:54:37 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[25-Jun-2017 18:54:37 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:318
+[25-Jun-2017 18:54:37 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[25-Jun-2017 18:54:37 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[25-Jun-2017 18:54:37 UTC] PHP   7. controller\App->chiSiamo() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[25-Jun-2017 18:54:37 UTC] PHP   8. yuxblank\phackp\core\View->render($view = *uninitialized*) E:\PHP\phackp-cms\src\controller\App.php:201
+[25-Jun-2017 18:54:37 UTC] PHP   9. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:92
+[25-Jun-2017 18:54:37 UTC] PHP  10. include() E:\PHP\phackp-cms\themes\aostawork\app\main.php:2
+[25-Jun-2017 18:54:37 UTC] PHP  11. yuxblank\phackp\core\View->content() E:\PHP\phackp-cms\themes\aostawork\main.php:187
+[25-Jun-2017 18:54:37 UTC] PHP  12. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:104
+[25-Jun-2017 19:44:04 UTC] PHP Fatal error:  Uncaught Error: Call to a member function item() on boolean in E:\PHP\phackp-cms\themes\aostawork\app\novita.php:25
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(104): include()
+#1 E:\PHP\phackp-cms\themes\aostawork\main.php(187): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\themes\aostawork\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(92): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(123): yuxblank\phackp\core\View->render('app/novita')
+#5 [internal function]: controller\App->novita()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(318): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Applicat in E:\PHP\phackp-cms\themes\aostawork\app\novita.php on line 25
+[25-Jun-2017 19:44:06 UTC] PHP Notice:  Trying to get property of non-object in E:\PHP\phackp-cms\themes\aostawork\app\chi_siamo.php on line 13
+[25-Jun-2017 19:44:06 UTC] PHP Stack trace:
+[25-Jun-2017 19:44:06 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[25-Jun-2017 19:44:06 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[25-Jun-2017 19:44:06 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[25-Jun-2017 19:44:06 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:318
+[25-Jun-2017 19:44:06 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[25-Jun-2017 19:44:06 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[25-Jun-2017 19:44:06 UTC] PHP   7. controller\App->chiSiamo() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[25-Jun-2017 19:44:06 UTC] PHP   8. yuxblank\phackp\core\View->render($view = *uninitialized*) E:\PHP\phackp-cms\src\controller\App.php:201
+[25-Jun-2017 19:44:06 UTC] PHP   9. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:92
+[25-Jun-2017 19:44:06 UTC] PHP  10. include() E:\PHP\phackp-cms\themes\aostawork\app\main.php:2
+[25-Jun-2017 19:44:06 UTC] PHP  11. yuxblank\phackp\core\View->content() E:\PHP\phackp-cms\themes\aostawork\main.php:187
+[25-Jun-2017 19:44:06 UTC] PHP  12. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:104
+[25-Jun-2017 19:44:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method yuxblank\phackp\core\Application::getAppUrl() in E:\PHP\phackp-cms\themes\aostawork\app\pizze.php:59
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(104): include()
+#1 E:\PHP\phackp-cms\themes\aostawork\main.php(187): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\themes\aostawork\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(92): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(185): yuxblank\phackp\core\View->render('app/pizze')
+#5 [internal function]: controller\App->pizze()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(318): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\ in E:\PHP\phackp-cms\themes\aostawork\app\pizze.php on line 59
+[25-Jun-2017 19:44:11 UTC] PHP Fatal error:  Uncaught Error: Call to a member function item() on boolean in E:\PHP\phackp-cms\themes\aostawork\app\novita.php:25
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(104): include()
+#1 E:\PHP\phackp-cms\themes\aostawork\main.php(187): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\themes\aostawork\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(92): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(123): yuxblank\phackp\core\View->render('app/novita')
+#5 [internal function]: controller\App->novita()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(318): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Applicat in E:\PHP\phackp-cms\themes\aostawork\app\novita.php on line 25
+[25-Jun-2017 19:44:13 UTC] PHP Fatal error:  Uncaught Error: Call to a member function item() on boolean in E:\PHP\phackp-cms\themes\aostawork\app\novita.php:25
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(104): include()
+#1 E:\PHP\phackp-cms\themes\aostawork\main.php(187): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\themes\aostawork\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(92): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(123): yuxblank\phackp\core\View->render('app/novita')
+#5 [internal function]: controller\App->novita()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(318): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Applicat in E:\PHP\phackp-cms\themes\aostawork\app\novita.php on line 25
+[25-Jun-2017 19:44:16 UTC] PHP Notice:  Trying to get property of non-object in E:\PHP\phackp-cms\themes\aostawork\app\chi_siamo.php on line 13
+[25-Jun-2017 19:44:16 UTC] PHP Stack trace:
+[25-Jun-2017 19:44:16 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[25-Jun-2017 19:44:16 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[25-Jun-2017 19:44:16 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[25-Jun-2017 19:44:16 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:318
+[25-Jun-2017 19:44:16 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[25-Jun-2017 19:44:16 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[25-Jun-2017 19:44:16 UTC] PHP   7. controller\App->chiSiamo() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[25-Jun-2017 19:44:16 UTC] PHP   8. yuxblank\phackp\core\View->render($view = *uninitialized*) E:\PHP\phackp-cms\src\controller\App.php:201
+[25-Jun-2017 19:44:16 UTC] PHP   9. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:92
+[25-Jun-2017 19:44:16 UTC] PHP  10. include() E:\PHP\phackp-cms\themes\aostawork\app\main.php:2
+[25-Jun-2017 19:44:16 UTC] PHP  11. yuxblank\phackp\core\View->content() E:\PHP\phackp-cms\themes\aostawork\main.php:187
+[25-Jun-2017 19:44:16 UTC] PHP  12. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:104
+[25-Jun-2017 19:44:20 UTC] PHP Fatal error:  Uncaught Error: Call to a member function item() on boolean in E:\PHP\phackp-cms\themes\aostawork\app\novita.php:25
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(104): include()
+#1 E:\PHP\phackp-cms\themes\aostawork\main.php(187): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\themes\aostawork\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(92): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(123): yuxblank\phackp\core\View->render('app/novita')
+#5 [internal function]: controller\App->novita()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(318): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Applicat in E:\PHP\phackp-cms\themes\aostawork\app\novita.php on line 25
+[25-Jun-2017 19:44:21 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method yuxblank\phackp\core\Application::getAppUrl() in E:\PHP\phackp-cms\themes\aostawork\app\pizze.php:59
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(104): include()
+#1 E:\PHP\phackp-cms\themes\aostawork\main.php(187): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\themes\aostawork\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(92): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(185): yuxblank\phackp\core\View->render('app/pizze')
+#5 [internal function]: controller\App->pizze()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(318): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\ in E:\PHP\phackp-cms\themes\aostawork\app\pizze.php on line 59
+[25-Jun-2017 19:44:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method yuxblank\phackp\core\Application::getAppUrl() in E:\PHP\phackp-cms\themes\aostawork\app\pizze.php:59
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(104): include()
+#1 E:\PHP\phackp-cms\themes\aostawork\main.php(187): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\themes\aostawork\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(92): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(185): yuxblank\phackp\core\View->render('app/pizze')
+#5 [internal function]: controller\App->pizze()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(318): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\ in E:\PHP\phackp-cms\themes\aostawork\app\pizze.php on line 59
+[25-Jun-2017 19:44:27 UTC] PHP Notice:  Trying to get property of non-object in E:\PHP\phackp-cms\themes\aostawork\app\chi_siamo.php on line 13
+[25-Jun-2017 19:44:27 UTC] PHP Stack trace:
+[25-Jun-2017 19:44:27 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[25-Jun-2017 19:44:27 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[25-Jun-2017 19:44:27 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[25-Jun-2017 19:44:27 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:318
+[25-Jun-2017 19:44:27 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[25-Jun-2017 19:44:27 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[25-Jun-2017 19:44:27 UTC] PHP   7. controller\App->chiSiamo() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[25-Jun-2017 19:44:27 UTC] PHP   8. yuxblank\phackp\core\View->render($view = *uninitialized*) E:\PHP\phackp-cms\src\controller\App.php:201
+[25-Jun-2017 19:44:27 UTC] PHP   9. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:92
+[25-Jun-2017 19:44:27 UTC] PHP  10. include() E:\PHP\phackp-cms\themes\aostawork\app\main.php:2
+[25-Jun-2017 19:44:27 UTC] PHP  11. yuxblank\phackp\core\View->content() E:\PHP\phackp-cms\themes\aostawork\main.php:187
+[25-Jun-2017 19:44:27 UTC] PHP  12. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:104
+[25-Jun-2017 19:46:34 UTC] PHP Fatal error:  Uncaught Error: Call to a member function item() on boolean in E:\PHP\phackp-cms\themes\aostawork\app\novita.php:25
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(104): include()
+#1 E:\PHP\phackp-cms\themes\aostawork\main.php(187): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\themes\aostawork\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(92): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(123): yuxblank\phackp\core\View->render('app/novita')
+#5 [internal function]: controller\App->novita()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(318): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Applicat in E:\PHP\phackp-cms\themes\aostawork\app\novita.php on line 25
+[25-Jun-2017 19:46:35 UTC] PHP Fatal error:  Uncaught Error: Call to a member function item() on boolean in E:\PHP\phackp-cms\themes\aostawork\app\novita.php:25
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(104): include()
+#1 E:\PHP\phackp-cms\themes\aostawork\main.php(187): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\themes\aostawork\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(92): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(123): yuxblank\phackp\core\View->render('app/novita')
+#5 [internal function]: controller\App->novita()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(318): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Applicat in E:\PHP\phackp-cms\themes\aostawork\app\novita.php on line 25
+[25-Jun-2017 19:46:36 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method yuxblank\phackp\core\Application::getAppUrl() in E:\PHP\phackp-cms\themes\aostawork\app\pizze.php:59
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(104): include()
+#1 E:\PHP\phackp-cms\themes\aostawork\main.php(187): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\themes\aostawork\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(92): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(185): yuxblank\phackp\core\View->render('app/pizze')
+#5 [internal function]: controller\App->pizze()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(318): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\ in E:\PHP\phackp-cms\themes\aostawork\app\pizze.php on line 59
+[25-Jun-2017 19:46:38 UTC] PHP Notice:  Trying to get property of non-object in E:\PHP\phackp-cms\themes\aostawork\app\chi_siamo.php on line 13
+[25-Jun-2017 19:46:38 UTC] PHP Stack trace:
+[25-Jun-2017 19:46:38 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[25-Jun-2017 19:46:38 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[25-Jun-2017 19:46:38 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[25-Jun-2017 19:46:38 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:318
+[25-Jun-2017 19:46:38 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[25-Jun-2017 19:46:38 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[25-Jun-2017 19:46:38 UTC] PHP   7. controller\App->chiSiamo() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[25-Jun-2017 19:46:38 UTC] PHP   8. yuxblank\phackp\core\View->render($view = *uninitialized*) E:\PHP\phackp-cms\src\controller\App.php:201
+[25-Jun-2017 19:46:38 UTC] PHP   9. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:92
+[25-Jun-2017 19:46:38 UTC] PHP  10. include() E:\PHP\phackp-cms\themes\aostawork\app\main.php:2
+[25-Jun-2017 19:46:38 UTC] PHP  11. yuxblank\phackp\core\View->content() E:\PHP\phackp-cms\themes\aostawork\main.php:187
+[25-Jun-2017 19:46:38 UTC] PHP  12. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:104
+[25-Jun-2017 19:47:09 UTC] PHP Notice:  Trying to get property of non-object in E:\PHP\phackp-cms\themes\aostawork\app\chi_siamo.php on line 13
+[25-Jun-2017 19:47:09 UTC] PHP Stack trace:
+[25-Jun-2017 19:47:09 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[25-Jun-2017 19:47:09 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[25-Jun-2017 19:47:09 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[25-Jun-2017 19:47:09 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:318
+[25-Jun-2017 19:47:09 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[25-Jun-2017 19:47:09 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[25-Jun-2017 19:47:09 UTC] PHP   7. controller\App->chiSiamo() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[25-Jun-2017 19:47:09 UTC] PHP   8. yuxblank\phackp\core\View->render($view = *uninitialized*) E:\PHP\phackp-cms\src\controller\App.php:201
+[25-Jun-2017 19:47:09 UTC] PHP   9. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:92
+[25-Jun-2017 19:47:09 UTC] PHP  10. include() E:\PHP\phackp-cms\themes\aostawork\app\main.php:2
+[25-Jun-2017 19:47:09 UTC] PHP  11. yuxblank\phackp\core\View->content() E:\PHP\phackp-cms\themes\aostawork\main.php:187
+[25-Jun-2017 19:47:09 UTC] PHP  12. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:104
+[25-Jun-2017 19:47:13 UTC] PHP Notice:  Trying to get property of non-object in E:\PHP\phackp-cms\themes\aostawork\app\chi_siamo.php on line 13
+[25-Jun-2017 19:47:13 UTC] PHP Stack trace:
+[25-Jun-2017 19:47:13 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[25-Jun-2017 19:47:13 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[25-Jun-2017 19:47:13 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:298
+[25-Jun-2017 19:47:13 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:318
+[25-Jun-2017 19:47:13 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[25-Jun-2017 19:47:13 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[25-Jun-2017 19:47:13 UTC] PHP   7. controller\App->chiSiamo() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[25-Jun-2017 19:47:13 UTC] PHP   8. yuxblank\phackp\core\View->render($view = *uninitialized*) E:\PHP\phackp-cms\src\controller\App.php:201
+[25-Jun-2017 19:47:13 UTC] PHP   9. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:92
+[25-Jun-2017 19:47:13 UTC] PHP  10. include() E:\PHP\phackp-cms\themes\aostawork\app\main.php:2
+[25-Jun-2017 19:47:13 UTC] PHP  11. yuxblank\phackp\core\View->content() E:\PHP\phackp-cms\themes\aostawork\main.php:187
+[25-Jun-2017 19:47:13 UTC] PHP  12. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php:104
+[25-Jun-2017 19:47:23 UTC] PHP Fatal error:  Uncaught Error: Call to a member function item() on boolean in E:\PHP\phackp-cms\themes\aostawork\app\novita.php:25
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(104): include()
+#1 E:\PHP\phackp-cms\themes\aostawork\main.php(187): yuxblank\phackp\core\View->content()
+#2 E:\PHP\phackp-cms\themes\aostawork\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\View.php(92): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(123): yuxblank\phackp\core\View->render('app/novita')
+#5 [internal function]: controller\App->novita()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(318): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Applicat in E:\PHP\phackp-cms\themes\aostawork\app\novita.php on line 25
