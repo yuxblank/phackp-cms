@@ -9,8 +9,8 @@
 namespace cms\controller;
 
 
+use cms\overrides\View;
 use yuxblank\phackp\core\Controller;
-use yuxblank\phackp\core\View;
 
 class Errors extends Controller
 {

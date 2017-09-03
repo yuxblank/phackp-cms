@@ -1400,3 +1400,324 @@ Stack trace:
 #7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
 #8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(318): DI\Container->call(Array)
 #9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Applicat in E:\PHP\phackp-cms\themes\aostawork\app\novita.php on line 25
+[03-Sep-2017 13:20:40 UTC] PHP Fatal error:  Interface 'yuxblank\phackp\api\EventDrivenController' not found in E:\PHP\phackp-cms\src\controller\App.php on line 25
+[03-Sep-2017 13:20:40 UTC] PHP Stack trace:
+[03-Sep-2017 13:20:40 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[03-Sep-2017 13:20:40 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[03-Sep-2017 13:20:40 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:302
+[03-Sep-2017 13:20:40 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:325
+[03-Sep-2017 13:20:40 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[03-Sep-2017 13:20:40 UTC] PHP   6. Invoker\CallableResolver->resolve($callable = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:53
+[03-Sep-2017 13:20:40 UTC] PHP   7. Invoker\CallableResolver->resolveFromContainer($callable = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\CallableResolver.php:41
+[03-Sep-2017 13:20:40 UTC] PHP   8. is_callable(*uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\CallableResolver.php:65
+[03-Sep-2017 13:20:40 UTC] PHP   9. spl_autoload_call(*uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\CallableResolver.php:65
+[03-Sep-2017 13:20:40 UTC] PHP  10. Composer\Autoload\ClassLoader->loadClass($class = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\CallableResolver.php:65
+[03-Sep-2017 13:20:40 UTC] PHP  11. Composer\Autoload\includeFile($file = *uninitialized*) E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:301
+[03-Sep-2017 13:20:40 UTC] PHP  12. include() E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:414
+[03-Sep-2017 13:21:58 UTC] PHP Fatal error:  Class 'yuxblank\phackp\core\View' not found in E:\PHP\phackp-cms\admin\src\override\View.php on line 12
+[03-Sep-2017 13:21:58 UTC] PHP Stack trace:
+[03-Sep-2017 13:21:58 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[03-Sep-2017 13:21:58 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[03-Sep-2017 13:21:58 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:302
+[03-Sep-2017 13:21:58 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:325
+[03-Sep-2017 13:21:58 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[03-Sep-2017 13:21:58 UTC] PHP   6. Invoker\CallableResolver->resolve($callable = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:53
+[03-Sep-2017 13:21:58 UTC] PHP   7. Invoker\CallableResolver->resolveFromContainer($callable = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\CallableResolver.php:41
+[03-Sep-2017 13:21:58 UTC] PHP   8. DI\Container->get($name = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\CallableResolver.php:86
+[03-Sep-2017 13:21:58 UTC] PHP   9. DI\Definition\Source\SourceChain->getDefinition($name = *uninitialized*, $startIndex = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:118
+[03-Sep-2017 13:21:58 UTC] PHP  10. DI\Definition\Source\AnnotationReader->getDefinition($name = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\SourceChain.php:51
+[03-Sep-2017 13:21:58 UTC] PHP  11. DI\Definition\Source\AnnotationReader->readMethods($class = *uninitialized*, $objectDefinition = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php:74
+[03-Sep-2017 13:21:58 UTC] PHP  12. DI\Definition\Source\AnnotationReader->getMethodInjection($method = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php:139
+[03-Sep-2017 13:21:58 UTC] PHP  13. DI\Definition\Source\AnnotationReader->getMethodParameter($parameterIndex = *uninitialized*, $parameter = *uninitialized*, $annotationParameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php:176
+[03-Sep-2017 13:21:58 UTC] PHP  14. ReflectionParameter->getClass() E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php:213
+[03-Sep-2017 13:21:58 UTC] PHP  15. spl_autoload_call(*uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php:213
+[03-Sep-2017 13:21:58 UTC] PHP  16. Composer\Autoload\ClassLoader->loadClass($class = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Source\AnnotationReader.php:213
+[03-Sep-2017 13:21:58 UTC] PHP  17. Composer\Autoload\includeFile($file = *uninitialized*) E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:301
+[03-Sep-2017 13:21:58 UTC] PHP  18. include() E:\PHP\phackp-cms\vendor\composer\ClassLoader.php:414
+[03-Sep-2017 13:22:18 UTC] PHP Fatal error:  Uncaught DI\Definition\Exception\DefinitionException: Entry "controller\App" cannot be resolved: Entry "cms\overrides\View" cannot be resolved: Parameter $viewConfig of __construct() has no value defined or guessable
+Full definition:
+Object (
+    class = cms\overrides\View
+    scope = singleton
+    lazy = false
+    __construct(
+        $viewConfig = #UNDEFINED#
+        $appGlobals = #UNDEFINED#
+        $router = get(yuxblank\phackp\routing\api\Router)
+    )
+)
+Full definition:
+Object (
+    class = controller\App
+    scope = singleton
+    lazy = false
+    __construct(
+        $view = get(cms\overrides\View)
+        $router = get(yuxblank\phackp\routing\api\Router)
+        $session = get(yuxblank\phackp\core\Session)
+    )
+    $globals = get(app.globals)
+) in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Exception\DefinitionException.php:16
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Resolver\ObjectCreator.php(154): DI\Definition\Exception\Definition in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Exception\DefinitionException.php on line 16
+[03-Sep-2017 13:22:52 UTC] PHP Fatal error:  Uncaught DI\Definition\Exception\DefinitionException: Entry "controller\App" cannot be resolved: Entry "cms\overrides\View" cannot be resolved: Parameter $viewConfig of __construct() has no value defined or guessable
+Full definition:
+Object (
+    class = cms\overrides\View
+    scope = singleton
+    lazy = false
+    __construct(
+        $viewConfig = #UNDEFINED#
+        $appGlobals = #UNDEFINED#
+        $router = get(yuxblank\phackp\routing\api\Router)
+    )
+)
+Full definition:
+Object (
+    class = controller\App
+    scope = singleton
+    lazy = false
+    __construct(
+        $view = get(cms\overrides\View)
+        $router = get(yuxblank\phackp\routing\api\Router)
+        $session = get(yuxblank\phackp\core\Session)
+    )
+    $globals = get(app.globals)
+) in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Exception\DefinitionException.php:16
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Resolver\ObjectCreator.php(154): DI\Definition\Exception\Definition in E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Exception\DefinitionException.php on line 16
+[03-Sep-2017 13:23:35 UTC] PHP Notice:  Undefined index: DSN in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php on line 72
+[03-Sep-2017 13:23:35 UTC] PHP Stack trace:
+[03-Sep-2017 13:23:35 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[03-Sep-2017 13:23:35 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[03-Sep-2017 13:23:35 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:302
+[03-Sep-2017 13:23:35 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:325
+[03-Sep-2017 13:23:35 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[03-Sep-2017 13:23:35 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[03-Sep-2017 13:23:35 UTC] PHP   7. controller\App->onBefore() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[03-Sep-2017 13:23:35 UTC] PHP   8. controller\App->buildMenu() E:\PHP\phackp-cms\src\controller\App.php:56
+[03-Sep-2017 13:23:35 UTC] PHP   9. yuxblank\phackp\database\Model->__construct($hackORM = *uninitialized*) E:\PHP\phackp-cms\src\controller\App.php:97
+[03-Sep-2017 13:23:35 UTC] PHP  10. DI\Container->get($name = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Model.php:38
+[03-Sep-2017 13:23:35 UTC] PHP  11. DI\Container->resolveDefinition($definition = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:123
+[03-Sep-2017 13:23:35 UTC] PHP  12. DI\Definition\Resolver\ResolverDispatcher->resolve($definition = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:286
+[03-Sep-2017 13:23:35 UTC] PHP  13. DI\Definition\Resolver\ObjectCreator->resolve($definition = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Resolver\ResolverDispatcher.php:58
+[03-Sep-2017 13:23:35 UTC] PHP  14. DI\Definition\Resolver\ObjectCreator->createInstance($definition = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Resolver\ObjectCreator.php:70
+[03-Sep-2017 13:23:35 UTC] PHP  15. DI\Definition\Resolver\ParameterResolver->resolveParameters($definition = *uninitialized*, $method = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Resolver\ObjectCreator.php:133
+[03-Sep-2017 13:23:35 UTC] PHP  16. DI\Definition\Resolver\ResolverDispatcher->resolve($definition = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Resolver\ParameterResolver.php:81
+[03-Sep-2017 13:23:35 UTC] PHP  17. DI\Definition\Resolver\SelfResolver->resolve($definition = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Resolver\ResolverDispatcher.php:58
+[03-Sep-2017 13:23:35 UTC] PHP  18. DI\Definition\AliasDefinition->resolve($container = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Resolver\SelfResolver.php:34
+[03-Sep-2017 13:23:35 UTC] PHP  19. DI\Container->get($name = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\AliasDefinition.php:63
+[03-Sep-2017 13:23:35 UTC] PHP  20. DI\Container->resolveDefinition($definition = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:123
+[03-Sep-2017 13:23:35 UTC] PHP  21. DI\Definition\Resolver\ResolverDispatcher->resolve($definition = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:286
+[03-Sep-2017 13:23:35 UTC] PHP  22. DI\Definition\Resolver\FactoryResolver->resolve($definition = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Resolver\ResolverDispatcher.php:58
+[03-Sep-2017 13:23:35 UTC] PHP  23. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Resolver\FactoryResolver.php:81
+[03-Sep-2017 13:23:35 UTC] PHP  24. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[03-Sep-2017 13:23:35 UTC] PHP  25. yuxblank\phackp\core\Application->yuxblank\phackp\core\{closure}() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[03-Sep-2017 13:23:35 UTC] PHP  26. yuxblank\phackp\database\Database->__construct($config = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:244
+[03-Sep-2017 13:23:35 UTC] PHP  27. yuxblank\phackp\database\Database->connect() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php:39
+[03-Sep-2017 13:23:35 UTC] PHP Fatal error:  Uncaught PDOException: Cannot create instance of PDO and connect to database, please check configurations in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php:74
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php(39): yuxblank\phackp\database\Database->connect()
+#1 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(244): yuxblank\phackp\database\Database->__construct(Array)
+#2 [internal function]: yuxblank\phackp\core\Application->yuxblank\phackp\core\{closure}()
+#3 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Object(Closure), Array)
+#4 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Resolver\FactoryResolver.php(81): Invoker\Invoker->call(Object(Closure), Array)
+#5 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Definition\Resolver\ResolverDispatcher.php(58): DI\Definition\Resolver\FactoryResolver->resolve(Object(DI\Definition\FactoryDefinition), Array)
+#6 E:\PHP\phackp-cms\vendor\p in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php on line 74
+[03-Sep-2017 13:34:54 UTC] PHP Notice:  Undefined index: alias in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php on line 218
+[03-Sep-2017 13:34:54 UTC] PHP Stack trace:
+[03-Sep-2017 13:34:54 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[03-Sep-2017 13:34:54 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[03-Sep-2017 13:34:54 UTC] PHP   3. yuxblank\phackp\routing\Router->getErrorRoute() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:310
+[03-Sep-2017 13:34:54 UTC] PHP Fatal error:  Uncaught TypeError: Argument 4 passed to yuxblank\phackp\routing\Route::__construct() must be of the type array, null given, called in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php on line 218 and defined in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Route.php:39
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php(218): yuxblank\phackp\routing\Route->__construct('/notfound', 'controller\\Erro...', 'page404', NULL, true)
+#1 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(310): yuxblank\phackp\routing\Router->getErrorRoute(404)
+#2 E:\PHP\phackp-cms\index.php(9): yuxblank\phackp\core\Application->run()
+#3 {main}
+  thrown in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Route.php on line 39
+[03-Sep-2017 13:34:55 UTC] PHP Notice:  Undefined index: alias in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php on line 218
+[03-Sep-2017 13:34:55 UTC] PHP Stack trace:
+[03-Sep-2017 13:34:55 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[03-Sep-2017 13:34:55 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[03-Sep-2017 13:34:55 UTC] PHP   3. yuxblank\phackp\routing\Router->getErrorRoute() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:310
+[03-Sep-2017 13:34:55 UTC] PHP Fatal error:  Uncaught TypeError: Argument 4 passed to yuxblank\phackp\routing\Route::__construct() must be of the type array, null given, called in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php on line 218 and defined in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Route.php:39
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php(218): yuxblank\phackp\routing\Route->__construct('/notfound', 'controller\\Erro...', 'page404', NULL, true)
+#1 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(310): yuxblank\phackp\routing\Router->getErrorRoute(404)
+#2 E:\PHP\phackp-cms\index.php(9): yuxblank\phackp\core\Application->run()
+#3 {main}
+  thrown in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Route.php on line 39
+[03-Sep-2017 13:34:55 UTC] PHP Notice:  Undefined index: alias in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php on line 218
+[03-Sep-2017 13:34:55 UTC] PHP Stack trace:
+[03-Sep-2017 13:34:55 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[03-Sep-2017 13:34:55 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[03-Sep-2017 13:34:55 UTC] PHP   3. yuxblank\phackp\routing\Router->getErrorRoute() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:310
+[03-Sep-2017 13:34:55 UTC] PHP Fatal error:  Uncaught TypeError: Argument 4 passed to yuxblank\phackp\routing\Route::__construct() must be of the type array, null given, called in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php on line 218 and defined in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Route.php:39
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php(218): yuxblank\phackp\routing\Route->__construct('/notfound', 'controller\\Erro...', 'page404', NULL, true)
+#1 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(310): yuxblank\phackp\routing\Router->getErrorRoute(404)
+#2 E:\PHP\phackp-cms\index.php(9): yuxblank\phackp\core\Application->run()
+#3 {main}
+  thrown in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Route.php on line 39
+[03-Sep-2017 13:35:08 UTC] PHP Notice:  Undefined index: alias in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php on line 218
+[03-Sep-2017 13:35:08 UTC] PHP Stack trace:
+[03-Sep-2017 13:35:08 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[03-Sep-2017 13:35:08 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[03-Sep-2017 13:35:08 UTC] PHP   3. yuxblank\phackp\routing\Router->getErrorRoute() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:310
+[03-Sep-2017 13:35:08 UTC] PHP Fatal error:  Uncaught TypeError: Argument 4 passed to yuxblank\phackp\routing\Route::__construct() must be of the type array, null given, called in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php on line 218 and defined in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Route.php:39
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php(218): yuxblank\phackp\routing\Route->__construct('/notfound', 'controller\\Erro...', 'page404', NULL, true)
+#1 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(310): yuxblank\phackp\routing\Router->getErrorRoute(404)
+#2 E:\PHP\phackp-cms\index.php(9): yuxblank\phackp\core\Application->run()
+#3 {main}
+  thrown in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Route.php on line 39
+[03-Sep-2017 13:35:08 UTC] PHP Notice:  Undefined index: alias in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php on line 218
+[03-Sep-2017 13:35:08 UTC] PHP Stack trace:
+[03-Sep-2017 13:35:08 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[03-Sep-2017 13:35:08 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[03-Sep-2017 13:35:08 UTC] PHP   3. yuxblank\phackp\routing\Router->getErrorRoute() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:310
+[03-Sep-2017 13:35:08 UTC] PHP Fatal error:  Uncaught TypeError: Argument 4 passed to yuxblank\phackp\routing\Route::__construct() must be of the type array, null given, called in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php on line 218 and defined in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Route.php:39
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php(218): yuxblank\phackp\routing\Route->__construct('/notfound', 'controller\\Erro...', 'page404', NULL, true)
+#1 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(310): yuxblank\phackp\routing\Router->getErrorRoute(404)
+#2 E:\PHP\phackp-cms\index.php(9): yuxblank\phackp\core\Application->run()
+#3 {main}
+  thrown in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Route.php on line 39
+[03-Sep-2017 13:35:09 UTC] PHP Notice:  Undefined index: alias in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php on line 218
+[03-Sep-2017 13:35:09 UTC] PHP Stack trace:
+[03-Sep-2017 13:35:09 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[03-Sep-2017 13:35:09 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[03-Sep-2017 13:35:09 UTC] PHP   3. yuxblank\phackp\routing\Router->getErrorRoute() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:310
+[03-Sep-2017 13:35:09 UTC] PHP Fatal error:  Uncaught TypeError: Argument 4 passed to yuxblank\phackp\routing\Route::__construct() must be of the type array, null given, called in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php on line 218 and defined in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Route.php:39
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php(218): yuxblank\phackp\routing\Route->__construct('/notfound', 'controller\\Erro...', 'page404', NULL, true)
+#1 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(310): yuxblank\phackp\routing\Router->getErrorRoute(404)
+#2 E:\PHP\phackp-cms\index.php(9): yuxblank\phackp\core\Application->run()
+#3 {main}
+  thrown in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Route.php on line 39
+[03-Sep-2017 13:35:55 UTC] PHP Notice:  Undefined index: alias in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php on line 218
+[03-Sep-2017 13:35:55 UTC] PHP Stack trace:
+[03-Sep-2017 13:35:55 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[03-Sep-2017 13:35:55 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[03-Sep-2017 13:35:55 UTC] PHP   3. yuxblank\phackp\routing\Router->getErrorRoute() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:310
+[03-Sep-2017 13:35:55 UTC] PHP Fatal error:  Uncaught TypeError: Argument 4 passed to yuxblank\phackp\routing\Route::__construct() must be of the type array, null given, called in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php on line 218 and defined in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Route.php:39
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php(218): yuxblank\phackp\routing\Route->__construct('/notfound', 'controller\\Erro...', 'page404', NULL, true)
+#1 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(310): yuxblank\phackp\routing\Router->getErrorRoute(404)
+#2 E:\PHP\phackp-cms\index.php(9): yuxblank\phackp\core\Application->run()
+#3 {main}
+  thrown in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Route.php on line 39
+[03-Sep-2017 13:35:56 UTC] PHP Notice:  Undefined index: alias in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php on line 218
+[03-Sep-2017 13:35:56 UTC] PHP Stack trace:
+[03-Sep-2017 13:35:56 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[03-Sep-2017 13:35:56 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[03-Sep-2017 13:35:56 UTC] PHP   3. yuxblank\phackp\routing\Router->getErrorRoute() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:310
+[03-Sep-2017 13:35:56 UTC] PHP Fatal error:  Uncaught TypeError: Argument 4 passed to yuxblank\phackp\routing\Route::__construct() must be of the type array, null given, called in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php on line 218 and defined in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Route.php:39
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php(218): yuxblank\phackp\routing\Route->__construct('/notfound', 'controller\\Erro...', 'page404', NULL, true)
+#1 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(310): yuxblank\phackp\routing\Router->getErrorRoute(404)
+#2 E:\PHP\phackp-cms\index.php(9): yuxblank\phackp\core\Application->run()
+#3 {main}
+  thrown in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Route.php on line 39
+[03-Sep-2017 13:35:56 UTC] PHP Notice:  Undefined index: alias in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php on line 218
+[03-Sep-2017 13:35:56 UTC] PHP Stack trace:
+[03-Sep-2017 13:35:56 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[03-Sep-2017 13:35:56 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[03-Sep-2017 13:35:56 UTC] PHP   3. yuxblank\phackp\routing\Router->getErrorRoute() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:310
+[03-Sep-2017 13:35:56 UTC] PHP Fatal error:  Uncaught TypeError: Argument 4 passed to yuxblank\phackp\routing\Route::__construct() must be of the type array, null given, called in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php on line 218 and defined in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Route.php:39
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Router.php(218): yuxblank\phackp\routing\Route->__construct('/notfound', 'controller\\Erro...', 'page404', NULL, true)
+#1 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(310): yuxblank\phackp\routing\Router->getErrorRoute(404)
+#2 E:\PHP\phackp-cms\index.php(9): yuxblank\phackp\core\Application->run()
+#3 {main}
+  thrown in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\routing\Route.php on line 39
+[03-Sep-2017 13:53:44 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method yuxblank\phackp\core\Application::getAppUrl() in E:\PHP\phackp-cms\themes\aostawork\app\pizze.php:59
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\view\View.php(106): include()
+#1 E:\PHP\phackp-cms\themes\aostawork\main.php(187): yuxblank\phackp\view\View->content()
+#2 E:\PHP\phackp-cms\themes\aostawork\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\view\View.php(94): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(184): yuxblank\phackp\view\View->render('app/pizze')
+#5 [internal function]: controller\App->pizze()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(327): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\ in E:\PHP\phackp-cms\themes\aostawork\app\pizze.php on line 59
+[03-Sep-2017 13:53:45 UTC] PHP Fatal error:  Uncaught Error: Call to a member function item() on boolean in E:\PHP\phackp-cms\themes\aostawork\app\novita.php:25
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\view\View.php(106): include()
+#1 E:\PHP\phackp-cms\themes\aostawork\main.php(187): yuxblank\phackp\view\View->content()
+#2 E:\PHP\phackp-cms\themes\aostawork\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\view\View.php(94): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(122): yuxblank\phackp\view\View->render('app/novita')
+#5 [internal function]: controller\App->novita()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(327): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Applicat in E:\PHP\phackp-cms\themes\aostawork\app\novita.php on line 25
+[03-Sep-2017 13:53:47 UTC] PHP Notice:  Trying to get property of non-object in E:\PHP\phackp-cms\themes\aostawork\app\chi_siamo.php on line 13
+[03-Sep-2017 13:53:47 UTC] PHP Stack trace:
+[03-Sep-2017 13:53:47 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[03-Sep-2017 13:53:47 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[03-Sep-2017 13:53:47 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:302
+[03-Sep-2017 13:53:47 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:327
+[03-Sep-2017 13:53:47 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[03-Sep-2017 13:53:47 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[03-Sep-2017 13:53:47 UTC] PHP   7. controller\App->chiSiamo() E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[03-Sep-2017 13:53:47 UTC] PHP   8. yuxblank\phackp\view\View->render($view = *uninitialized*) E:\PHP\phackp-cms\src\controller\App.php:200
+[03-Sep-2017 13:53:47 UTC] PHP   9. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\view\View.php:94
+[03-Sep-2017 13:53:47 UTC] PHP  10. include() E:\PHP\phackp-cms\themes\aostawork\app\main.php:2
+[03-Sep-2017 13:53:47 UTC] PHP  11. yuxblank\phackp\view\View->content() E:\PHP\phackp-cms\themes\aostawork\main.php:187
+[03-Sep-2017 13:53:47 UTC] PHP  12. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\view\View.php:106
+[03-Sep-2017 13:53:49 UTC] PHP Fatal error:  Uncaught Error: Call to a member function item() on boolean in E:\PHP\phackp-cms\themes\aostawork\app\novita.php:25
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\view\View.php(106): include()
+#1 E:\PHP\phackp-cms\themes\aostawork\main.php(187): yuxblank\phackp\view\View->content()
+#2 E:\PHP\phackp-cms\themes\aostawork\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\view\View.php(94): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(122): yuxblank\phackp\view\View->render('app/novita')
+#5 [internal function]: controller\App->novita()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(327): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Applicat in E:\PHP\phackp-cms\themes\aostawork\app\novita.php on line 25
+[03-Sep-2017 13:53:53 UTC] PHP Notice:  Undefined index: id in E:\PHP\phackp-cms\src\controller\App.php on line 128
+[03-Sep-2017 13:53:53 UTC] PHP Stack trace:
+[03-Sep-2017 13:53:53 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[03-Sep-2017 13:53:53 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[03-Sep-2017 13:53:53 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:302
+[03-Sep-2017 13:53:53 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:327
+[03-Sep-2017 13:53:53 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[03-Sep-2017 13:53:53 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[03-Sep-2017 13:53:53 UTC] PHP   7. controller\App->showNovita($request = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[03-Sep-2017 13:53:57 UTC] PHP Notice:  Undefined index: id in E:\PHP\phackp-cms\src\controller\App.php on line 128
+[03-Sep-2017 13:53:57 UTC] PHP Stack trace:
+[03-Sep-2017 13:53:57 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[03-Sep-2017 13:53:57 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[03-Sep-2017 13:53:57 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:302
+[03-Sep-2017 13:53:57 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:327
+[03-Sep-2017 13:53:57 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[03-Sep-2017 13:53:57 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[03-Sep-2017 13:53:57 UTC] PHP   7. controller\App->showNovita($request = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[03-Sep-2017 13:59:49 UTC] PHP Notice:  Undefined index: id in E:\PHP\phackp-cms\src\controller\App.php on line 128
+[03-Sep-2017 13:59:49 UTC] PHP Stack trace:
+[03-Sep-2017 13:59:49 UTC] PHP   1. {main}() E:\PHP\phackp-cms\index.php:0
+[03-Sep-2017 13:59:49 UTC] PHP   2. yuxblank\phackp\core\Application->run() E:\PHP\phackp-cms\index.php:9
+[03-Sep-2017 13:59:49 UTC] PHP   3. yuxblank\phackp\core\Application->callController($method = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:302
+[03-Sep-2017 13:59:49 UTC] PHP   4. DI\Container->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php:327
+[03-Sep-2017 13:59:49 UTC] PHP   5. Invoker\Invoker->call($callable = *uninitialized*, $parameters = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php:239
+[03-Sep-2017 13:59:49 UTC] PHP   6. call_user_func_array:{E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82}(*uninitialized*, *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[03-Sep-2017 13:59:49 UTC] PHP   7. controller\App->showNovita($request = *uninitialized*) E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php:82
+[03-Sep-2017 13:59:53 UTC] PHP Fatal error:  Uncaught Error: Call to a member function item() on boolean in E:\PHP\phackp-cms\themes\aostawork\app\novita.php:25
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\view\View.php(106): include()
+#1 E:\PHP\phackp-cms\themes\aostawork\main.php(187): yuxblank\phackp\view\View->content()
+#2 E:\PHP\phackp-cms\themes\aostawork\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\view\View.php(94): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(122): yuxblank\phackp\view\View->render('app/novita')
+#5 [internal function]: controller\App->novita()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(327): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Applicat in E:\PHP\phackp-cms\themes\aostawork\app\novita.php on line 25

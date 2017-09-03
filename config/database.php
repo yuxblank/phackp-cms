@@ -8,12 +8,9 @@ return [
     "database" =>
         [
             "ID"      => "default",
-            "DRIVER"  => "mysql",
-            "HOST"    => "localhost",
-            "PORT"    => "",
+            'DSN'     => "mysql:host=localhost;dbname=phackpcms",
             "USER"    => "root",
             "PSW"     => "muska88",
-            "NAME"    => "phackpcms",
             "OPTIONS" => [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"],

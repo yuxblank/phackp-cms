@@ -9,5 +9,5 @@ use yuxblank\phackp\core\Application;
 $loader = require '../vendor/autoload.php';
 $app = Application::getInstance();
 $app->bootstrap(__DIR__);
-$app->registerService(\yuxblank\phackp\services\ErrorHandlerProvider::class,true);
+/*$app->registerService(\yuxblank\phackp\services\ErrorHandlerProvider::class,true);*/
 $app->run();

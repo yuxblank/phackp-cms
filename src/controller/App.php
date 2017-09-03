@@ -5,24 +5,23 @@ namespace controller;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-    use cms\model\Banner;
-    use cms\model\Category;
-    use cms\model\Item;
-    use Psr\Http\Message\ServerRequestInterface;
-    use yuxblank\phackp\api\EventDrivenController;
-    use yuxblank\phackp\core\Application;
-    use yuxblank\phackp\core\Controller;
-    use yuxblank\phackp\core\Router;
-    use yuxblank\phackp\core\Session;
-    use yuxblank\phackp\core\View;
-    use Zend\Diactoros\ServerRequest;
 
-    /**
+use cms\model\Banner;
+use cms\model\Category;
+use cms\model\Item;
+use yuxblank\phackp\core\Application;
+use yuxblank\phackp\core\Controller;
+use yuxblank\phackp\core\Session;
+use yuxblank\phackp\http\api\ServerRequestInterface;
+use yuxblank\phackp\routing\api\Router;
+use yuxblank\phackp\view\View;
+
+/**
  * Description of App
  *
  * @author yuri.blanc
  */
-class App extends Controller implements EventDrivenController{
+class App extends Controller{
 
     /**
      * @Inject ("app.globals")

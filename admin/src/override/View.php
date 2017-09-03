@@ -9,11 +9,20 @@
 namespace cms\overrides;
 
 
-class View extends \yuxblank\phackp\core\View
+use yuxblank\phackp\routing\api\Router;
+
+class View extends \yuxblank\phackp\view\View
 {
 
 
-
-
-
+    /**
+     * View constructor.
+     * @param array $viewConfig
+     * @param array $appConfig
+     * @param Router $router
+     */
+    public function __construct($viewConfig, $appConfig, Router $router)
+    {
+        parent::__construct($viewConfig,$appConfig, $router);
+    }
 }
