@@ -196,6 +196,7 @@ use yuxblank\phackp\core\View;
 
 
     <?php if (isset($bannersBox)): ?>
+
         <!--    <div class="yx-banner uk-margin uk-animation uk-animation-slide-bottom">
             <?php /*$this->hook('BANNER_BOX', array('banners'=>$banners)) */ ?>
         </div>-->

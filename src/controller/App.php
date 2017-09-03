@@ -125,7 +125,7 @@ class App extends Controller{
 
     public function showNovita(ServerRequestInterface $request) {
 
-        $id = filter_var($request->getQueryParams()['id'],FILTER_SANITIZE_NUMBER_INT);
+        $id = filter_var($request->getPathParams()['id'],FILTER_SANITIZE_NUMBER_INT);
         $Item = new Item();
         $Item = $Item->findById($id);
         if ($Item) {
@@ -135,7 +135,7 @@ class App extends Controller{
             $this->view->renderArgs("meta_tags", $Item->meta_tags);
             $this->view->render("app/show_novita");
         } else {
-            $this->router->switchAction("Errors@404");
+            $this->router->switchAction(404);
         }
 
     }

@@ -1,6 +1,7 @@
 <?php
 namespace cms\controller;
 
+use cms\doctrine\repository\UserRepository;
 use cms\model\User;
 use cms\overrides\View;
 use Psr\Http\Message\ServerRequestInterface;
@@ -25,19 +26,23 @@ class Secured extends Controller {
     protected $view;
     protected $session;
     protected $router;
+    /** @var UserRepository  */
+    protected $userRepository;
 
     /**
      * Secured constructor.
      * @param View $view
      * @param Session $session
      * @param Router $router
+     * @param UserRepository $userRepository
      */
-    public function __construct(View $view, Session $session, Router $router)
+    public function __construct(View $view, Session $session, Router $router, UserRepository $userRepository)
     {
         parent::__construct();
         $this->view = $view;
         $this->session = $session;
         $this->router = $router;
+        $this->userRepository = $userRepository;
     }
 
     public function onBefore()
@@ -62,13 +67,13 @@ class Secured extends Controller {
     }
     
     public function logout() {
-        if(Session::_getValue("user")!==null) {
-            Session::_stop();
+        if($this->session->getValue("user")!==null) {
+            $this->session->stop();
             self::keep("success", "Ti sei disconnesso correttamente");
-            Router::switchAction('admin/login');
+            $this->router->switchAction('admin/login');
         } else {
             self::keep("danger", "Non sei connesso");
-            Router::switchAction('admin/login');
+            $this->router->switchAction('admin/login');
         }
     }
 
@@ -81,6 +86,7 @@ class Secured extends Controller {
            /**
             * @var User
             */
+
            $User = $User->find("WHERE email = ?",$email);
            /*echo $password;*/
            $crypto = new Crypto();

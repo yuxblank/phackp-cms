@@ -11,7 +11,8 @@
   ],
   "require": {
     "yuxblank/phackp": "dev-master",
-    "evert/sitemap-php": "1.2.0"
+    "evert/sitemap-php": "1.2.0",
+    "doctrine/orm": "2.5.*"
   },
   "autoload": {
     "psr-4": {
@@ -20,6 +21,8 @@
       "cms\\library\\crud\\": "admin/src/library/crud",
       "cms\\overrides\\": "admin/src/override",
       "cms\\model\\": "admin/src/model",
+      "cms\\doctrine\\model\\": "admin/src/doctrine/model",
+      "cms\\doctrine\\repository\\": "admin/src/doctrine/repository",
       "controller\\": "src/controller",
       "model\\": "src/model"
     }
