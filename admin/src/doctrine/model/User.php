@@ -1,6 +1,8 @@
 <?php
 namespace cms\doctrine\model;
 use Doctrine\ORM\Mapping as ORM;
+
+
 /**
  * @ORM\Entity @ORM\Table(name="user")
  * Class User
@@ -26,8 +28,10 @@ class User
     protected $password;
 
     /**
-     * @ORM\Column (name="userrole_id")
-     * @var int
+     * @ORM\ManyToOne (targetEntity="UserRole", fetch="EAGER")
+     * @ORM\JoinTable(name="userrole")
+     * @ORM\JoinColumn(name="userrole_id")
+     * @var UserRole
      */
     protected $role;
 
@@ -92,17 +96,17 @@ class User
     }
 
     /**
-     * @return int
+     * @return UserRole
      */
-    public function getRole(): int
+    public function getRole()
     {
         return $this->role;
     }
 
     /**
-     * @param int $role
+     * @param UserRole $role
      */
-    public function setRole(int $role)
+    public function setRole(UserRole $role)
     {
         $this->role = $role;
     }
@@ -137,6 +141,11 @@ class User
     public function setStatus(int $status)
     {
         $this->status = $status;
+    }
+
+    public function isCustomer(): bool
+    {
+        return $this->getRole()->getTitle() === UserRole::CUSTOMER;
     }
 
 

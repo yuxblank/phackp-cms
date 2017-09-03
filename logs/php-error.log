@@ -1965,3 +1965,15 @@ Stack trace:
 [03-Sep-2017 14:29:17 UTC] PHP  10. include() E:\PHP\phackp-cms\themes\aostawork\app\main.php:2
 [03-Sep-2017 14:29:17 UTC] PHP  11. yuxblank\phackp\view\View->content() E:\PHP\phackp-cms\themes\aostawork\main.php:187
 [03-Sep-2017 14:29:17 UTC] PHP  12. include() E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\view\View.php:106
+[03-Sep-2017 16:22:21 UTC] PHP Fatal error:  Uncaught Error: Call to a member function item() on boolean in E:\PHP\phackp-cms\themes\aostawork\app\novita.php:25
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\view\View.php(106): include()
+#1 E:\PHP\phackp-cms\themes\aostawork\main.php(187): yuxblank\phackp\view\View->content()
+#2 E:\PHP\phackp-cms\themes\aostawork\app\main.php(2): include('E:\\PHP\\phackp-c...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\view\View.php(94): include('E:\\PHP\\phackp-c...')
+#4 E:\PHP\phackp-cms\src\controller\App.php(122): yuxblank\phackp\view\View->render('app/novita')
+#5 [internal function]: controller\App->novita()
+#6 E:\PHP\phackp-cms\vendor\php-di\invoker\src\Invoker.php(82): call_user_func_array(Array, Array)
+#7 E:\PHP\phackp-cms\vendor\php-di\php-di\src\DI\Container.php(239): Invoker\Invoker->call(Array, Array)
+#8 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Application.php(327): DI\Container->call(Array)
+#9 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\core\Applicat in E:\PHP\phackp-cms\themes\aostawork\app\novita.php on line 25

@@ -12,7 +12,8 @@
   "require": {
     "yuxblank/phackp": "dev-master",
     "evert/sitemap-php": "1.2.0",
-    "doctrine/orm": "2.5.*"
+    "doctrine/orm": "2.5.*",
+    "zendframework/zend-crypt": "^3.2"
   },
   "autoload": {
     "psr-4": {

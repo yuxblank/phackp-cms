@@ -1,4 +1,5 @@
 <?php
+
 namespace cms\controller;
 
 use cms\doctrine\repository\UserRepository;
@@ -16,17 +17,21 @@ use yuxblank\phackp\routing\api\Router;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 /**
  * Description of Secured
  *
  * @author yuri.blanc
  */
-class Secured extends Controller {
+class Secured extends Controller
+{
+
+    const USER_MIN_LEVEL = 2;
 
     protected $view;
     protected $session;
     protected $router;
-    /** @var UserRepository  */
+    /** @var UserRepository */
     protected $userRepository;
 
     /**
@@ -56,18 +61,18 @@ class Secured extends Controller {
     }
 
 
-
-
-    public function login() {
-        if($this->session->getValue('user')!==null) {
+    public function login()
+    {
+        if ($this->session->getValue('user') !== null) {
             self::keep("warning", "Sei già autenticato");
         }
         $this->view->render("/admin/login");
 
     }
-    
-    public function logout() {
-        if($this->session->getValue("user")!==null) {
+
+    public function logout()
+    {
+        if ($this->session->getValue("user") !== null) {
             $this->session->stop();
             self::keep("success", "Ti sei disconnesso correttamente");
             $this->router->switchAction('admin/login');
@@ -77,45 +82,40 @@ class Secured extends Controller {
         }
     }
 
-     public function authenticate(ServerRequestInterface $serverRequest) {
-       $email = filter_var($serverRequest->getParsedBody()['email'],FILTER_SANITIZE_EMAIL);
-       $password = filter_var($serverRequest->getParsedBody()['password'],FILTER_SANITIZE_STRING);
-       if ($email!== null && $password!== null) {
-           // check user
-           $User = new User();
-           /**
-            * @var User
-            */
+    public function authenticate(ServerRequestInterface $serverRequest)
+    {
+        $email = filter_var($serverRequest->getParsedBody()['email'], FILTER_SANITIZE_EMAIL);
+        $password = filter_var($serverRequest->getParsedBody()['password'], FILTER_SANITIZE_STRING);
+        if ($email !== null && $password !== null) {
+            // check user
+            $User = new User();
+            /**
+             * @var User
+             */
 
-           $User = $User->find("WHERE email = ?",$email);
-           /*echo $password;*/
-           $crypto = new Crypto();
-           if ($User && ($crypto->generateHash($password) === $User->password)) {
-               if (!$User->role() || $User->role()->level<1) {
-                   die("Accesso non autorizzato");
-               }
+            if ($this->userRepository->authenticateUser($email, $password, Admin::USER_MIN_LEVEL)) {
+                $this->session->setValue("user", $email);
+                self::keep('success', "Autenticazione avvenuta con successo!");
+                echo "true";
+            }
 
-               //Logger::info('User '. $email . ' has been logged in');
-
-               $this->session->setValue("user", $User);
-               self::keep('success', "Autenticazione avvenuta con successo!");
-               echo "true";
-           } else {
-           echo "I dati di accesso inseriti non sono corretti!";
-           }
-       }
+        } else {
+            echo "I dati di accesso inseriti non sono corretti!";
+        }
 
 
     }
 
     /**
-     * @return User
+     * @return \cms\doctrine\model\User
      */
-    public  function loadUser()
+    public function loadUser()
     {
-        return $this->session->getValue("user");
+        $user = $this->session->getValue("user");
+        if ($user){
+            return $this->userRepository->findUser($user);
+        }
     }
-
 
 
 }
