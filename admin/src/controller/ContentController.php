@@ -14,6 +14,7 @@ use cms\library\StringUtils;
 use cms\model\Category;
 use cms\model\Item;
 use cms\overrides\View;
+use DI\Annotation\Inject;
 use Psr\Http\Message\ServerRequestInterface;
 use yuxblank\phackp\core\Session;
 use yuxblank\phackp\routing\api\Router;
@@ -21,21 +22,10 @@ use yuxblank\phackp\routing\api\Router;
 class ContentController extends Admin implements CrudController
 {
 
-    private $stringUtils;
-
     /**
-     * ContentController constructor.
-     * @param View $view
-     * @param Session $session
-     * @param Router $router
-     * @param StringUtils $stringUtils
-     */
-    public function __construct(View $view, Session $session, Router $router, StringUtils $stringUtils)
-    {
-        parent::__construct($view,$session,$router);
-        $this->stringUtils = $stringUtils;
-    }
-
+     * @Inject
+     * @var  StringUtils */
+    private $stringUtils;
 
     /**
      * Todo refactor to use update instead of create
@@ -62,7 +52,7 @@ class ContentController extends Admin implements CrudController
            $item->meta_desc = strip_tags($serverRequest->getParsedBody()['meta_description']);
            $item->meta_tags = strip_tags($serverRequest->getParsedBody()['meta_tags']);
            $item->meta_title = $item->title;
-           $item->user_id = $user->id;
+           $item->user_id = $user->getId();
            $item->alias = $this->stringUtils->toAscii(filter_var($serverRequest->getParsedBody()['title'], FILTER_SANITIZE_STRING));
 
 

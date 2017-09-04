@@ -37,8 +37,7 @@
         <div class='uk-width-3-10'>
             <h3><i class='uk-icon uk-icon-large uk-icon-user'></i> Utenti</h3>
             <ul class="uk-list uk-list-striped">
-                <li>Attivi: <?php echo $user->countActive() ?> </li>
-                <li>Clienti:<?php echo $userRole->countCustomers() ?> </li>
+                <li>Utenti : <?php echo $userTotal ?>  di cui attivi: <?php echo $userActive ?></li>
             </ul>
         </div>
 
