@@ -6,11 +6,11 @@
             <div class="uk-form-row">
                 <label for="title" class="uk-form-label">Titolo: </label>
                 <input type="text" id="title" name="title" required=""
-                       value="<?php if($item->getTitle()) echo $item->getTitle() ?>">
+                       value="<?php if (isset($item) && $item->getTitle()) echo $item->getTitle() ?>">
             </div>
             <div class="uk-form-row">
                         <textarea name="content" id="editor" rows="10" cols="50" required=""
-                                  value="<?php if ($item->getContent()) $item->getContent()?>">
+                                  value="<?php if (isset($item) && $item->getContent()) $item->getContent() ?>">
                     This is my textarea to be replaced with CKEditor.
                         </textarea>
                 <script>
@@ -37,9 +37,9 @@
                     <fieldset class='uk-margin-top'>
                         <label for='state' class="uk-form-label">Stato: </label>
                         <select id="state" name='state'>
-                            <?php foreach ($states as $key => $state): ?>
+                             <?php foreach ($states as $key => $state): ?>
 
-                                <?php $selected = ($item !== null) && $item->getStatus() == $key ? "selected" : ""; ?>
+                                <?php $selected = (isset($item) && $item->getStatus()) == $key ? "selected" : ""; ?>
 
                                 <option <?php echo $selected ?> value="<?php echo $key ?>"><?php echo $state ?></option>
 
@@ -47,10 +47,10 @@
                         </select>
                         <label for='category' class="uk-form-label">Categoria: </label>
                         <select id="category" name='category'
-                                selected="<?php if ($item->getCategory()->getId()) echo $item->getCategory()->getId() ?>">
+                                selected="<?php if (isset($item) && $item->getCategory()->getId()) echo $item->getCategory()->getId() ?>">
                             <?php foreach ($categories as $category): ?>
 
-                                <?php $selected = $item->getCategory()->getId() === $category->getId() ? "selected" : ""; ?>
+                                <?php $selected = (isset($item) && $item->getCategory()->getId() === $category->getId()) ? "selected" : ""; ?>
 
                                 <option <?php echo $selected ?>
                                         value="<?php echo $category->getId() ?>"><?php echo $category->getTitle() ?></option>
@@ -66,17 +66,17 @@
                         <div class="uk-form-row">
                             <label for='meta_description' class="uk-form-label">Metadata description: </label>
                             <textarea name='meta_description'
-                                      id="meta_description"><?php if ($item->getMetaDesc()) echo $item->getMetaDesc() ?></textarea>
+                                      id="meta_description"><?php if (isset($item) && $item->getMetaDesc()) echo $item->getMetaDesc() ?></textarea>
                             <label for='meta_tags' class="uk-form-label">Tags: </label>
                             <textarea name='meta_tags'
-                                      id="meta_tags"><?php if ($item->getMetaTags()) echo $item->getMetaTags()?></textarea>
+                                      id="meta_tags"><?php if (isset($item) && $item->getMetaTags()) echo $item->getMetaTags() ?></textarea>
                         </div>
                     </fieldset>
                 </li>
             </ul>
         </div>
     </div>
-    <input type='hidden' value='<?php  if ($item->getId()) echo $item->getId() ?>' name='id'>
+    <input type='hidden' value='<?php if (isset($item) && $item->getId()) echo $item->getId() ?>' name='id'>
 </form>
 <script>
     $(document).ready(function () {
@@ -84,7 +84,7 @@
         $('#yx-save-btn').on('click', function () {
             $('form').submit();
         });
-        var content = <?php if ($item->getContent()) echo json_encode(htmlspecialchars_decode($item->getContent())); ?>;
+        var content = '<?php if (isset($item) && $item->getContent()) echo json_encode(htmlspecialchars_decode($item->getContent())); ?>';
         CKEDITOR.instances['editor'].setData(content);
         $('form').on('submit', function (e) {
             var chars = CKEDITOR.instances['editor'].getData().replace(/<[^>]*>/gi, '').length;

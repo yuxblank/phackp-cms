@@ -1,56 +1,44 @@
 <?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: TheCo
+ * Date: 16/09/2017
+ * Time: 19:02
+ */
 
 namespace cms\controller;
 
+
 use cms\doctrine\repository\UserRepository;
-use cms\model\User;
 use cms\overrides\View;
-use Psr\Http\Message\ServerRequestInterface;
 use yuxblank\phackp\core\Controller;
-use yuxblank\phackp\core\Crypto;
-use yuxblank\phackp\core\Logger;
 use yuxblank\phackp\core\Session;
+use yuxblank\phackp\http\api\ServerRequestInterface;
 use yuxblank\phackp\routing\api\Router;
-use Zend\Diactoros\Response\HtmlResponse;
 use Zend\Diactoros\Response\JsonResponse;
-use Zend\Stdlib\Response;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Secured
- *
- * @author yuri.blanc
- */
-class Secured extends Controller
+class AuthController extends Controller
 {
 
-    const USER_MIN_LEVEL = 2;
-
-    protected $view;
     protected $session;
     protected $router;
-    /** @var UserRepository */
+    protected $view;
     protected $userRepository;
 
     /**
-     * Secured constructor.
+     * AuthController constructor.
      * @param View $view
      * @param Session $session
      * @param Router $router
      * @param UserRepository $userRepository
      */
-    public function __construct(View $view, Session $session, Router $router, UserRepository $userRepository)
+    public function __construct(View $view,Session $session, Router $router, UserRepository $userRepository)
     {
         parent::__construct();
         $this->view = $view;
         $this->session = $session;
         $this->router = $router;
-        $this->userRepository = $userRepository;
+        $this->userRepository =  $userRepository;
     }
 
     public function onBefore()
@@ -96,21 +84,4 @@ class Secured extends Controller
         }
         return new JsonResponse(['result' => 'Authentication was not successful, please retry.']);
     }
-
-    /**
-     * @return \cms\doctrine\model\User
-     * @throws \Doctrine\ORM\NonUniqueResultException
-     * @throws \Doctrine\ORM\NoResultException
-     */
-    public
-    function loadUser()
-    {
-        $user = $this->session->getValue("user");
-        if ($user) {
-            return $this->userRepository->findUser($user);
-        }
-    }
-
-
 }
-

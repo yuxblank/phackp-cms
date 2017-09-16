@@ -6,56 +6,54 @@ namespace cms\controller;
 use cms\doctrine\repository\UserRepository;
 use cms\model\Banner;
 use cms\model\Category;
-use cms\model\Item;
-use cms\model\User;
-use cms\model\UserRole;
 use cms\overrides\View;
-use DI\Annotation\Inject;
-use Doctrine\ORM\EntityManagerInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use SitemapPHP\Sitemap;
 use yuxblank\phackp\core\Application;
+use yuxblank\phackp\core\Controller;
 use yuxblank\phackp\core\Session;
+use yuxblank\phackp\http\api\ServerRequestInterface;
 use yuxblank\phackp\routing\api\Router;
-
-
-/*
-
- * To change this license header, choose License Headers in Project Properties.
-
- * To change this template file, choose Tools | Templates
-
- * and open the template in the editor.
-
- */
-
+use Zend\Diactoros\Response\JsonResponse;
 
 /**
  * Description of Admin
  *
  * @author yuri.blanc
  */
-class Admin extends Secured
+class Admin extends Controller
 
 {
+    protected $view;
+    protected $session;
+    /** @var  \yuxblank\phackp\routing\Router */
+    protected $router;
+    /** @var UserRepository */
+    protected $userRepository;
+
+    const USER_MIN_LEVEL = 2;
+
     protected $controlHeader;
 
     private $menu;
 
     protected $states = array(0 => "Non attivo", 1 => "Pubblicato");
+
     /**
      * Admin constructor.
      * @param View $view
      * @param Session $session
      * @param Router $router
      * @param UserRepository $userRepository
-     * @param EntityManagerInterface $entityManager
+     * @internal param EntityManagerInterface $entityManager
      */
     public function __construct(View $view, Session $session, Router $router, UserRepository $userRepository)
     {
-        parent::__construct($view,$session,$router,$userRepository);
+        parent::__construct();
+        $this->view = $view;
+        $this->session = $session;
+        $this->router = $router;
+        $this->userRepository = $userRepository;
     }
-
 
     public function onBefore()
     {
@@ -67,6 +65,59 @@ class Admin extends Secured
         $this->buildMenu();
     }
 
+    public function onAfter()
+    {
+        // TODO: Implement onAfter() method.
+    }
+
+
+    public function login()
+    {
+        if ($this->session->getValue('user') !== null) {
+            $this->keep("warning", "Sei già autenticato");
+        }
+        $this->view->render("/admin/login");
+
+    }
+
+    public function logout()
+    {
+        if ($this->session->getValue("user") !== null) {
+            $this->session->stop();
+            $this->keep("success", "Ti sei disconnesso correttamente");
+            $this->router->switchAction('admin/login');
+        } else {
+            $this->keep("danger", "Non sei connesso");
+            $this->router->switchAction('admin/login');
+        }
+    }
+
+    public function authenticate(ServerRequestInterface $serverRequest)
+    {
+        $email = filter_var($serverRequest->getParsedBody()['email'], FILTER_SANITIZE_EMAIL);
+        $password = filter_var($serverRequest->getParsedBody()['password'], FILTER_SANITIZE_STRING);
+        if ($email !== null && $password !== null && $this->userRepository->authenticateUser($email, $password, self::USER_MIN_LEVEL)) {
+            $this->session->setValue('user', $email);
+            $this->keep('success', 'Autenticazione avvenuta con successo!');
+            return new JsonResponse(['result' => 'ok']);
+        }
+        return new JsonResponse(['result' => 'Authentication was not successful, please retry.']);
+    }
+
+    /**
+     * @return \cms\doctrine\model\User
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws \Doctrine\ORM\NoResultException
+     */
+    public function loadUser()
+    {
+        $user = $this->session->getValue("user");
+        if ($user) {
+            return $this->userRepository->findUser($user);
+        }
+    }
+
+
     public function buildMenu()
 
     {
@@ -76,23 +127,6 @@ class Admin extends Secured
         }
         $this->view->renderArgs('userRole', $this->loadUser()->getRole());
         $this->view->renderArgs('adminMenu', $this->menu);
-    }
-
-
-    public function index(ServerRequestInterface $request, User $user, UserRole $userRole, Banner $banner, Category $category, Item $item)
-
-    {
-        if (Secured::loadUser()->isCustomer()) {
-            $this->router->switchAction('clienti');
-        }
-        $this->view->renderArgs("item", $item);
-        $this->view->renderArgs("category", $category);
-        $this->view->renderArgs("user", $user);
-        $this->view->renderArgs("userActive", $this->userRepository->count(true));
-        $this->view->renderArgs("userTotal", $this->userRepository->count(true));
-        /*        $this->view->renderArgs("userRole", $userRole);*/
-        $this->view->renderArgs("banner", $banner);
-        $this->view->render("/admin/home");
     }
 
 
@@ -160,10 +194,10 @@ class Admin extends Secured
 
     public function customers()
     {
-        $view = new View();
+
         $banner = new Banner();
-        $view->renderArgs("banners", $banner->findAll("user_id=?", [Secured::loadUser()->id]));
-        $view->render("admin/customer");
+        $this->view->renderArgs("banners", $banner->findAll("user_id=?", [$this->loadUser()->getId()]));
+        $this->view->render("admin/customer");
     }
 }
 

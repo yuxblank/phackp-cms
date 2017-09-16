@@ -20,4 +20,10 @@ class ArticleCategoryRepository extends EntityRepository
     {
         parent::__construct($entityManager, ArticleCategory::class);
     }
+
+
+    public function count(){
+        $query = $this->_em->createQuery("SELECT COUNT(u) FROM cms\doctrine\model\ArticleCategory u");
+        return $query->getSingleScalarResult();
+    }
 }

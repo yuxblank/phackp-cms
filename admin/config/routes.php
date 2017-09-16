@@ -5,17 +5,17 @@
             'GET' => [
                 [
                     'url' => '/admin/login',
-                    'class' => cms\controller\Secured::class,
+                    'class' => cms\controller\AuthController::class,
                     'method' => 'login'
                 ],
                 [
                     'url' => '/admin/logout',
-                    'class' => cms\controller\Secured::class,
+                    'class' => cms\controller\AuthController::class,
                     'method' => 'logout'
                 ],
                 [
                     'url' => '/admin',
-                    'class' => cms\controller\Admin::class,
+                    'class' => cms\controller\HomeController::class,
                     'method' => 'index'
                 ],
                 [
@@ -109,7 +109,7 @@
             'POST' => [
                 [
                     'url' => '/admin/auth',
-                    'class' => cms\controller\Secured::class,
+                    'class' => cms\controller\AuthController::class,
                     'method' => 'authenticate',
                 ],
                 [

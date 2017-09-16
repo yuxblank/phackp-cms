@@ -16,10 +16,10 @@
             <h3><i class='uk-icon uk-icon-large uk-icon-edit'></i> Articoli</h3>
 
             <ul class="uk-list uk-list-striped">
-                <li>Articoli: <?php echo $item->count(); ?> di cui
-                    attivi <?php echo $item->countActive(); ?></li>
+                <li>Articoli: <?php echo $articleTotal; ?> di cui
+                    attivi <?php echo $articleActive; ?></li>
 
-                <li>Categorie: <?php echo $category->count(); ?> </li>
+                <li>Categorie: <?php echo $categoryTotal; ?> </li>
 
             </ul>
 
@@ -28,10 +28,10 @@
         <div class='uk-width-3-10'>
             <h3><i class='uk-icon uk-icon-large uk-icon-cube'></i> Banner</h3>
             <ul class="uk-list uk-list-striped">
-                <li>Totali: <?php echo $banner->count() ?></li>
-                <li>Attivi: <?php echo $banner->countActive() ?></li>
-                <li>Click totali: <?php echo $banner->getTotalClicks()->totalclicks ?></li>
-                <li>Viste totali: <?php echo $banner->getTotalViews()->totalviews ?></li>
+                <li>Totali: <?php //echo $banner->count() ?></li>
+                <li>Attivi: <?php //echo $banner->countActive() ?></li>
+                <li>Click totali: <?php //echo $banner->getTotalClicks()->totalclicks ?></li>
+                <li>Viste totali: <?php //echo $banner->getTotalViews()->totalviews ?></li>
             </ul>
         </div>
         <div class='uk-width-3-10'>

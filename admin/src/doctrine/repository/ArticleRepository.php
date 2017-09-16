@@ -39,6 +39,12 @@ class ArticleRepository extends EntityRepository
             ->getResult();
     }
 
+    public function count(bool $active = false){
+        $query = $this->_em->createQuery("SELECT COUNT(c) FROM cms\doctrine\model\Article c WHERE c.status = :state");
+        $query->setParameter('state', $active ? 1 : 0);
+        return $query->getSingleScalarResult();
+    }
+
     public function save(Article $article)
     {
         $this->_em->persist($article);

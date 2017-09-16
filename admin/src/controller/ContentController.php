@@ -136,10 +136,8 @@ class ContentController extends Admin implements CrudController
         } else {
             $this->controlHeader->save = $this->router->link('admin/content/save');
             $this->view->renderArgs('controlHeader', $this->controlHeader);
-            $categories = new Category();
-            $article = new Item();
-            $this->view->renderArgs("states", $article->getStates());
-            $this->view->renderArgs("categories", $categories->findAll());
+            $this->view->renderArgs("states", $this->states);
+            $this->view->renderArgs("categories", $this->articleCategoryRepository->findAll());
             $this->view->render("/admin/content/new");
         }
     }
