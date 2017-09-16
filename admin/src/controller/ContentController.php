@@ -9,14 +9,19 @@
 namespace cms\controller;
 
 
+use cms\doctrine\model\Article;
+use cms\doctrine\repository\ArticleCategoryRepository;
+use cms\doctrine\repository\ArticleRepository;
+use cms\doctrine\repository\UserRepository;
 use cms\library\crud\CrudController;
 use cms\library\StringUtils;
 use cms\model\Category;
 use cms\model\Item;
 use cms\overrides\View;
 use DI\Annotation\Inject;
-use Psr\Http\Message\ServerRequestInterface;
+use Doctrine\ORM\Persisters\PersisterException;
 use yuxblank\phackp\core\Session;
+use yuxblank\phackp\http\api\ServerRequestInterface;
 use yuxblank\phackp\routing\api\Router;
 
 class ContentController extends Admin implements CrudController
@@ -24,111 +29,143 @@ class ContentController extends Admin implements CrudController
 
     /**
      * @Inject
-     * @var  StringUtils */
+     * @var  StringUtils
+     */
     private $stringUtils;
+    /** @var  ArticleRepository */
+    protected $articleRepository;
+
+    /** @var  ArticleCategoryRepository */
+    protected $articleCategoryRepository;
+
+    /**
+     * ContentController constructor.
+     * @param View $view
+     * @param Session $session
+     * @param Router $router
+     * @param UserRepository $userRepository
+     * @param ArticleRepository $articleRepository
+     * @param ArticleCategoryRepository $articleCategoryRepository
+     * @param StringUtils $stringUtils
+     */
+    public function __construct(View $view, Session $session, Router $router, UserRepository $userRepository, ArticleRepository $articleRepository, ArticleCategoryRepository $articleCategoryRepository, StringUtils $stringUtils)
+    {
+        parent::__construct($view, $session, $router, $userRepository);
+        $this->stringUtils = $stringUtils;
+        $this->articleRepository = $articleRepository;
+        $this->articleCategoryRepository = $articleCategoryRepository;
+    }
+
 
     /**
      * Todo refactor to use update instead of create
      * @param ServerRequestInterface $serverRequest
+     * @throws \Doctrine\ORM\Persisters\PersisterException
      */
     public function create(ServerRequestInterface $serverRequest)
     {
-       if ($serverRequest->getMethod() === 'POST'){
+        if ($serverRequest->getMethod() === 'POST') {
 
-           $user = $this->loadUser();
+            $user = $this->loadUser();
 
-           // model instance
+            // model instance
 
-           $item = new Item();
+            $article = new Article();
 
-           if ($serverRequest->getParsedBody()['id'] !== null && $serverRequest->getParsedBody()['id'] !== '') {
-               $item->id = filter_var($serverRequest->getParsedBody()['id'], FILTER_SANITIZE_NUMBER_INT);
-           }
+            if ($serverRequest->getParsedBody()['id'] !== null && $serverRequest->getParsedBody()['id'] !== '') {
+                $id = filter_var($serverRequest->getParsedBody()['id'], FILTER_SANITIZE_NUMBER_INT);
+                $article = $this->articleRepository->find($id);
+            }
 
-           $item->title = strip_tags(filter_var($serverRequest->getParsedBody()['title'], FILTER_SANITIZE_STRING));
-           $item->content = htmlspecialchars($serverRequest->getParsedBody()['content']);
-           $item->status = $serverRequest->getParsedBody()['state'];
-           $item->category_id = $serverRequest->getParsedBody()['category'];
-           $item->meta_desc = strip_tags($serverRequest->getParsedBody()['meta_description']);
-           $item->meta_tags = strip_tags($serverRequest->getParsedBody()['meta_tags']);
-           $item->meta_title = $item->title;
-           $item->user_id = $user->getId();
-           $item->alias = $this->stringUtils->toAscii(filter_var($serverRequest->getParsedBody()['title'], FILTER_SANITIZE_STRING));
+            $article->setTitle(strip_tags(filter_var($serverRequest->getParsedBody()['title'], FILTER_SANITIZE_STRING)));
+            $article->setContent(htmlspecialchars($serverRequest->getParsedBody()['content']));
+            $article->setStatus($serverRequest->getParsedBody()['state']);
 
 
-           if ($item->id !== null && $item->id !== '' && ($item->title !== null && $item->content !== null && $item->status !== null && $item->category_id !== null)) {
-               $ItemLoad = new Item();
-               // check authorization
-               if ($user->isAuthorized($ItemLoad->findById($item->id)->user()->role)) {
-                   $item->date_edit = date('Y-m-d H:i:s');
-                   // do update
-                   if ($item->update()) {
-                       $this->keep('success', "Salvataggio effettuato con successo");
+            $categoryId = filter_var($serverRequest->getParsedBody()['category'], FILTER_SANITIZE_NUMBER_INT);
+            $category = $this->articleCategoryRepository->find($categoryId);
+            $article->setCategory($category);
+
+            $article->setMetaDesc(strip_tags($serverRequest->getParsedBody()['meta_description']));
+            $article->setMetaTags(strip_tags($serverRequest->getParsedBody()['meta_tags']));
+            $article->setMetaTitle($article->getTitle());
+            $article->setUser($user);
+            $article->setAlias($this->stringUtils->toAscii(filter_var($serverRequest->getParsedBody()['title'], FILTER_SANITIZE_STRING)));
+
+
+            if ($article->getId() !== null && ($article->getTitle() !== null && $article->getContent() !== null && $article->getStatus() !== null && $article->getCategory()->getId() !== null)) {
+                // check authorization todo ACL
+                /*            if ($user->isAuthorized($ItemLoad->find($article->getId())->user()->role)) {*/
+                $article->date_edit = new \DateTime();
+                // do update
+                try {
+                    $this->articleRepository->update($article);
+                } catch (PersisterException $exception) {
+                    $this->keep('danger', "Un errore ha impedito il salvataggio");
+                    $this->router->switchAction('admin/content');
+                    throw new PersisterException($exception);
+                }
+                $this->keep('success', "Salvataggio effettuato con successo");
+                $this->router->switchAction('admin/content');
+
+                /*   } else {
+                       $this->keep('danger', "Non hai permessi sufficenti per modificare questo elemento");
                        $this->router->switchAction('admin/content');
-                       //$this->router->switchAction('Admin@editContent', ['id' => $item->id]);
-                   } else {
-                       $this->keep('danger', "Un errore ha impedito il salvataggio");
-                       $this->router->switchAction('admin/content');
-                   }
+                   }*/
 
-               } else {
-                   $this->keep('danger', "Non hai permessi sufficenti per modificare questo elemento");
-                   $this->router->switchAction('admin/content');
-               }
+                // do new save
+            } else if ($article->getTitle() !== null && $article->getContent() !== null && $article->getStatus() !== null && $article->getCategory()->getId() !== null) {
 
-               // do new save
-           } else if ($item->title != null && $item->content != null && $item->status != null && $item->category_id != null) {
+                $article->setDateCreated(new \DateTime());
 
-               $item->date_created = date('Y-m-d H:i:s');
-               if ($item->save()) {
-                   $item->id = $item->lastInsertId();
-                   //$this->router->switchAction('Admin@editContent', ['id' => $item->id]);
-                   $this->keep('success', "Salvataggio effettuato con successo");
-                   $this->router->switchAction('admin/content');
-               } else {
-                   $this->keep('danger', "Un errore ha impedito il salvataggio");
-                   $this->router->switchAction('admin/content');
-               }
-           } else {
-               die ('missing data');
-           }
-           $this->view->render("/admin/content/new");
+                try {
+                    $this->articleRepository->save($article);
+                } catch (PersisterException $exception) {
+                    $this->keep('danger', "Un errore ha impedito il salvataggio");
+                    $this->router->switchAction('admin/content');
+                    throw new PersisterException($exception);
+                }
+                //$this->router->switchAction('Admin@editContent', ['id' => $item->id]);
+                $this->keep('success', "Salvataggio effettuato con successo");
+                $this->router->switchAction('admin/content');
+            } else {
+                die ('missing data');
+            }
+            $this->view->render("/admin/content/new");
 
-       } else {
-           $this->controlHeader->save = $this->router->link('admin/content/save');
-           $this->view->renderArgs('controlHeader', $this->controlHeader);
-           $categories = new Category();
-           $item = new Item();
-           $this->view->renderArgs("states", $item->getStates());
-           $this->view->renderArgs("categories", $categories->findAll());
-           $this->view->render("/admin/content/new");
-       }
+        } else {
+            $this->controlHeader->save = $this->router->link('admin/content/save');
+            $this->view->renderArgs('controlHeader', $this->controlHeader);
+            $categories = new Category();
+            $article = new Item();
+            $this->view->renderArgs("states", $article->getStates());
+            $this->view->renderArgs("categories", $categories->findAll());
+            $this->view->render("/admin/content/new");
+        }
     }
 
-    public function read(ServerRequestInterface $serverRequest)
+    public
+    function read(ServerRequestInterface $serverRequest)
     {
-        $item = new Item();
-        $id = $serverRequest->getQueryParams() ? filter_var($serverRequest->getQueryParams()['id'], FILTER_SANITIZE_NUMBER_INT) : null;
+        $id = $serverRequest->getPathParams() ? filter_var($serverRequest->getPathParams()['id'], FILTER_SANITIZE_NUMBER_INT) : null;
         if ($id) {
-            $article = $item->findById($id);
+            $article = $this->articleRepository->find($id);
             if ($article) {
                 $this->view->renderArgs("item", $article);
             } else {
                 $this->keep("warning", "Nessun elemento trovato");
             }
-            $categories = new Category();
-            $this->view->renderArgs("categories", $categories->findAll());
+            $this->view->renderArgs("categories", $this->articleRepository->getCategories());
             $this->controlHeader->save = "#";
-            $this->view->renderArgs("states", $item->getStates());
+            $this->view->renderArgs("states", $this->states);
             $this->view->renderArgs('controlHeader', $this->controlHeader);
             $this->view->render("/admin/content/new");
         } else {
-
             $user = $this->loadUser();
-            if ($user->isSuperAdmin()) {
-                $this->view->renderArgs('items', $item->findAll());
+            if ($user->isSuperUser()) {
+                $this->view->renderArgs('items', $this->articleRepository->findAll());
             } else if (Secured::loadUser()->isAdmin()) {
-                $this->view->renderArgs('items', $item->filteredArticles($user));
+                $this->view->renderArgs('items', $this->articleRepository->getUserArticles($user));
             }
             $this->controlHeader->new = $this->router->link('admin/content/new');
             $this->controlHeader->delete = true;
@@ -138,12 +175,14 @@ class ContentController extends Admin implements CrudController
 
     }
 
-    public function update(ServerRequestInterface $serverRequest)
+    public
+    function update(ServerRequestInterface $serverRequest)
     {
         // TODO: Implement update() method.
     }
 
-    public function delete(ServerRequestInterface $serverRequest)
+    public
+    function delete(ServerRequestInterface $serverRequest)
     {
         $User = Secured::loadUser();
 
@@ -161,7 +200,7 @@ class ContentController extends Admin implements CrudController
 
                 $ItemFind = new Item();
 
-                $ItemFind = $ItemFind->findById($id);
+                    $ItemFind = $ItemFind->findById($id);
 
 
                 if ($User->isAuthorized($ItemFind->user()->role)) {

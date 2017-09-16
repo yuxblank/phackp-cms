@@ -10,6 +10,8 @@ use cms\model\Item;
 use cms\model\User;
 use cms\model\UserRole;
 use cms\overrides\View;
+use DI\Annotation\Inject;
+use Doctrine\ORM\EntityManagerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use SitemapPHP\Sitemap;
 use yuxblank\phackp\core\Application;
@@ -40,9 +42,20 @@ class Admin extends Secured
 
     private $menu;
 
-    private $states = array(0 => "Non attivo", 1 => "Pubblicato");
+    protected $states = array(0 => "Non attivo", 1 => "Pubblicato");
+    /**
+     * Admin constructor.
+     * @param View $view
+     * @param Session $session
+     * @param Router $router
+     * @param UserRepository $userRepository
+     * @param EntityManagerInterface $entityManager
+     */
+    public function __construct(View $view, Session $session, Router $router, UserRepository $userRepository)
+    {
+        parent::__construct($view,$session,$router,$userRepository);
+    }
 
-    
 
     public function onBefore()
     {
@@ -53,12 +66,6 @@ class Admin extends Secured
         }
         $this->buildMenu();
     }
-
-    public function onAfter()
-    {
-        // TODO: Implement onAfter() method.
-    }
-
 
     public function buildMenu()
 

@@ -9,21 +9,22 @@
 namespace cms\controller;
 
 
+use cms\doctrine\repository\UserRepository;
 use cms\library\crud\CrudController;
 use cms\library\StringUtils;
 use cms\model\Category;
-use Psr\Http\Message\ServerRequestInterface;
-use yuxblank\phackp\core\Router;
+use cms\overrides\View;
 use yuxblank\phackp\core\Session;
-use yuxblank\phackp\core\View;
+use yuxblank\phackp\http\api\ServerRequestInterface;
+use yuxblank\phackp\routing\api\Router;
 
 class CategoriesController extends Admin implements CrudController
 {
     private $stringUtils;
 
-    public function __construct(View $view, Session $session, Router $router, StringUtils $stringUtils)
+    public function __construct(View $view, Session $session, Router $router, StringUtils $stringUtils, UserRepository $userRepository)
     {
-        parent::__construct($view,$session,$router);
+        parent::__construct($view,$session,$router,$userRepository);
         $this->stringUtils = $stringUtils;
     }
 
@@ -99,7 +100,7 @@ class CategoriesController extends Admin implements CrudController
     {
         $Category = new Category();
 
-        $id = $serverRequest->getQueryParams() ? filter_var($serverRequest->getQueryParams()['id'], FILTER_SANITIZE_NUMBER_INT) : null;
+        $id = $serverRequest->getPathParams() ? filter_var($serverRequest->getPathParams()['id'], FILTER_SANITIZE_NUMBER_INT) : null;
         if ($id){
             $cat = $Category->findById($id);
             if ($Category) {

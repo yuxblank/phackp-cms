@@ -12,8 +12,8 @@ namespace cms\controller;
 use cms\library\crud\CrudController;
 use cms\model\Banner;
 use cms\model\User;
-use Psr\Http\Message\ServerRequestInterface;
 use yuxblank\phackp\core\Application;
+use yuxblank\phackp\http\api\ServerRequestInterface;
 
 class BannerController extends Admin implements CrudController
 {

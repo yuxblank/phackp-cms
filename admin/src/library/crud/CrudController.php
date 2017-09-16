@@ -9,7 +9,8 @@
 namespace cms\library\crud;
 
 
-use Psr\Http\Message\ServerRequestInterface;
+
+use yuxblank\phackp\http\api\ServerRequestInterface;
 
 interface CrudController
 {

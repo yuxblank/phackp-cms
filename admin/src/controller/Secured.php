@@ -11,6 +11,9 @@ use yuxblank\phackp\core\Crypto;
 use yuxblank\phackp\core\Logger;
 use yuxblank\phackp\core\Session;
 use yuxblank\phackp\routing\api\Router;
+use Zend\Diactoros\Response\HtmlResponse;
+use Zend\Diactoros\Response\JsonResponse;
+use Zend\Stdlib\Response;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -64,7 +67,7 @@ class Secured extends Controller
     public function login()
     {
         if ($this->session->getValue('user') !== null) {
-            self::keep("warning", "Sei già autenticato");
+            $this->keep("warning", "Sei già autenticato");
         }
         $this->view->render("/admin/login");
 
@@ -74,10 +77,10 @@ class Secured extends Controller
     {
         if ($this->session->getValue("user") !== null) {
             $this->session->stop();
-            self::keep("success", "Ti sei disconnesso correttamente");
+            $this->keep("success", "Ti sei disconnesso correttamente");
             $this->router->switchAction('admin/login');
         } else {
-            self::keep("danger", "Non sei connesso");
+            $this->keep("danger", "Non sei connesso");
             $this->router->switchAction('admin/login');
         }
     }
@@ -86,33 +89,24 @@ class Secured extends Controller
     {
         $email = filter_var($serverRequest->getParsedBody()['email'], FILTER_SANITIZE_EMAIL);
         $password = filter_var($serverRequest->getParsedBody()['password'], FILTER_SANITIZE_STRING);
-        if ($email !== null && $password !== null) {
-            // check user
-            $User = new User();
-            /**
-             * @var User
-             */
-
-            if ($this->userRepository->authenticateUser($email, $password, Admin::USER_MIN_LEVEL)) {
-                $this->session->setValue("user", $email);
-                self::keep('success', "Autenticazione avvenuta con successo!");
-                echo "true";
-            }
-
-        } else {
-            echo "I dati di accesso inseriti non sono corretti!";
+        if ($email !== null && $password !== null && $this->userRepository->authenticateUser($email, $password, Admin::USER_MIN_LEVEL)) {
+            $this->session->setValue('user', $email);
+            $this->keep('success', 'Autenticazione avvenuta con successo!');
+            return new JsonResponse(['result' => 'ok']);
         }
-
-
+        return new JsonResponse(['result' => 'Authentication was not successful, please retry.']);
     }
 
     /**
      * @return \cms\doctrine\model\User
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws \Doctrine\ORM\NoResultException
      */
-    public function loadUser()
+    public
+    function loadUser()
     {
         $user = $this->session->getValue("user");
-        if ($user){
+        if ($user) {
             return $this->userRepository->findUser($user);
         }
     }

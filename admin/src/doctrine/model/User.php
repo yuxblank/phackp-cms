@@ -148,6 +148,13 @@ class User
         return $this->getRole()->getTitle() === UserRole::CUSTOMER;
     }
 
+    public function isSuperUser():bool{
+        return $this->getRole()->getTitle() === UserRole::SUPERADMIN;
+    }
+
+    public function isAdmin():bool{
+        return $this->getRole()->getTitle() === UserRole::ADMINISTRATOR;
+    }
 
 
 

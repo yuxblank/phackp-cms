@@ -13,14 +13,11 @@ use cms\doctrine\model\User;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query;
+use yuxblank\phackp\database\EntityRepository;
 use Zend\Crypt\Password\Bcrypt;
 
-class UserRepository
+class UserRepository extends EntityRepository
 {
-    /** @var  EntityManagerInterface */
-    protected $em;
-    /** @var  ObjectRepository */
-    protected $userRepository;
     /** @var  Bcrypt */
     protected $bcrypt;
 
@@ -33,8 +30,7 @@ class UserRepository
 
     public function __construct(EntityManagerInterface $entityManager, Bcrypt $bcrypt)
     {
-        $this->em =  $entityManager;
-        $this->userRepository = $this->em->getRepository(User::class);
+        parent::__construct($entityManager, User::class);
         $this->bcrypt =  $bcrypt;
     }
 
@@ -46,7 +42,7 @@ class UserRepository
      */
     public function findUser(string $email){
 
-        return $this->em->createQuery("SELECT u FROM cms\doctrine\model\User u WHERE u.email = :email")
+        return $this->_em->createQuery("SELECT u FROM cms\doctrine\model\User u WHERE u.email = :email")
             ->setParameter(':email', $email)
             ->getSingleResult();
     }
@@ -63,9 +59,14 @@ class UserRepository
      * @throws \Doctrine\ORM\NoResultException
      */
     public function count(bool $active = false){
-        $query = $this->em->createQuery("SELECT COUNT(u) FROM cms\doctrine\model\User u WHERE u.status = :state");
+        $query = $this->_em->createQuery("SELECT COUNT(u) FROM cms\doctrine\model\User u WHERE u.status = :state");
         $query->setParameter('state', $active ? 1 : 0);
         return $query->getSingleScalarResult();
+    }
+
+    // todo ACL
+    public function isAuthorizedFor(User $user, string $task){
+
     }
 
 
