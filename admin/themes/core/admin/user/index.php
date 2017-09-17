@@ -17,14 +17,16 @@
     </thead>
     <tbody>
 
-    <?php foreach ($users as $user) { ?>
+    <?php
+    /** @var \cms\doctrine\model\User $user */
+    foreach ($users as $user) { ?>
         <tr>
-            <td><input type="checkbox" name='ids[]' value="<?php echo $user->id ?>"></td>
+            <td><input type="checkbox" name='ids[]' value="<?php echo $user->getId() ?>"></td>
             <td>
-                <a href="<?php echo $this->router->link('admin/user/edit/{id}', [$user->id]) ?>"><?php echo $user->email ?></a>
+                <a href="<?php echo $this->router->link('admin/user/edit/{id}', [$user->getId()]) ?>"><?php echo $user->getUsername() ?></a>
             </td>
-            <td><?php echo $user->role()->title ?></td>
-            <td><?php echo $user->date_created ?></td>
+            <td><?php echo $user->getRole()->getTitle() ?></td>
+            <td><?php echo $user->getDateUpdated()->format('d-m-Y H:i') ?></td>
             <td><?php echo $user->getStatus() ?></td>
 
         </tr>

@@ -9,128 +9,58 @@
 namespace cms\controller;
 
 
+use cms\doctrine\model\User;
+use cms\doctrine\repository\UserRepository;
+use cms\doctrine\repository\UserRoleRepository;
 use cms\library\crud\CrudController;
-use cms\model\services\UserRoleServices;
-use cms\model\services\UserServices;
-use cms\model\User;
 use cms\model\UserRole;
 use cms\overrides\View;
-use Psr\Http\Message\ServerRequestInterface;
-use yuxblank\phackp\core\Crypto;
+use Doctrine\ORM\Persisters\PersisterException;
 use yuxblank\phackp\core\Session;
+use yuxblank\phackp\http\api\ServerRequestInterface;
 use yuxblank\phackp\routing\api\Router;
 
 class UserController extends Admin implements CrudController
 {
 
-    private $userServices;
-    private $userRoleServices;
-    private $controlHeader;
+    private $userRoleRepository;
 
     /**
      * UserController constructor.
-     * @param UserServices $userServices
-     * @param UserRoleServices $userRoleServices
+     * @param UserRepository $userRepository
+     * @param UserRoleRepository $userRoleRepository
      * @param View $view
      * @param Session $session
      * @param Router $router
+     * @internal param UserRoleServices $userRoleServices
      */
-    public function __construct(UserServices $userServices, UserRoleServices $userRoleServices, View $view, Session $session, Router $router)
+    public function __construct(UserRepository $userRepository, UserRoleRepository $userRoleRepository, View $view, Session $session, Router $router)
     {
-        parent::__construct($view, $session, $router);
-        $this->userServices = $userServices;
-        $this->userRoleServices = $userRoleServices;
-        $this->controlHeader = new \stdClass();
+        parent::__construct($view, $session, $router, $userRepository);
+        $this->userRoleRepository = $userRoleRepository;
     }
 
     public function create(ServerRequestInterface $serverRequest)
     {
-        $user = new User();
 
         if ($serverRequest->getMethod() === 'POST') {
-            if ($serverRequest->getParsedBody()['id'] !== null && $serverRequest->getParsedBody()['id'] !== '') {
 
-                $user->id = filter_var($serverRequest->getParsedBody()['id'], FILTER_SANITIZE_NUMBER_INT);
+            $email = filter_var($serverRequest->getParsedBody()['email'], FILTER_SANITIZE_EMAIL);
+            $userrole_id = filter_var($serverRequest->getParsedBody()['role'], FILTER_SANITIZE_NUMBER_INT);
 
+            $password = filter_var($serverRequest->getParsedBody()['password'], FILTER_SANITIZE_STRING);
+            $status = filter_var($serverRequest->getParsedBody()['status'], FILTER_SANITIZE_NUMBER_INT);
+
+            try {
+                /** @var \cms\doctrine\model\UserRole $userrole */
+                $userrole = $this->userRoleRepository->find($userrole_id);
+                $this->userRepository->createUser($email, $password, $email, $userrole);
+                $this->router->switchAction('admin/user');
+            } catch (PersisterException $exception) {
+                throw new PersisterException($exception);
             }
 
-            $user->email = filter_var($serverRequest->getParsedBody()['email'], FILTER_SANITIZE_EMAIL);
 
-            $user->userrole_id = $serverRequest->getParsedBody()['role'];
-
-            $Crypto = new Crypto();
-
-            if (isset($serverRequest->getParsedBody()['password']) && $serverRequest->getParsedBody()['password'] != "") {
-
-                $user->password = $Crypto->generateHash($serverRequest->getParsedBody()['password']);
-
-            }
-
-            $user->status = $serverRequest->getParsedBody()['status'];
-
-            if (!empty($user->email)) {
-
-                if ($user->id != null) {
-
-                    // TODO ACL
-
-                    if ($user->role()->level == 3 && !Secured::loadUser()->isSuperAdmin()) {
-
-                        die("You are not authorized to promote superusers");
-
-                    }
-
-
-                    if ($user->update()) {
-
-                        $this->keep('success', "Aggiornamento effettuato con successo");
-
-                    } else {
-
-                        $this->keep('success', "Un errore ha impedito il salvataggio");
-
-                    }
-
-                } else {
-
-                    $user->date_created = date('Y-m-d H:i:s');
-
-
-                    // TODO ACL
-
-                    if ($user->role()->id == 3 && !Secured::loadUser()->isSuperAdmin()) {
-
-                        die("You are not authorized to create superusers");
-
-                    }
-
-
-                    if ($user->alreadyExist()) {
-
-                        die("This email already belongs to another user");
-
-                    }
-
-
-                    if ($user->save()) {
-
-                        $this->keep('success', "Salvataggio effettuato con successo");
-
-                    } else {
-
-                        $this->keep('success', "Un errore ha impedito il salvataggio");
-
-                    }
-
-                }
-
-            } else {
-
-                $this->keep('danger', "Dati mancanti completare e riprovare");
-
-            }
-
-            $this->router->switchAction('admin/user');
         } else {
 
             $this->controlHeader->save = "#";
@@ -150,46 +80,65 @@ class UserController extends Admin implements CrudController
 
     public function read(ServerRequestInterface $serverRequest)
     {
-        if ($this->loadUser()->isSuperAdmin()) {
 
-            $this->view->renderArgs('users', $this->userServices->listUsers());
+        $id = filter_var($serverRequest->getPathParams()['id'], FILTER_SANITIZE_NUMBER_INT);
+        if ($id) {
 
+            // todo block edit of sa
+
+            $this->controlHeader->save = "#";
+
+            $this->view->renderArgs("states", $this->states);
+
+            $this->view->renderArgs('controlHeader', $this->controlHeader);
+            $this->view->renderArgs('rolesList', $this->userRoleRepository->findAll());
+
+            $this->view->renderArgs('user', $this->userRepository->find($id));
+
+            $this->view->render("/admin/user/new");
         } else {
 
-            /** @var UserRole $userRole */
+            if ($this->loadUser()->isSuperUser()) {
 
-            $userRole = $userRole->find("WHERE level <=?", 3);
-            $this->view->renderArgs('users', $userRole->users());
+                $this->view->renderArgs('users', $this->userRepository->findAll());
 
+            } else {
+
+                /** @var UserRole $userRole */
+
+                $userRole = $userRole->find("WHERE level <=?", 3);
+                $this->view->renderArgs('users', $userRole->users());
+
+            }
+
+            $this->controlHeader->new = $this->router->link('admin/user/new');
+
+            $this->controlHeader->delete = true;
+
+            $this->view->renderArgs('controlHeader', $this->controlHeader);
+
+            $this->view->render("/admin/user/index");
         }
-
-        $this->controlHeader->new = $this->router->link('admin/user/new');
-
-        $this->controlHeader->delete = true;
-
-        $this->view->renderArgs('controlHeader', $this->controlHeader);
-
-        $this->view->render("/admin/user/index");
     }
 
     public function update(ServerRequestInterface $serverRequest)
     {
 
-        $id = filter_var($serverRequest->getQueryParams()['id'], FILTER_SANITIZE_NUMBER_INT);
+        $email = filter_var($serverRequest->getParsedBody()['email'], FILTER_SANITIZE_EMAIL);
+        $userrole_id = filter_var($serverRequest->getParsedBody()['role'], FILTER_SANITIZE_NUMBER_INT);
+        $password = filter_var($serverRequest->getParsedBody()['password'], FILTER_SANITIZE_STRING);
+        $status = filter_var($serverRequest->getParsedBody()['status'], FILTER_SANITIZE_NUMBER_INT);
 
-        // todo block edit of sa
+        try {
+            /** @var \cms\doctrine\model\UserRole $userrole */
+            $userrole = $this->userRoleRepository->find($userrole_id);
+            $this->userRepository->updateUserDetails($email, $email, $status,$userrole,$password);
+            $this->router->switchAction('admin/user');
+        } catch (PersisterException $exception) {
+            throw new PersisterException($exception);
+        }
 
-        $user = new User();
-        $this->controlHeader->save = "#";
 
-        $this->view->renderArgs("states", $user->getStates());
-
-        $this->view->renderArgs('controlHeader', $this->controlHeader);
-        $this->view->renderArgs('rolesList', $this->userRoleServices->getRoles());
-
-        $this->view->renderArgs('user', $user->findById($id));
-
-        $this->view->render("/admin/user/new");
     }
 
     public function delete(ServerRequestInterface $serverRequest)

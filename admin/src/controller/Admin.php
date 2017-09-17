@@ -30,7 +30,7 @@ class Admin extends Controller
     /** @var UserRepository */
     protected $userRepository;
 
-    const USER_MIN_LEVEL = 2;
+    const USER_MIN_LEVEL = 1;
 
     protected $controlHeader;
 
@@ -81,7 +81,7 @@ class Admin extends Controller
     }
 
     public function logout()
-    {
+    {     $this->router->switchAction("admin/login");
         if ($this->session->getValue("user") !== null) {
             $this->session->stop();
             $this->keep("success", "Ti sei disconnesso correttamente");

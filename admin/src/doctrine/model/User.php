@@ -16,13 +16,18 @@ class User
      */
     protected $id;
     /**
-     * @ORM\Column (name="email")
+     * @ORM\Column (name="username",type="string", length=255, nullable=false,unique=true)
+     * @var string
+     */
+    protected $username;
+    /**
+     * @ORM\Column (name="email", type="string", length=255, nullable=false)
      * @var string
      */
     protected $email;
 
     /**
-     * @ORM\Column (name="password")
+     * @ORM\Column (name="password", type="string", length=255, nullable=false)
      * @var string
      */
     protected $password;
@@ -40,7 +45,10 @@ class User
      * @var \DateTime
      */
     protected $dateCreated;
-
+    /**
+     * @ORM\Column (name="date_updated", type="date")
+     */
+    protected $date_updated;
     /**
      * @ORM\Column (name="status")
      * @var int
@@ -62,6 +70,23 @@ class User
     {
         $this->id = $id;
     }
+
+    /**
+     * @return string
+     */
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param string $username
+     */
+    public function setUsername(string $username)
+    {
+        $this->username = $username;
+    }
+
 
     /**
      * @return string
@@ -128,6 +153,23 @@ class User
     }
 
     /**
+     * @return mixed
+     */
+    public function getDateUpdated()
+    {
+        return $this->date_updated;
+    }
+
+    /**
+     * @param mixed $date_updated
+     */
+    public function setDateUpdated($date_updated)
+    {
+        $this->date_updated = $date_updated;
+    }
+
+
+    /**
      * @return int
      */
     public function getStatus(): int
@@ -149,7 +191,7 @@ class User
     }
 
     public function isSuperUser():bool{
-        return $this->getRole()->getTitle() === UserRole::SUPERADMIN;
+        return $this->getRole()->getTitle() === UserRole::SUPERUSER;
     }
 
     public function isAdmin():bool{

@@ -76,7 +76,7 @@
                 [
                     'url' => '/admin/user/edit/{id}',
                     'class' => cms\controller\UserController::class,
-                    'method' => 'update',
+                    'method' => 'read',
                     'alias' => 'user.edit'
                 ],
                 [

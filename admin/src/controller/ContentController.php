@@ -161,8 +161,8 @@ class ContentController extends Admin implements CrudController
         } else {
             $user = $this->loadUser();
             if ($user->isSuperUser()) {
-                $this->view->renderArgs('items', $this->articleRepository->findAll());
-            } else if (Secured::loadUser()->isAdmin()) {
+                $this->view->renderArgs('articles', $this->articleRepository->findAll());
+            } else if ($this->loadUser()->isAdmin()) {
                 $this->view->renderArgs('items', $this->articleRepository->getUserArticles($user));
             }
             $this->controlHeader->new = $this->router->link('admin/content/new');
@@ -182,7 +182,7 @@ class ContentController extends Admin implements CrudController
     public
     function delete(ServerRequestInterface $serverRequest)
     {
-        $User = Secured::loadUser();
+        $User = $this->loadUser();
 
         $ids = $serverRequest->getQueryParams()['ids'];
 

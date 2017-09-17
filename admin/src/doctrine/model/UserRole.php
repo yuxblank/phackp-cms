@@ -21,7 +21,7 @@ class UserRole
 
     const CUSTOMER = 'customer';
     const ADMINISTRATOR = 'administrator';
-    const SUPERADMIN = 'superadmin';
+    const SUPERUSER = 'superuser';
 
 
     /**
