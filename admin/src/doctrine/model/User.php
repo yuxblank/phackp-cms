@@ -33,10 +33,13 @@ class User
     protected $password;
 
     /**
-     * @ORM\ManyToOne (targetEntity="UserRole", fetch="EAGER")
-     * @ORM\JoinTable(name="userrole")
-     * @ORM\JoinColumn(name="userrole_id")
-     * @var UserRole
+     * @ORM\ManyToMany (targetEntity="UserRole", fetch="EAGER")
+     * @ORM\JoinTable(
+     *     name="user_roles",
+     *     joinColumns= {@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="user_role_id", referencedColumnName="id", unique=true)}
+     *  )
+     * @var array
      */
     protected $role;
 

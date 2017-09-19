@@ -56,9 +56,12 @@ class Article
     protected $status;
 
     /**
-     * @ORM\ManyToOne (targetEntity="ArticleCategory", fetch="EAGER")
-     * @ORM\JoinTable(name="article_category")
-     * @ORM\JoinColumn(name="category_id")
+     * @ORM\ManyToMany (targetEntity="ArticleCategory", fetch="EAGER")
+     * @ORM\JoinTable(
+     *     name="article_categories",
+     *     joinColumns= {@ORM\JoinColumn(name="article_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="article_category_id", referencedColumnName="id", unique=true)}
+     *  )
      */
     protected $category;
     /**
