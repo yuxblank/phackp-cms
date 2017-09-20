@@ -20,6 +20,7 @@
       "cms\\controller\\": "admin/src/controller",
       "cms\\library\\": "admin/src/library",
       "cms\\library\\crud\\": "admin/src/library/crud",
+      "cms\\library\\ui\\": "admin/src/library/ui",
       "cms\\overrides\\": "admin/src/override",
       "cms\\model\\": "admin/src/model",
       "cms\\doctrine\\model\\": "admin/src/doctrine/model",

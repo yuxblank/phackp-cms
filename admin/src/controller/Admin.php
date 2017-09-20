@@ -14,6 +14,7 @@ use yuxblank\phackp\core\Session;
 use yuxblank\phackp\http\api\ServerRequestInterface;
 use yuxblank\phackp\routing\api\Router;
 use Zend\Diactoros\Response\JsonResponse;
+use Zend\Diactoros\Response\RedirectResponse;
 
 /**
  * Description of Admin
@@ -23,19 +24,17 @@ use Zend\Diactoros\Response\JsonResponse;
 class Admin extends Controller
 
 {
+    const USER_MIN_LEVEL = 1;
+
+
     protected $view;
     protected $session;
     /** @var  \yuxblank\phackp\routing\Router */
     protected $router;
     /** @var UserRepository */
     protected $userRepository;
-
-    const USER_MIN_LEVEL = 1;
-
     protected $controlHeader;
-
     private $menu;
-
     protected $states = array(0 => "Non attivo", 1 => "Pubblicato");
 
     /**
@@ -60,7 +59,7 @@ class Admin extends Controller
         $this->controlHeader = new \stdClass();
         if ($this->loadUser() === null) {
             $this->keep("success", "Devi prima autenticarti");
-            $this->router->switchAction("admin/login");
+            return new RedirectResponse($this->router->alias('auth.login'));
         }
         $this->buildMenu();
     }

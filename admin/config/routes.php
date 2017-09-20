@@ -6,7 +6,8 @@
                 [
                     'url' => '/admin/login',
                     'class' => cms\controller\AuthController::class,
-                    'method' => 'login'
+                    'method' => 'login',
+                    'alias' => 'auth.login'
                 ],
                 [
                     'url' => '/admin/logout',

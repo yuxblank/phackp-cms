@@ -58,7 +58,7 @@ class HomeController extends Admin
         $this->view->renderArgs("userTotal", $this->userRepository->count(true));
         /*        $this->view->renderArgs("userRole", $userRole);*/
        /* $this->view->renderArgs("banner", $banner);*/
-        $this->view->render("/admin/home");
+        $this->view->render('/admin/home');
     }
 
 }
