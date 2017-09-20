@@ -20,6 +20,46 @@ class Acl extends BaseEntity
      * @ORM\Column(type="string", nullable=false, name="title")
      */
     protected $title;
+    /**
+     * @ORM\OneToMany(targetEntity="AclPermission",mappedBy="id")
+     * @ORM\JoinTable(name="acl_permission")
+     * @ORM\JoinColumn(name="acl_id")
+     * @var array
+     */
+    protected $permissions;
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPermissions(): array
+    {
+        return $this->permissions;
+    }
+
+    /**
+     * @param array $permissions
+     */
+    public function setPermissions(array $permissions)
+    {
+        $this->permissions = $permissions;
+    }
+
 
 
 }

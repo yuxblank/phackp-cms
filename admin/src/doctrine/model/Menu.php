@@ -25,6 +25,62 @@ class Menu extends BaseEntity
      */
     protected $alias;
 
+    /**
+     * @ORM\OneToMany(targetEntity="MenuItem",mappedBy="id")
+     * @ORM\JoinTable(name="menu")
+     * @ORM\JoinColumn(name="menu_id")
+     * @var Menu
+     */
+    protected $menu;
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAlias()
+    {
+        return $this->alias;
+    }
+
+    /**
+     * @param mixed $alias
+     */
+    public function setAlias($alias)
+    {
+        $this->alias = $alias;
+    }
+
+    /**
+     * @return Menu
+     */
+    public function getMenu(): Menu
+    {
+        return $this->menu;
+    }
+
+    /**
+     * @param Menu $menu
+     */
+    public function setMenu(Menu $menu)
+    {
+        $this->menu = $menu;
+    }
+
 
 
 

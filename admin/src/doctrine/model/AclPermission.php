@@ -33,4 +33,52 @@ class AclPermission extends BaseEntity
      */
     protected $acl;
 
+    /**
+     * @return mixed
+     */
+    public function getComponent()
+    {
+        return $this->component;
+    }
+
+    /**
+     * @param mixed $component
+     */
+    public function setComponent($component)
+    {
+        $this->component = $component;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAction()
+    {
+        return $this->action;
+    }
+
+    /**
+     * @param mixed $action
+     */
+    public function setAction($action)
+    {
+        $this->action = $action;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAcl()
+    {
+        return $this->acl;
+    }
+
+    /**
+     * @param mixed $acl
+     */
+    public function setAcl($acl)
+    {
+        $this->acl = $acl;
+    }
+
 }

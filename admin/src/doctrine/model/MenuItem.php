@@ -16,7 +16,67 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class MenuItem extends BaseEntity
 {
-
+    /**
+     * @ORM\Column(type="string", name="title", nullable=false, unique=true)
+     */
     protected $title;
+    /**
+     * @ORM\Column(type="string", name="alias", unique=true)
+     */
     protected $alias;
+    /**
+     * @ORM\ManyToOne(targetEntity="Menu", inversedBy="menu_id")
+     * @ORM\JoinColumn(name="menu_id", referencedColumnName="id")
+     */
+    protected $menu;
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAlias()
+    {
+        return $this->alias;
+    }
+
+    /**
+     * @param mixed $alias
+     */
+    public function setAlias($alias)
+    {
+        $this->alias = $alias;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMenu()
+    {
+        return $this->menu;
+    }
+
+    /**
+     * @param mixed $menu
+     */
+    public function setMenu($menu)
+    {
+        $this->menu = $menu;
+    }
+
+
 }
