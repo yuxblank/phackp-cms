@@ -25,7 +25,7 @@
             <td>
                 <a href="<?php echo $this->router->link('admin/user/edit/{id}', [$user->getId()]) ?>"><?php echo $user->getUsername() ?></a>
             </td>
-            <td><?php echo $user->getRole()->getTitle() ?></td>
+            <td><?php echo $user->getRoles()->getTitle() ?></td>
             <td><?php echo $user->getDateUpdated()->format('d-m-Y H:i') ?></td>
             <td><?php echo $user->getStatus() ?></td>
 

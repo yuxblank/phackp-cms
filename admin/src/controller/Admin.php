@@ -58,8 +58,8 @@ class Admin extends Controller
     {
         $this->controlHeader = new \stdClass();
         if ($this->loadUser() === null) {
-            $this->keep("success", "Devi prima autenticarti");
-            return new RedirectResponse($this->router->alias('auth.login'));
+            $this->keep('success', 'Devi prima autenticarti');
+            exit($this->router->switchAction('admin/login'));
         }
         $this->buildMenu();
     }
@@ -124,7 +124,7 @@ class Admin extends Controller
         if ($this->menu == null) {
             die('unable to load menu');
         }
-        $this->view->renderArgs('userRole', $this->loadUser()->getRole());
+        $this->view->renderArgs('userRole', $this->loadUser()->getRoles());
         $this->view->renderArgs('adminMenu', $this->menu);
     }
 

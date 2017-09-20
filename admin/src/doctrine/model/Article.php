@@ -7,7 +7,8 @@
  */
 
 namespace cms\doctrine\model;
-use Doctrine\DBAL\Types\DateType;
+
+use cms\doctrine\BaseEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class Article
  * @package cms\doctrine\model
  */
-class Article
+class Article extends BaseEntity
 {
     /**
      * @ORM\Id @ORM\Column(type="integer",name="id") @ORM\GeneratedValue
@@ -42,18 +43,6 @@ class Article
      * @ORM\Column (name="meta_tags", type="string")
      */
     protected $meta_tags;
-    /**
-     * @ORM\Column (name="date_created", type="date")
-     */
-    protected $date_created;
-    /**
-     * @ORM\Column (name="date_updated", type="date")
-     */
-    protected $date_updated;
-    /**
-     * @ORM\Column (name="status", type="integer")
-     */
-    protected $status;
 
     /**
      * @ORM\ManyToMany (targetEntity="ArticleCategory", fetch="EAGER")
@@ -75,14 +64,6 @@ class Article
      * @ORM\Column (name="alias", type="string")
      */
     protected $alias;
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * @return mixed
@@ -165,54 +146,6 @@ class Article
     }
 
     /**
-     * @return \DateTime
-     */
-    public function getDateCreated()
-    {
-        return $this->date_created;
-    }
-
-    /**
-     * @param \DateTime $date_created
-     */
-    public function setDateCreated($date_created)
-    {
-        $this->date_created = $date_created;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getDateUpdated()
-    {
-        return $this->date_updated;
-    }
-
-    /**
-     * @param \DateTime $date_updated
-     */
-    public function setDateUpdated($date_updated)
-    {
-        $this->date_updated = $date_updated;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * @param mixed $status
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    }
-
-    /**
      * @return mixed
      */
     public function getCategory()
@@ -259,8 +192,6 @@ class Article
     {
         $this->alias = $alias;
     }
-
-
 
 
 }

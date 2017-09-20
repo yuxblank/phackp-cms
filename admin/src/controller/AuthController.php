@@ -11,6 +11,7 @@ namespace cms\controller;
 
 use cms\doctrine\repository\UserRepository;
 use cms\overrides\View;
+use Doctrine\ORM\NoResultException;
 use yuxblank\phackp\core\Controller;
 use yuxblank\phackp\core\Session;
 use yuxblank\phackp\http\api\ServerRequestInterface;
@@ -77,10 +78,14 @@ class AuthController extends Controller
     {
         $email = filter_var($serverRequest->getParsedBody()['email'], FILTER_SANITIZE_EMAIL);
         $password = filter_var($serverRequest->getParsedBody()['password'], FILTER_SANITIZE_STRING);
-        if ($email !== null && $password !== null && $this->userRepository->authenticateUser($email, $password, Admin::USER_MIN_LEVEL)) {
-            $this->session->setValue('user', $email);
-            $this->keep('success', 'Autenticazione avvenuta con successo!');
-            return new JsonResponse(['result' => 'ok']);
+        try {
+            if ($email !== null && $password !== null && $this->userRepository->authenticateUser($email, $password, Admin::USER_MIN_LEVEL)) {
+                $this->session->setValue('user', $email);
+                $this->keep('success', 'Autenticazione avvenuta con successo!');
+                return new JsonResponse(['result' => 'ok']);
+            }
+        } catch (NoResultException $exception) {
+            //todo log
         }
         return new JsonResponse(['result' => 'Authentication was not successful, please retry.']);
     }

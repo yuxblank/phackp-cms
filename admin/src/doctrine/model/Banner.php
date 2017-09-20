@@ -7,6 +7,7 @@
  */
 
 namespace cms\doctrine\model;
+use cms\doctrine\BaseEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -15,14 +16,9 @@ use Doctrine\ORM\Mapping as ORM;
  * Class Banner
  * @package cms\doctrine\model
  */
-class Banner
+class Banner extends BaseEntity
 {
 
-    /**
-     * @ORM\Id @ORM\Column(type="integer",name="id") @ORM\GeneratedValue
-     * @var int
-     */
-    protected $id;
     /**
      * @ORM\Column (name="title", type="string")
      */
@@ -51,19 +47,6 @@ class Banner
      * @ORM\Column (name="views", type="integer")
      */
     protected $views;
-
-    /**
-     * @ORM\Column (name="status", type="integer")
-     */
-    protected $status;
-
-    /**
-     * @return int
-     */
-    public function getId(): int
-    {
-        return $this->id;
-    }
 
 
     /**
@@ -178,21 +161,6 @@ class Banner
         $this->views = $views;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * @param mixed $status
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    }
 
 
 }

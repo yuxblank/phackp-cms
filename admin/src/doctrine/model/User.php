@@ -1,5 +1,7 @@
 <?php
 namespace cms\doctrine\model;
+use cms\doctrine\BaseEntity;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -8,13 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * Class User
  * @package cms\doctrine\model
  */
-class User
+class User extends BaseEntity
 {
-    /**
-     * @ORM\Id @ORM\Column(type="integer",name="id") @ORM\GeneratedValue
-     * @var int
-     */
-    protected $id;
     /**
      * @ORM\Column (name="username",type="string", length=255, nullable=false,unique=true)
      * @var string
@@ -39,40 +36,10 @@ class User
      *     joinColumns= {@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="user_role_id", referencedColumnName="id", unique=true)}
      *  )
-     * @var array
+     * @var Collection
      */
-    protected $role;
+    protected $roles;
 
-    /**
-     * @ORM\Column (type="datetime", name="date_created")
-     * @var \DateTime
-     */
-    protected $dateCreated;
-    /**
-     * @ORM\Column (name="date_updated", type="date")
-     */
-    protected $date_updated;
-    /**
-     * @ORM\Column (name="status")
-     * @var int
-     */
-    protected $status;
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId(int $id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return string
@@ -123,12 +90,10 @@ class User
         $this->password = $password;
     }
 
-    /**
-     * @return UserRole
-     */
-    public function getRole()
+
+    public function getRoles()
     {
-        return $this->role;
+        return $this->roles;
     }
 
     /**
@@ -136,69 +101,42 @@ class User
      */
     public function setRole(UserRole $role)
     {
-        $this->role = $role;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getDateCreated(): \DateTime
-    {
-        return $this->dateCreated;
-    }
-
-    /**
-     * @param \DateTime $dateCreated
-     */
-    public function setDateCreated(\DateTime $dateCreated)
-    {
-        $this->dateCreated = $dateCreated;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDateUpdated()
-    {
-        return $this->date_updated;
-    }
-
-    /**
-     * @param mixed $date_updated
-     */
-    public function setDateUpdated($date_updated)
-    {
-        $this->date_updated = $date_updated;
-    }
-
-
-    /**
-     * @return int
-     */
-    public function getStatus(): int
-    {
-        return $this->status;
-    }
-
-    /**
-     * @param int $status
-     */
-    public function setStatus(int $status)
-    {
-        $this->status = $status;
+        $this->roles[] = $role;
     }
 
     public function isCustomer(): bool
     {
-        return $this->getRole()->getTitle() === UserRole::CUSTOMER;
+        return $this->hasRole(UserRole::CUSTOMER);
     }
 
     public function isSuperUser():bool{
-        return $this->getRole()->getTitle() === UserRole::SUPERUSER;
+        return $this->hasRole(UserRole::SUPERUSER);
     }
 
     public function isAdmin():bool{
-        return $this->getRole()->getTitle() === UserRole::ADMINISTRATOR;
+        return $this->hasRole(UserRole::ADMINISTRATOR);
+    }
+
+
+    public function hasRole(string $role):bool {
+        /** @var UserRole $element */
+        foreach ($this->getRoles() as $element){
+            if ($element->getTitle()  === $role){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function hasRights(int $level): bool
+    {
+        /** @var UserRole $element */
+        foreach ($this->getRoles() as $element){
+            if ($element->getLevel() >= $level){
+                return true;
+            }
+        }
+        return false;
     }
 
 

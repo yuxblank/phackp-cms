@@ -115,9 +115,17 @@ class UserRepository extends EntityRepository
             ->getSingleResult();
     }
 
+    /**
+     * @param $username
+     * @param $password
+     * @param $level
+     * @return bool
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws \Doctrine\ORM\NoResultException
+     */
     public function authenticateUser($username, $password, $level){
         $user = $this->findUser($username);
-        return $this->bcrypt->verify($password, $user->getPassword()) && $user->getRole()->getLevel() >= $level;
+        return $this->bcrypt->verify($password, $user->getPassword()) && ($user->isAdmin() || $user->isSuperUser());
     }
 
     /**

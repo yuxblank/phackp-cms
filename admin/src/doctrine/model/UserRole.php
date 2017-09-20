@@ -8,6 +8,7 @@
 
 namespace cms\doctrine\model;
 
+use cms\doctrine\BaseEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -16,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class UserRole
  * @package cms\doctrine\model
  */
-class UserRole
+class UserRole extends BaseEntity
 {
 
     const CUSTOMER = 'customer';
@@ -24,11 +25,6 @@ class UserRole
     const SUPERUSER = 'superuser';
 
 
-    /**
-     * @ORM\Id @ORM\Column(type="integer",name="id") @ORM\GeneratedValue
-     * @var int
-     */
-    protected $id;
     /**
      * @ORM\Column(type="string",name="title")
      * @var string
@@ -39,22 +35,6 @@ class UserRole
      * @var int
      */
     protected $level;
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId(int $id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return string

@@ -7,19 +7,16 @@
  */
 
 namespace cms\doctrine\model;
+use cms\doctrine\BaseEntity;
 use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity @ORM\Table(name="article_category")
  * Class Article
  * @package cms\doctrine\model
  */
-class ArticleCategory
+class ArticleCategory extends BaseEntity
 {
-    /**
-     * @ORM\Id @ORM\Column(type="integer",name="id") @ORM\GeneratedValue
-     * @var int
-     */
-    protected $id;
+
     /**
      * @ORM\Column (name="title", type="string")
      */
@@ -36,14 +33,6 @@ class ArticleCategory
      * @ORM\Column (name="alias", type="string")
      */
     protected $alias;
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * @return string

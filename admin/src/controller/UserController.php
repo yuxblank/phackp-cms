@@ -65,14 +65,13 @@ class UserController extends Admin implements CrudController
 
             $this->controlHeader->save = "#";
 
-            $this->view->renderArgs("states", $user->getStates());
+            $this->view->renderArgs('states', $this->states);
 
-            $this->view->renderArgs('user', $user);
-            $this->view->renderArgs('rolesList', $this->userRoleServices->getRoles());
+            $this->view->renderArgs('rolesList', $this->userRoleRepository->findAll());
 
             $this->view->renderArgs('controlHeader', $this->controlHeader);
 
-            $this->view->render("/admin/user/new");
+            $this->view->render('/admin/user/new');
         }
 
 
