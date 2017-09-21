@@ -24,4 +24,12 @@ class UserRoleRepository extends EntityRepository
         parent::__construct($entityManager, UserRole::class);
     }
 
+
+    public function findByLevelGreaterThan(int $level)
+    {
+        $this->_em->
+        createQuery("SELECT u FROM cms\doctrine\model\UserRole u WHERE u.level > :level")
+            ->setParameter('level', $level)
+            ->getResult();
+    }
 }

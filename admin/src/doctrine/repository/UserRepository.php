@@ -43,8 +43,9 @@ class UserRepository extends EntityRepository
      * @param UserRole $role
      * @throws \Doctrine\ORM\ORMInvalidArgumentException
      * @throws \Zend\Crypt\Password\Exception\RuntimeException
+     * @return User
      */
-    public function createUser(string $username, string $unsafePassword, string $email, UserRole $role){
+    public function createUser(string $username, string $unsafePassword, string $email, UserRole $role):User{
         $user = new User();
         $user->setUsername($username);
         $user->setEmail($email);
@@ -53,6 +54,7 @@ class UserRepository extends EntityRepository
         $user->setDateCreated(new \DateTime());
         $user->setStatus(1);
         $this->_em->persist($user);
+        return $user;
     }
 
     /**

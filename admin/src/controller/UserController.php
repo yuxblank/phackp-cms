@@ -9,68 +9,33 @@
 namespace cms\controller;
 
 
+use Ardent\Collection\HashMap;
 use cms\doctrine\model\User;
-use cms\doctrine\repository\UserRepository;
-use cms\doctrine\repository\UserRoleRepository;
-use cms\library\crud\CrudController;
 use cms\model\UserRole;
-use cms\overrides\View;
+use Collections\Map;
+use Collections\Pair;
+use Collections\Set;
 use Doctrine\ORM\Persisters\PersisterException;
-use yuxblank\phackp\core\Session;
+use http\Url;
 use yuxblank\phackp\http\api\ServerRequestInterface;
-use yuxblank\phackp\routing\api\Router;
 
-class UserController extends Admin implements CrudController
+class UserController extends BaseUserController
 {
 
-    private $userRoleRepository;
-
-    /**
-     * UserController constructor.
-     * @param UserRepository $userRepository
-     * @param UserRoleRepository $userRoleRepository
-     * @param View $view
-     * @param Session $session
-     * @param Router $router
-     * @internal param UserRoleServices $userRoleServices
-     */
-    public function __construct(UserRepository $userRepository, UserRoleRepository $userRoleRepository, View $view, Session $session, Router $router)
-    {
-        parent::__construct($view, $session, $router, $userRepository);
-        $this->userRoleRepository = $userRoleRepository;
-    }
 
     public function create(ServerRequestInterface $serverRequest)
     {
 
-        if ($serverRequest->getMethod() === 'POST') {
+        if ($crudResult = parent::create($serverRequest)){
 
-            $email = filter_var($serverRequest->getParsedBody()['email'], FILTER_SANITIZE_EMAIL);
-            $userrole_id = filter_var($serverRequest->getParsedBody()['role'], FILTER_SANITIZE_NUMBER_INT);
-
-            $password = filter_var($serverRequest->getParsedBody()['password'], FILTER_SANITIZE_STRING);
-            $status = filter_var($serverRequest->getParsedBody()['status'], FILTER_SANITIZE_NUMBER_INT);
-
-            try {
-                /** @var \cms\doctrine\model\UserRole $userrole */
-                $userrole = $this->userRoleRepository->find($userrole_id);
-                $this->userRepository->createUser($email, $password, $email, $userrole);
-                $this->router->switchAction('admin/user');
-            } catch (PersisterException $exception) {
-                throw new PersisterException($exception);
-            }
-
-
+            $crudResult->offsetGet('user');
+            // do return
+            $this->router->_switchAction('user.list');
         } else {
-
             $this->controlHeader->save = "#";
-
             $this->view->renderArgs('states', $this->states);
-
             $this->view->renderArgs('rolesList', $this->userRoleRepository->findAll());
-
             $this->view->renderArgs('controlHeader', $this->controlHeader);
-
             $this->view->render('/admin/user/new');
         }
 
@@ -80,42 +45,22 @@ class UserController extends Admin implements CrudController
     public function read(ServerRequestInterface $serverRequest)
     {
 
-        $id = filter_var($serverRequest->getPathParams()['id'], FILTER_SANITIZE_NUMBER_INT);
-        if ($id) {
+        $crudResult = parent::read($serverRequest);
+        if ($crudResult->offsetExists('user')) {
 
-            // todo block edit of sa
-
-            $this->controlHeader->save = "#";
-
-            $this->view->renderArgs("states", $this->states);
-
+            // todo render urserlist
+            $this->controlHeader->save = '#';
+            $this->view->renderArgs('states', $this->userStates);
             $this->view->renderArgs('controlHeader', $this->controlHeader);
-            $this->view->renderArgs('rolesList', $this->userRoleRepository->findAll());
-
-            $this->view->renderArgs('user', $this->userRepository->find($id));
-
+            $this->view->renderArgs('rolesList', $crudResult->offsetGet('rolesList'));
+            $this->view->renderArgs('user', $crudResult->offsetGet('user'));
             $this->view->render("/admin/user/new");
-        } else {
-
-            if ($this->loadUser()->isSuperUser()) {
-
-                $this->view->renderArgs('users', $this->userRepository->findAll());
-
-            } else {
-
-                /** @var UserRole $userRole */
-
-                $userRole = $userRole->find("WHERE level <=?", 3);
-                $this->view->renderArgs('users', $userRole->users());
-
-            }
-
+        } else if ($crudResult->offsetExists('users')){
+            // todo render user edit form
             $this->controlHeader->new = $this->router->link('admin/user/new');
-
             $this->controlHeader->delete = true;
-
             $this->view->renderArgs('controlHeader', $this->controlHeader);
-
+            $this->view->renderArgs('users', $crudResult->offsetGet('users'));
             $this->view->render("/admin/user/index");
         }
     }

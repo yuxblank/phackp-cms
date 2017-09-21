@@ -14,7 +14,6 @@ use yuxblank\phackp\core\Session;
 use yuxblank\phackp\http\api\ServerRequestInterface;
 use yuxblank\phackp\routing\api\Router;
 use Zend\Diactoros\Response\JsonResponse;
-use Zend\Diactoros\Response\RedirectResponse;
 
 /**
  * Description of Admin
@@ -36,7 +35,6 @@ class Admin extends Controller
     protected $controlHeader;
     private $menu;
     protected $states = array(0 => "Non attivo", 1 => "Pubblicato");
-
     /**
      * Admin constructor.
      * @param View $view
@@ -179,7 +177,7 @@ class Admin extends Controller
 
     public function onlySuperAdmin()
     {
-        if (!Secured::loadUser()->isSuperAdmin()) {
+        if (!$this->loadUser()->isSuperUser()) {
             die("unathorized access");
         }
     }
@@ -193,7 +191,6 @@ class Admin extends Controller
 
     public function customers()
     {
-
         $banner = new Banner();
         $this->view->renderArgs("banners", $banner->findAll("user_id=?", [$this->loadUser()->getId()]));
         $this->view->render("admin/customer");
