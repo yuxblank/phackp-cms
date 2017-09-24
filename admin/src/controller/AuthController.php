@@ -56,7 +56,7 @@ class AuthController extends Controller
     public function login()
     {
         if ($this->session->getValue('user') !== null) {
-            $this->keep("warning", "Sei già autenticato");
+            $this->keep('warning', 'Sei già autenticato');
         }
         $this->view->render("/admin/login");
 
