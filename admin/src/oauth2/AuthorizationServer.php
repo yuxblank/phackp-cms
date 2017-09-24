@@ -9,7 +9,17 @@
 namespace cms\oauth2;
 
 
-class AuthorizationServer
+class AuthorizationServer extends \League\OAuth2\Server\AuthorizationServer
 {
 
+
+    /**
+     * todo
+     * AuthorizationServer constructor.
+     */
+    public function __construct()
+    {
+
+
+    }
 }

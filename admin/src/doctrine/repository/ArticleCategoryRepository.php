@@ -26,4 +26,38 @@ class ArticleCategoryRepository extends EntityRepository
         $query = $this->_em->createQuery("SELECT COUNT(u) FROM cms\doctrine\model\ArticleCategory u");
         return $query->getSingleScalarResult();
     }
+
+    /**
+     * @param ArticleCategory $articleCategory
+     * @return ArticleCategory
+     * @throws \Doctrine\ORM\ORMInvalidArgumentException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function save(ArticleCategory $articleCategory){
+        $this->_em->persist($articleCategory);
+        $this->_em->flush($articleCategory);
+        return $articleCategory;
+    }
+
+    /**
+     * @param ArticleCategory $articleCategory
+     * @return ArticleCategory
+     * @throws \Doctrine\ORM\ORMInvalidArgumentException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function update(ArticleCategory $articleCategory){
+        $this->_em->merge($articleCategory);
+        $this->_em->flush($articleCategory);
+        return $articleCategory;
+    }
+
+    /**
+     * @param array $ids
+     * @return mixed
+     */
+    public function deleteArticles(array $ids){
+        return $this->_em->createQuery("DELETE FROM cms\doctrine\model\ArticleCategory u WHERE u.id IN (:ids)")
+            ->setParameters(array('ids' => $ids))
+            ->execute();
+    }
 }

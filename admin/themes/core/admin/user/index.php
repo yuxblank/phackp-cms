@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -11,7 +11,7 @@
     <thead>
     <th>#</th>
     <th>Email</th>
-    <th>Ruolo</th>
+    <th>Ruoli</th>
     <th>Data creazione</th>
     <th>Stato</th>
     </thead>
@@ -25,7 +25,14 @@
             <td>
                 <a href="<?php echo $this->router->link('admin/user/edit/{id}', [$user->getId()]) ?>"><?php echo $user->getUsername() ?></a>
             </td>
-            <td><?php echo $user->getRoles()->getTitle() ?></td>
+            <td>
+                <ul>
+                    <?php foreach ($user->getRoles() as $role): ?>
+                    <li> <?php echo $role->getTitle() ?></li>
+                    <?php endforeach; ?>
+                </ul>
+
+            </td>
             <td><?php echo $user->getDateUpdated()->format('d-m-Y H:i') ?></td>
             <td><?php echo $user->getStatus() ?></td>
 

@@ -91,6 +91,7 @@ class UserRepository extends EntityRepository
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Doctrine\ORM\ORMInvalidArgumentException
+     * @throws \Zend\Crypt\Password\Exception\RuntimeException
      */
     public function updateUserDetails(string $username, string $email, int $status, UserRole $role,string $password=null){
         $user = $this->findUser($username);
@@ -102,6 +103,7 @@ class UserRepository extends EntityRepository
         $user->setStatus($status);
         $user->setDateUpdated(new \DateTime());
         $this->_em->persist($user);
+        return $user;
     }
 
     /**
@@ -115,6 +117,19 @@ class UserRepository extends EntityRepository
         return $this->_em->createQuery("SELECT u FROM cms\doctrine\model\User u WHERE u.email = :email")
             ->setParameter(':email', $email)
             ->getSingleResult();
+    }
+
+    /**
+     * @param array $id
+     * @return User|null
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws \Doctrine\ORM\NoResultException
+     */
+    public function removeUsers(array $id){
+
+        return $this->_em->createQuery("DELETE FROM cms\doctrine\model\User u WHERE u.id IN (:ids)")
+                ->setParameters(array('ids' => $id))
+                ->execute();
     }
 
     /**
@@ -141,6 +156,7 @@ class UserRepository extends EntityRepository
         $query->setParameter('state', $active ? 1 : 0);
         return $query->getSingleScalarResult();
     }
+
 
     // todo ACL
     public function isAuthorizedFor(User $user, string $task){

@@ -32,4 +32,6 @@ class UserRoleRepository extends EntityRepository
             ->setParameter('level', $level)
             ->getResult();
     }
+
+
 }

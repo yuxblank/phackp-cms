@@ -15,9 +15,9 @@
     "doctrine/orm": "2.5.*",
     "zendframework/zend-crypt": "^3.2",
     "php": "^7.0",
-    "symfony/serializer": "^3.3",
-    "symfony/property-access": "^3.3",
-    "morrisonlevi/ardent": "^0.21.1"
+    "morrisonlevi/ardent": "^0.21.1",
+    "netresearch/jsonmapper": "^1.3",
+    "league/oauth2-server": "^6.0"
   },
   "autoload": {
     "psr-4": {
@@ -28,6 +28,7 @@
       "cms\\overrides\\": "admin/src/override",
       "cms\\model\\": "admin/src/model",
       "cms\\doctrine\\": "admin/src/doctrine",
+      "cms\\oauth2\\": "admin/src/oauth2",
       "cms\\doctrine\\model\\": "admin/src/doctrine/model",
       "cms\\doctrine\\repository\\": "admin/src/doctrine/repository",
       "controller\\": "src/controller",

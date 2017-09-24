@@ -20,6 +20,7 @@ use Zend\Diactoros\Response\JsonResponse;
  *
  * @author yuri.blanc
  */
+abstract
 class Admin extends Controller
 
 {
@@ -68,39 +69,6 @@ class Admin extends Controller
     }
 
 
-    public function login()
-    {
-        if ($this->session->getValue('user') !== null) {
-            $this->keep("warning", "Sei già autenticato");
-        }
-        $this->view->render("/admin/login");
-
-    }
-
-    public function logout()
-    {     $this->router->switchAction("admin/login");
-        if ($this->session->getValue("user") !== null) {
-            $this->session->stop();
-            $this->keep("success", "Ti sei disconnesso correttamente");
-            $this->router->switchAction('admin/login');
-        } else {
-            $this->keep("danger", "Non sei connesso");
-            $this->router->switchAction('admin/login');
-        }
-    }
-
-    public function authenticate(ServerRequestInterface $serverRequest)
-    {
-        $email = filter_var($serverRequest->getParsedBody()['email'], FILTER_SANITIZE_EMAIL);
-        $password = filter_var($serverRequest->getParsedBody()['password'], FILTER_SANITIZE_STRING);
-        if ($email !== null && $password !== null && $this->userRepository->authenticateUser($email, $password, self::USER_MIN_LEVEL)) {
-            $this->session->setValue('user', $email);
-            $this->keep('success', 'Autenticazione avvenuta con successo!');
-            return new JsonResponse(['result' => 'ok']);
-        }
-        return new JsonResponse(['result' => 'Authentication was not successful, please retry.']);
-    }
-
     /**
      * @return \cms\doctrine\model\User
      * @throws \Doctrine\ORM\NonUniqueResultException
@@ -108,7 +76,7 @@ class Admin extends Controller
      */
     public function loadUser()
     {
-        $user = $this->session->getValue("user");
+        $user = $this->session->getValue('user');
         if ($user) {
             return $this->userRepository->findUser($user);
         }

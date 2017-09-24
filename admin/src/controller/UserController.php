@@ -9,15 +9,8 @@
 namespace cms\controller;
 
 
-use Ardent\Collection\HashMap;
-use cms\doctrine\model\User;
-use cms\model\UserRole;
-use Collections\Map;
-use Collections\Pair;
-use Collections\Set;
-use Doctrine\ORM\Persisters\PersisterException;
-use http\Url;
 use yuxblank\phackp\http\api\ServerRequestInterface;
+use Zend\Diactoros\Response\JsonResponse;
 
 class UserController extends BaseUserController
 {
@@ -26,7 +19,7 @@ class UserController extends BaseUserController
     public function create(ServerRequestInterface $serverRequest)
     {
 
-        if ($crudResult = parent::create($serverRequest)){
+        if ($serverRequest->getMethod() === 'POST' && $crudResult = parent::create($serverRequest)){
 
             $crudResult->offsetGet('user');
             // do return
@@ -67,45 +60,14 @@ class UserController extends BaseUserController
 
     public function update(ServerRequestInterface $serverRequest)
     {
-
-        $email = filter_var($serverRequest->getParsedBody()['email'], FILTER_SANITIZE_EMAIL);
-        $userrole_id = filter_var($serverRequest->getParsedBody()['role'], FILTER_SANITIZE_NUMBER_INT);
-        $password = filter_var($serverRequest->getParsedBody()['password'], FILTER_SANITIZE_STRING);
-        $status = filter_var($serverRequest->getParsedBody()['status'], FILTER_SANITIZE_NUMBER_INT);
-
-        try {
-            /** @var \cms\doctrine\model\UserRole $userrole */
-            $userrole = $this->userRoleRepository->find($userrole_id);
-            $this->userRepository->updateUserDetails($email, $email, $status,$userrole,$password);
+        if (parent::update($serverRequest)->offsetExists('user')){
             $this->router->switchAction('admin/user');
-        } catch (PersisterException $exception) {
-            throw new PersisterException($exception);
         }
-
-
     }
 
     public function delete(ServerRequestInterface $serverRequest)
     {
-        $ids = $serverRequest->getParsedBody()['ids'];
-
-        $deleted = 0;
-
-        if ($ids !== null && count($ids) > 0) {
-
-            $User = new User();
-
-            foreach ($ids as $id) {
-
-                $User->delete($id);
-
-                $deleted++;
-
-            }
-
-        }
-        echo $deleted;
-
+        return new JsonResponse(['result' => parent::delete($serverRequest)->offsetGet('users.removed')]);
     }
 
 

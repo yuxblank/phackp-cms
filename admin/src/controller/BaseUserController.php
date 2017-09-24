@@ -85,7 +85,7 @@ abstract class BaseUserController extends Admin
 
     public function update(ServerRequestInterface $serverRequest)
     {
-
+        $crudResult = new CrudResult();
         $email = filter_var($serverRequest->getParsedBody()['email'], FILTER_SANITIZE_EMAIL);
         $userrole_id = filter_var($serverRequest->getParsedBody()['role'], FILTER_SANITIZE_NUMBER_INT);
         $password = filter_var($serverRequest->getParsedBody()['password'], FILTER_SANITIZE_STRING);
@@ -94,36 +94,23 @@ abstract class BaseUserController extends Admin
         try {
             /** @var \cms\doctrine\model\UserRole $userrole */
             $userrole = $this->userRoleRepository->find($userrole_id);
-            $this->userRepository->updateUserDetails($email, $email, $status, $userrole, $password);
-            $this->router->switchAction('admin/user');
+            $user = $this->userRepository->updateUserDetails($email, $email, $status, $userrole, $password);
+            $crudResult->offsetSet('user', $user);
         } catch (PersisterException $exception) {
             throw new PersisterException($exception);
         }
 
-
+        return $crudResult;
     }
 
     public function delete(ServerRequestInterface $serverRequest)
     {
+        $crudResult = new CrudResult();
         $ids = $serverRequest->getParsedBody()['ids'];
-
-        $deleted = 0;
-
         if ($ids !== null && count($ids) > 0) {
-
-            $User = new User();
-
-            foreach ($ids as $id) {
-
-                $User->delete($id);
-
-                $deleted++;
-
-            }
-
+            $crudResult->offsetSet('removed.users',$this->userRepository->removeUsers($ids));
         }
-        echo $deleted;
-
+        return $crudResult;
     }
 
 

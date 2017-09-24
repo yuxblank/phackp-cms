@@ -9,7 +9,15 @@
 namespace cms\oauth2;
 
 
-class ClientRepository
+use League\OAuth2\Server\Entities\ClientEntityInterface;
+use League\OAuth2\Server\Repositories\ClientRepositoryInterface;
+
+class ClientRepository implements ClientRepositoryInterface
 {
+    public function getClientEntity($clientIdentifier, $grantType, $clientSecret = null, $mustValidateSecret = true)
+    {
+        // TODO: Implement getClientEntity() method.
+    }
+
 
 }

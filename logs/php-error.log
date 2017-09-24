@@ -2099,3 +2099,53 @@ Stack trace:
 #5 E:\PHP\phackp-cms\src\controller\App.php(56): controller\App->buildMenu()
 #6 [internal function]: controller\App->onBefore()
 #7 E:\PHP\p in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php on line 175
+[20-Sep-2017 18:27:47 UTC] PHP Fatal error:  Uncaught PDOException: PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'phackpcms.category' doesn't exist in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php:173
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php(173): PDOStatement->execute()
+#1 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php(253): yuxblank\phackp\database\Database->execute()
+#2 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\HackORM.php(173): yuxblank\phackp\database\Database->fetchClassSet('cms\\model\\Categ...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Model.php(86): yuxblank\phackp\database\HackORM->searchAll(Object(cms\model\Category), 'SELECT id, titl...', Array)
+#4 E:\PHP\phackp-cms\src\controller\App.php(98): yuxblank\phackp\database\Model->findAll()
+#5 E:\PHP\phackp-cms\src\controller\App.php(56): controller\App->buildMenu()
+#6 [internal function]: controller\App->onBefore()
+#7 E:\PHP\p in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php on line 175
+[20-Sep-2017 18:51:13 UTC] PHP Fatal error:  Uncaught PDOException: PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'phackpcms.category' doesn't exist in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php:173
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php(173): PDOStatement->execute()
+#1 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php(253): yuxblank\phackp\database\Database->execute()
+#2 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\HackORM.php(173): yuxblank\phackp\database\Database->fetchClassSet('cms\\model\\Categ...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Model.php(86): yuxblank\phackp\database\HackORM->searchAll(Object(cms\model\Category), 'SELECT id, titl...', Array)
+#4 E:\PHP\phackp-cms\src\controller\App.php(98): yuxblank\phackp\database\Model->findAll()
+#5 E:\PHP\phackp-cms\src\controller\App.php(56): controller\App->buildMenu()
+#6 [internal function]: controller\App->onBefore()
+#7 E:\PHP\p in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php on line 175
+[22-Sep-2017 19:09:17 UTC] PHP Fatal error:  Uncaught PDOException: PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'phackpcms.category' doesn't exist in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php:173
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php(173): PDOStatement->execute()
+#1 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php(253): yuxblank\phackp\database\Database->execute()
+#2 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\HackORM.php(173): yuxblank\phackp\database\Database->fetchClassSet('cms\\model\\Categ...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Model.php(86): yuxblank\phackp\database\HackORM->searchAll(Object(cms\model\Category), 'SELECT id, titl...', Array)
+#4 E:\PHP\phackp-cms\src\controller\App.php(98): yuxblank\phackp\database\Model->findAll()
+#5 E:\PHP\phackp-cms\src\controller\App.php(56): controller\App->buildMenu()
+#6 [internal function]: controller\App->onBefore()
+#7 E:\PHP\p in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php on line 175
+[23-Sep-2017 12:37:26 UTC] PHP Fatal error:  Uncaught PDOException: PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'phackpcms.category' doesn't exist in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php:173
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php(173): PDOStatement->execute()
+#1 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php(253): yuxblank\phackp\database\Database->execute()
+#2 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\HackORM.php(173): yuxblank\phackp\database\Database->fetchClassSet('cms\\model\\Categ...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Model.php(86): yuxblank\phackp\database\HackORM->searchAll(Object(cms\model\Category), 'SELECT id, titl...', Array)
+#4 E:\PHP\phackp-cms\src\controller\App.php(98): yuxblank\phackp\database\Model->findAll()
+#5 E:\PHP\phackp-cms\src\controller\App.php(56): controller\App->buildMenu()
+#6 [internal function]: controller\App->onBefore()
+#7 E:\PHP\p in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php on line 175
+[23-Sep-2017 13:04:51 UTC] PHP Fatal error:  Uncaught PDOException: PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'phackpcms.category' doesn't exist in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php:173
+Stack trace:
+#0 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php(173): PDOStatement->execute()
+#1 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php(253): yuxblank\phackp\database\Database->execute()
+#2 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\HackORM.php(173): yuxblank\phackp\database\Database->fetchClassSet('cms\\model\\Categ...')
+#3 E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Model.php(86): yuxblank\phackp\database\HackORM->searchAll(Object(cms\model\Category), 'SELECT id, titl...', Array)
+#4 E:\PHP\phackp-cms\src\controller\App.php(98): yuxblank\phackp\database\Model->findAll()
+#5 E:\PHP\phackp-cms\src\controller\App.php(56): controller\App->buildMenu()
+#6 [internal function]: controller\App->onBefore()
+#7 E:\PHP\p in E:\PHP\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php on line 175

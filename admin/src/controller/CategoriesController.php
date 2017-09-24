@@ -11,95 +11,41 @@ namespace cms\controller;
 
 use cms\doctrine\repository\ArticleCategoryRepository;
 use cms\doctrine\repository\UserRepository;
-use cms\library\crud\CrudController;
 use cms\library\StringUtils;
-use cms\model\Category;
 use cms\overrides\View;
+use Doctrine\ORM\ORMException;
+use Doctrine\ORM\ORMInvalidArgumentException;
 use yuxblank\phackp\core\Session;
 use yuxblank\phackp\http\api\ServerRequestInterface;
 use yuxblank\phackp\routing\api\Router;
+use Zend\Diactoros\Response\JsonResponse;
 
-class CategoriesController extends Admin implements CrudController
+class CategoriesController extends BaseCategoryController
 {
-    private $articleCategoryRepository;
-    private $stringUtils;
 
     public function __construct(View $view, Session $session, Router $router, StringUtils $stringUtils, UserRepository $userRepository, ArticleCategoryRepository $articleCategoryRepository)
     {
-        parent::__construct($view,$session,$router,$userRepository);
-        $this->stringUtils = $stringUtils;
-        $this->articleCategoryRepository = $articleCategoryRepository;
+        parent::__construct($view, $session, $router, $stringUtils, $userRepository, $articleCategoryRepository);
     }
 
 
-    /**
-     * Todo refactor to use update
-     * @param ServerRequestInterface $serverRequest
-     */
-
     public function create(ServerRequestInterface $serverRequest)
     {
+
         if ($serverRequest->getMethod() === 'POST') {
 
-            $id = $serverRequest->getParsedBody()['id'];
-            $title = strip_tags($serverRequest->getParsedBody()['title']);
-            $description = strip_tags($serverRequest->getParsedBody()['description']);
-            $meta_desc = htmlspecialchars($serverRequest->getParsedBody()['meta_description']);
-            $meta_tags = strip_tags($serverRequest->getParsedBody()['meta_tags']);
-            $Category = new Category();
-            $Category->id = $id;
-            $Category->description = $description;
-            $Category->title = $title;
-            $Category->meta_description = $meta_desc;
-            $Category->meta_tags = $meta_tags;
-            $Category->alias = $this->stringUtils->toAscii(filter_var($serverRequest->getParsedBody()['title'], FILTER_SANITIZE_STRING));
-
-
-            if ($Category->id !== null && $Category->id !== '' && $Category->title !== '') {
-
-                if ($Category->update()) {
-
-                    $this->keep('success', "Aggiornamento effettuato con successo");
-
-                    $this->router->switchAction('admin/categories');
-
-                } else {
-
-                    $this->keep('danger', "Un errore ha impedito il salvataggio");
-
-                    $this->router->switchAction('admin/category/edit/' . $id);
-
-                }
-
-
-            } else if (isset($id) && $id == '' && $title != '') {
-
-                $Category->id = null;
-                if ($Category->save()) {
-
-                    $this->keep('success', "Salvataggio effettuato con successo");
-
-                    $this->router->switchAction('admin/categories');
-
-                } else {
-
-                    $this->keep('danger', "Un errore ha impedito il salvataggio");
-
-                    $this->router->switchAction('admin/category/edit/' . $id);
-
-
-                }
-
-
-            } else {
-
+            try {
+                $result = parent::create($serverRequest);
+                $this->keep('success', "Salvataggio effettuato con successo");
+                $this->router->switchAction('admin/categories');
+            } catch (ORMInvalidArgumentException $invalidArgumentException) {
                 $this->keep('danger', "Dati mancanti completare e riprovare");
-
-                $this->router->switchAction('admin/category/edit/' . $id);
-
+                $this->router->switchAction('admin/category/edit/');
+            } catch (ORMException $exception) {
+                $this->keep('danger', "Un errore ha impedito il salvataggio");
+                $this->router->switchAction('admin/category/edit/');
             }
         }
-        // todo render new category form
 
     }
 
@@ -107,7 +53,7 @@ class CategoriesController extends Admin implements CrudController
     {
 
         $id = $serverRequest->getPathParams() ? filter_var($serverRequest->getPathParams()['id'], FILTER_SANITIZE_NUMBER_INT) : null;
-        if ($id){
+        if ($id) {
             $cat = $this->articleCategoryRepository->find($id);
             if ($cat) {
                 $this->view->renderArgs("category", $cat);
@@ -133,17 +79,7 @@ class CategoriesController extends Admin implements CrudController
 
     public function delete(ServerRequestInterface $serverRequest)
     {
-        $ids = $serverRequest->getQueryParams()['ids'];
-        $deleted = 0;
-        if ($ids !== null && count($ids) > 0) {
-            $Category = new Category();
-            foreach ($ids as $id) {
-                $Category->delete($id);
-                $deleted++;
-            }
-
-        }
-        echo $deleted;
+        return new JsonResponse(['result' => parent::delete($serverRequest)->offsetGet('users.removed')]);
     }
 
 

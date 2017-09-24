@@ -4,3 +4,5 @@
 .idea
 *.iml
 *.lock
+/themes/aostawork/src/node_modules/
+/themes/aostawork/src/.sass-cache/
