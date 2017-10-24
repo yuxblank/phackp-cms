@@ -31,6 +31,12 @@ class MenuItem extends BaseEntity
     protected $menu;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Action", inversedBy="action_id")
+     * @ORM\JoinColumn(name="action_id", referencedColumnName="id")
+     */
+    protected $action;
+
+    /**
      * @return mixed
      */
     public function getTitle()
@@ -65,17 +71,17 @@ class MenuItem extends BaseEntity
     /**
      * @return mixed
      */
-    public function getMenu()
+    public function getAction()
     {
         return $this->menu;
     }
 
     /**
-     * @param mixed $menu
+     * @param mixed $action
      */
-    public function setMenu($menu)
+    public function setAction($action)
     {
-        $this->menu = $menu;
+        $this->menu = $action;
     }
 
 
