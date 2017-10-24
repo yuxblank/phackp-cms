@@ -1,4 +1,7 @@
 <?php
+
+use yuxblank\phackp\core\Application;
+
 return [
 
 
@@ -73,6 +76,13 @@ return [
 
                 ]
         ],
+
+    'app.security' => [
+        'keystore' => [
+            'path' => Application::$ROOT . DIRECTORY_SEPARATOR .'keystore',
+            'passphrase' => 'test'
+        ]
+    ]
 
 
 ];
