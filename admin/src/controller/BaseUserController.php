@@ -67,6 +67,10 @@ abstract class BaseUserController extends Admin
         }
     }
 
+    /**
+     * @param ServerRequestInterface $serverRequest
+     * @return CrudResult
+     */
     public function read(ServerRequestInterface $serverRequest)
     {
         $crudResult = new CrudResult();
@@ -82,6 +86,7 @@ abstract class BaseUserController extends Admin
 
         return $crudResult;
     }
+
 
     public function update(ServerRequestInterface $serverRequest)
     {

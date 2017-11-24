@@ -9,6 +9,9 @@
       "email": "email@example.com"
     }
   ],
+  "require-dev" : {
+    "phpunit/phpunit": "5.3.*"
+  },
   "require": {
     "yuxblank/phackp": "dev-master",
     "evert/sitemap-php": "1.2.0",
