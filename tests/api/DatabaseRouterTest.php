@@ -8,9 +8,8 @@
 
 namespace api;
 
+use classes\routing\DatabaseRouter;
 use cms\doctrine\repository\ActionRepository;
-use DatabaseRouter;
-use Doctrine\ORM\EntityManager;
 use PHPUnit_Framework_TestCase;
 use yuxblank\phackp\database\driver\DoctrineDriver;
 use yuxblank\phackp\http\ServerRequest;

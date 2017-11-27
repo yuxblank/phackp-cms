@@ -1,5 +1,5 @@
 <?php
-
+namespace classes\routing;
 use cms\doctrine\repository\ActionRepository;
 use yuxblank\phackp\http\api\ServerRequestInterface;
 use yuxblank\phackp\routing\exception\RouterException;

@@ -35,7 +35,8 @@
       "cms\\doctrine\\model\\": "admin/src/doctrine/model",
       "cms\\doctrine\\repository\\": "admin/src/doctrine/repository",
       "controller\\": "src/controller",
-      "model\\": "src/model"
+      "model\\": "src/model",
+      "classes\\routing\\" : "src/classes/routing"
     }
   }
 }
