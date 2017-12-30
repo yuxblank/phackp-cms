@@ -36,7 +36,7 @@ return [
         'OFFLINE' => false,
 
 
-        'APP_URL' => 'http://localhost:7000', //
+        'APP_URL' => 'http://localhost:9001', //
 
     ],
 

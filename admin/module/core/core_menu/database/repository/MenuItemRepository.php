@@ -6,10 +6,11 @@
  * Time: 19:42
  */
 
-namespace cms\doctrine\repository;
+namespace core\core_menu\database\repository;
 
 
-use cms\doctrine\model\MenuItem;
+
+use core\core_menu\database\entity\MenuItem;
 use Doctrine\ORM\EntityManagerInterface;
 use yuxblank\phackp\database\EntityRepository;
 

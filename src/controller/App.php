@@ -21,7 +21,7 @@ use yuxblank\phackp\view\View;
  *
  * @author yuri.blanc
  */
-class App extends Controller{
+class App extends Controller {
 
     /**
      * @Inject ("app.globals")

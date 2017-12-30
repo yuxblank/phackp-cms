@@ -6,16 +6,17 @@
  * Time: 15:15
  */
 
-namespace cms\controller;
+namespace core\core_content\controller;
 
 
-use cms\doctrine\model\ArticleCategory;
-use cms\doctrine\repository\ArticleCategoryRepository;
+
+use cms\controller\Admin;
 use cms\doctrine\repository\UserRepository;
-use cms\library\crud\CrudController;
 use cms\library\crud\CrudResult;
 use cms\library\StringUtils;
 use cms\overrides\View;
+use core\core_content\database\entity\ArticleCategory;
+use core\core_content\database\repository\ArticleCategoryRepository;
 use yuxblank\phackp\core\Session;
 use yuxblank\phackp\http\api\ServerRequestInterface;
 use yuxblank\phackp\routing\api\Router;
@@ -43,45 +44,41 @@ abstract class BaseCategoryController extends Admin
      */
     public function create(ServerRequestInterface $serverRequest)
     {
-        $crudResult = new CrudResult();
-        $category = new ArticleCategory();
-        $title = strip_tags($serverRequest->getParsedBody()['title']);
-        $description = strip_tags($serverRequest->getParsedBody()['description']);
-        $meta_desc = htmlspecialchars($serverRequest->getParsedBody()['meta_description']);
-        $meta_tags = strip_tags($serverRequest->getParsedBody()['meta_tags']);
+        if ($serverRequest->getMethod() === 'POST') {
+            $crudResult = new CrudResult();
+            $category = new ArticleCategory();
+            $title = strip_tags($serverRequest->getParsedBody()['title']);
+            $description = strip_tags($serverRequest->getParsedBody()['description']);
+            $meta_desc = htmlspecialchars($serverRequest->getParsedBody()['meta_description']);
+            $meta_tags = strip_tags($serverRequest->getParsedBody()['meta_tags']);
 
-        $category->setContent($description);
-        $category->setTitle($title);
-        /*      $category->meta_description = $meta_desc;*/
-        $category->setMetaTags($meta_tags);
-        $category->setAlias($this->stringUtils->toAscii(filter_var($serverRequest->getParsedBody()['title'], FILTER_SANITIZE_STRING)));
-        $category = $this->articleCategoryRepository->save($category);
-        $crudResult->offsetSet('article.category', $category);
+            $category->setContent($description);
+            $category->setTitle($title);
+            /*      $category->meta_description = $meta_desc;*/
+            $category->setMetaTags($meta_tags);
+            $category->setAlias($this->stringUtils->toAscii(filter_var($serverRequest->getParsedBody()['title'], FILTER_SANITIZE_STRING)));
+            $category = $this->articleCategoryRepository->save($category);
+            $crudResult->offsetSet('article.category', $category);
+        }
         return $crudResult;
 
     }
 
+    /**
+     * @param ServerRequestInterface $serverRequest
+     * @return CrudResult
+     */
     public function read(ServerRequestInterface $serverRequest)
     {
-
+        $crudResult = new CrudResult();
         $id = $serverRequest->getPathParams() ? filter_var($serverRequest->getPathParams()['id'], FILTER_SANITIZE_NUMBER_INT) : null;
         if ($id) {
             $cat = $this->articleCategoryRepository->find($id);
-            if ($cat) {
-                $this->view->renderArgs("category", $cat);
-            } else {
-                $this->keep("warning", "Nessun elemento trovato");
-            }
-            $this->controlHeader->save = "#";
-            $this->view->renderArgs('controlHeader', $this->controlHeader);
-            $this->view->render("/admin/content/newCategory");
+            $crudResult->offsetSet('article.category', $cat);
         } else {
-            $this->controlHeader->new = $this->router->link('admin/category/new');
-            $this->controlHeader->delete = true;
-            $this->view->renderArgs('controlHeader', $this->controlHeader);
-            $this->view->renderArgs('categories', $this->articleCategoryRepository->findAll());
-            $this->view->render("/admin/content/categories");
+            $crudResult->offsetSet('article.categories', $this->articleCategoryRepository->findAll());
         }
+        return $crudResult;
     }
 
     /**

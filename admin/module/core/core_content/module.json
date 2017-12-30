@@ -1,0 +1,15 @@
+{
+  "name": "content",
+  "category" : "core",
+  "database" : {
+    "entities_path": "database/entity"
+  },
+  "autoload": {
+    "psr-4": {
+      "core\\core_content\\" : "core/core_content/",
+      "core\\core_content\\controller\\" : "core/core_content/controller/",
+      "core\\core_content\\database\\entity\\" : "core/core_content/database/entity/",
+      "core\\core_content\\database\\repository\\" : "core/core_content/database/repository/"
+    }
+  }
+}

@@ -33,7 +33,7 @@
                 </ul>
 
             </td>
-            <td><?php echo $user->getDateUpdated()->format('d-m-Y H:i') ?></td>
+            <td><?php  echo ($user->getDateUpdated() ?$user->getDateUpdated()->format('d-m-Y H:i') : '') ?></td>
             <td><?php echo $user->getStatus() ?></td>
 
         </tr>

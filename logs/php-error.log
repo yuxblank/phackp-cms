@@ -2162,3 +2162,75 @@ Stack trace:
 #3 C:\Users\yuri.blanc\php\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Model.php(86): yuxblank\phackp\database\HackORM->searchAll(Object(cms\model\Category), 'SELECT id, titl...', Array)
 #4 C:\Users\yuri.blanc\php\phackp-cms\src\controller\App.php(98): yuxblank\phackp\database\Model->findAll()
 #5 C:\Users\yuri.blanc\php\phackp-cms in C:\Users\yuri.blanc\php\phackp-cms\vendor\yuxblank\phackp\src\phackp\database\Database.php on line 175
+[26-Dec-2017 00:16:08 Europe/Berlin] PHP Warning:  require(/home/yux/Development/php/phackp-cms/vendor/autoload.php): failed to open stream: No such file or directory in /home/yux/Development/php/phackp-cms/index.php on line 5
+[26-Dec-2017 00:16:08 Europe/Berlin] PHP Stack trace:
+[26-Dec-2017 00:16:08 Europe/Berlin] PHP   1. {main}() /home/yux/Development/php/phackp-cms/index.php:0
+[26-Dec-2017 00:16:08 Europe/Berlin] PHP Fatal error:  require(): Failed opening required '/home/yux/Development/php/phackp-cms/vendor/autoload.php' (include_path='.:/usr/share/php') in /home/yux/Development/php/phackp-cms/index.php on line 5
+[26-Dec-2017 00:16:08 Europe/Berlin] PHP Stack trace:
+[26-Dec-2017 00:16:08 Europe/Berlin] PHP   1. {main}() /home/yux/Development/php/phackp-cms/index.php:0
+[26-Dec-2017 00:20:57 Europe/Berlin] PHP Warning:  require(/home/yux/Development/php/phackp-cms/vendor/autoload.php): failed to open stream: No such file or directory in /home/yux/Development/php/phackp-cms/index.php on line 5
+[26-Dec-2017 00:20:57 Europe/Berlin] PHP Stack trace:
+[26-Dec-2017 00:20:57 Europe/Berlin] PHP   1. {main}() /home/yux/Development/php/phackp-cms/index.php:0
+[26-Dec-2017 00:20:57 Europe/Berlin] PHP Fatal error:  require(): Failed opening required '/home/yux/Development/php/phackp-cms/vendor/autoload.php' (include_path='.:/usr/share/php') in /home/yux/Development/php/phackp-cms/index.php on line 5
+[26-Dec-2017 00:20:57 Europe/Berlin] PHP Stack trace:
+[26-Dec-2017 00:20:57 Europe/Berlin] PHP   1. {main}() /home/yux/Development/php/phackp-cms/index.php:0
+[26-Dec-2017 00:20:58 Europe/Berlin] PHP Warning:  require(/home/yux/Development/php/phackp-cms/vendor/autoload.php): failed to open stream: No such file or directory in /home/yux/Development/php/phackp-cms/index.php on line 5
+[26-Dec-2017 00:20:58 Europe/Berlin] PHP Stack trace:
+[26-Dec-2017 00:20:59 Europe/Berlin] PHP   1. {main}() /home/yux/Development/php/phackp-cms/index.php:0
+[26-Dec-2017 00:20:59 Europe/Berlin] PHP Fatal error:  require(): Failed opening required '/home/yux/Development/php/phackp-cms/vendor/autoload.php' (include_path='.:/usr/share/php') in /home/yux/Development/php/phackp-cms/index.php on line 5
+[26-Dec-2017 00:20:59 Europe/Berlin] PHP Stack trace:
+[26-Dec-2017 00:20:59 Europe/Berlin] PHP   1. {main}() /home/yux/Development/php/phackp-cms/index.php:0
+[26-Dec-2017 11:05:59 Europe/Berlin] PHP Warning:  require(/home/yux/Development/php/phackp-cms/vendor/autoload.php): failed to open stream: No such file or directory in /home/yux/Development/php/phackp-cms/index.php on line 5
+[26-Dec-2017 11:05:59 Europe/Berlin] PHP Stack trace:
+[26-Dec-2017 11:05:59 Europe/Berlin] PHP   1. {main}() /home/yux/Development/php/phackp-cms/index.php:0
+[26-Dec-2017 11:05:59 Europe/Berlin] PHP Fatal error:  require(): Failed opening required '/home/yux/Development/php/phackp-cms/vendor/autoload.php' (include_path='.:/usr/share/php') in /home/yux/Development/php/phackp-cms/index.php on line 5
+[26-Dec-2017 11:05:59 Europe/Berlin] PHP Stack trace:
+[26-Dec-2017 11:05:59 Europe/Berlin] PHP   1. {main}() /home/yux/Development/php/phackp-cms/index.php:0
+[26-Dec-2017 11:12:21 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: Cannot create instance of PDO and connect to database, please check configurations in /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php:74
+Stack trace:
+#0 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php(39): yuxblank\phackp\database\Database->connect()
+#1 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/core/Application.php(249): yuxblank\phackp\database\Database->__construct(Array)
+#2 [internal function]: yuxblank\phackp\core\Application->yuxblank\phackp\core\{closure}()
+#3 /home/yux/Development/php/phackp-cms/vendor/php-di/invoker/src/Invoker.php(82): call_user_func_array(Object(Closure), Array)
+#4 /home/yux/Development/php/phackp-cms/vendor/php-di/php-di/src/DI/Definition/Resolver/FactoryResolver.php(81): Invoker\Invoker->call(Object(Closure), Array)
+#5 /home/yux/Development/php/phackp-cms/vendor/php-di/php-di/src/DI/Definition/Resolver/ResolverDispatcher.php(58): DI\Definiti in /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php on line 74
+[26-Dec-2017 11:23:19 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'phackpcms.category' doesn't exist in /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php:173
+Stack trace:
+#0 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php(173): PDOStatement->execute()
+#1 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php(253): yuxblank\phackp\database\Database->execute()
+#2 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/HackORM.php(173): yuxblank\phackp\database\Database->fetchClassSet('cms\\model\\Categ...')
+#3 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Model.php(86): yuxblank\phackp\database\HackORM->searchAll(Object(cms\model\Category), 'SELECT id, titl...', Array)
+#4 /home/yux/Development/php/phackp-cms/src/controller/App.php(98): yuxblank\phackp\database\Model->findAll()
+#5 /home/yux/Development/ in /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php on line 175
+[29-Dec-2017 00:25:47 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'phackpcms.category' doesn't exist in /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php:173
+Stack trace:
+#0 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php(173): PDOStatement->execute()
+#1 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php(253): yuxblank\phackp\database\Database->execute()
+#2 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/HackORM.php(173): yuxblank\phackp\database\Database->fetchClassSet('cms\\model\\Categ...')
+#3 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Model.php(86): yuxblank\phackp\database\HackORM->searchAll(Object(cms\model\Category), 'SELECT id, titl...', Array)
+#4 /home/yux/Development/php/phackp-cms/src/controller/App.php(98): yuxblank\phackp\database\Model->findAll()
+#5 /home/yux/Development/ in /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php on line 175
+[29-Dec-2017 10:57:01 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'phackpcms.category' doesn't exist in /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php:173
+Stack trace:
+#0 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php(173): PDOStatement->execute()
+#1 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php(253): yuxblank\phackp\database\Database->execute()
+#2 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/HackORM.php(173): yuxblank\phackp\database\Database->fetchClassSet('cms\\model\\Categ...')
+#3 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Model.php(86): yuxblank\phackp\database\HackORM->searchAll(Object(cms\model\Category), 'SELECT id, titl...', Array)
+#4 /home/yux/Development/php/phackp-cms/src/controller/App.php(98): yuxblank\phackp\database\Model->findAll()
+#5 /home/yux/Development/ in /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php on line 175
+[29-Dec-2017 22:42:41 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'phackpcms.category' doesn't exist in /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php:173
+Stack trace:
+#0 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php(173): PDOStatement->execute()
+#1 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php(253): yuxblank\phackp\database\Database->execute()
+#2 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/HackORM.php(173): yuxblank\phackp\database\Database->fetchClassSet('cms\\model\\Categ...')
+#3 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Model.php(86): yuxblank\phackp\database\HackORM->searchAll(Object(cms\model\Category), 'SELECT id, titl...', Array)
+#4 /home/yux/Development/php/phackp-cms/src/controller/App.php(98): yuxblank\phackp\database\Model->findAll()
+#5 /home/yux/Development/ in /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php on line 175
+[30-Dec-2017 01:57:40 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'phackpcms.category' doesn't exist in /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php:173
+Stack trace:
+#0 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php(173): PDOStatement->execute()
+#1 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php(253): yuxblank\phackp\database\Database->execute()
+#2 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/HackORM.php(173): yuxblank\phackp\database\Database->fetchClassSet('cms\\model\\Categ...')
+#3 /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Model.php(86): yuxblank\phackp\database\HackORM->searchAll(Object(cms\model\Category), 'SELECT id, titl...', Array)
+#4 /home/yux/Development/php/phackp-cms/src/controller/App.php(98): yuxblank\phackp\database\Model->findAll()
+#5 /home/yux/Development/ in /home/yux/Development/php/phackp-cms/vendor/yuxblank/phackp/src/phackp/database/Database.php on line 175

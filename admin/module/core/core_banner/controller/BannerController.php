@@ -6,9 +6,10 @@
  * Time: 21:26
  */
 
-namespace cms\controller;
+namespace core\core_banner\controller;
 
 
+use cms\controller\Admin;
 use cms\library\crud\CrudController;
 use cms\model\Banner;
 use cms\model\User;

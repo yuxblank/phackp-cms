@@ -79,13 +79,15 @@ class AuthController extends Controller
         $email = filter_var($serverRequest->getParsedBody()['email'], FILTER_SANITIZE_EMAIL);
         $password = filter_var($serverRequest->getParsedBody()['password'], FILTER_SANITIZE_STRING);
         try {
-            if ($email !== null && $password !== null && $this->userRepository->authenticateUser($email, $password, Admin::USER_MIN_LEVEL)) {
+                if ($email !== null && $password !== null && $this->userRepository->authenticateUser($email, $password, Admin::USER_MIN_LEVEL)) {
                 $this->session->setValue('user', $email);
                 $this->keep('success', 'Autenticazione avvenuta con successo!');
                 return new JsonResponse(['result' => 'ok']);
             }
         } catch (NoResultException $exception) {
             //todo log
+        } catch (\Exception $e) {
+            return new JsonResponse(["result" => "Service unavailable"]);
         }
         return new JsonResponse(['result' => 'Authentication was not successful, please retry.']);
     }

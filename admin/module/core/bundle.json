@@ -1,0 +1,11 @@
+{
+  "name": "content",
+  "category" : "core",
+  "autoload": {
+    "psr-4": {
+      "core\\database\\" : "core/database/",
+      "core\\database\\entity\\" : "core/database/entity/",
+      "core\\database\\repository\\" : "core/database/repository/"
+    }
+  }
+}

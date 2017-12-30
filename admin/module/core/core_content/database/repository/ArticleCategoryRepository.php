@@ -6,10 +6,9 @@
  * Time: 16:08
  */
 
-namespace cms\doctrine\repository;
+namespace core\core_content\database\repository;
 
-
-use cms\doctrine\model\ArticleCategory;
+use core\core_content\database\entity\ArticleCategory;
 use Doctrine\ORM\EntityManager;
 use yuxblank\phackp\database\EntityRepository;
 
@@ -23,7 +22,7 @@ class ArticleCategoryRepository extends EntityRepository
 
 
     public function count(){
-        $query = $this->_em->createQuery("SELECT COUNT(u) FROM cms\doctrine\model\ArticleCategory u");
+        $query = $this->_em->createQuery("SELECT COUNT(u) FROM " . ArticleCategory::class ." u");
         return $query->getSingleScalarResult();
     }
 
@@ -56,7 +55,7 @@ class ArticleCategoryRepository extends EntityRepository
      * @return mixed
      */
     public function deleteArticles(array $ids){
-        return $this->_em->createQuery("DELETE FROM cms\doctrine\model\ArticleCategory u WHERE u.id IN (:ids)")
+        return $this->_em->createQuery("DELETE FROM " . ArticleCategory::class ." u WHERE u.id IN (:ids)")
             ->setParameters(array('ids' => $ids))
             ->execute();
     }

@@ -6,7 +6,7 @@
  * Time: 01:22
  */
 
-namespace cms\doctrine\model;
+namespace core\core_banner\database\entity;
 use cms\doctrine\BaseEntity;
 use Doctrine\ORM\Mapping as ORM;
 

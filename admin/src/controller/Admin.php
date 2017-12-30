@@ -95,54 +95,6 @@ class Admin extends Controller
     }
 
 
-    public function config()
-
-    {
-        $this->noCustomers();
-        $this->view->render("/admin/appconfig");
-    }
-
-
-    public function generateSitmap()
-    {
-
-        $this->noCustomers();
-        if (file_exists(Application::$ROOT . '/sitemap.xml')) {
-            unlink(Application::$ROOT . '/sitemap.xml');
-        }
-        if (file_exists(Application::$ROOT . '/sitemap-index.xml')) {
-            unlink(Application::$ROOT . '/sitemap-index.xml');
-        }
-        $Sitemap = new Sitemap("");
-        $Sitemap->setPath(Application::$ROOT . '/');
-        $Sitemap->addItem(rtrim($this->router->link('/'), '/'), 1.0, 'monthly');
-        $Sitemap->addItem($this->router->link('novita'), 1.0, 'monthly');
-        $Sitemap->addItem($this->router->link('pizze'), 1.0, 'monthly');
-        $Sitemap->addItem($this->router->link('dove_trovarci'), 1.0, 'monthly');
-        $Sitemap->addItem($this->router->link('chi_siamo'), 1.0, 'monthly');
-        $Category = new Category();
-        $Categories = $Category->find("title LIKE ?", array("Novit%"));
-
-        foreach ($Categories->item() as $item) {
-
-            if ($item->status == 1) {
-                $Sitemap->addItem($this->router->link('novita/{title}/{id}', [$item->alias, $item->id]), 1.0, 'daily');
-            }
-        }
-
-        $Informations = $Category->find("title LIKE ?", array("Informazioni%"));
-
-        foreach ($Informations->item() as $info) {
-
-            if ($info->status == 1) {
-                $Sitemap->addItem($this->router->link('informazioni/{title}/
-                {id}', [$info->alias, $info->id]), 1.0, 'monthly');
-            }
-        }
-        $Sitemap->createSitemapIndex(Application::getAppUrl() . "/", 'Today');
-        echo "Generazione completata con successo";
-    }
-
     public function onlySuperAdmin()
     {
         if (!$this->loadUser()->isSuperUser()) {
