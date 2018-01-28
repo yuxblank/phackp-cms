@@ -38,6 +38,15 @@ return [
 
         'APP_URL' => 'http://localhost:9001', //
 
+        /**
+         * Oauth2 Server config
+         */
+        'OAUTH2' => [
+            'PRIVATE_KEY' => \yuxblank\phackp\core\Application::$ROOT . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'private.key',
+            'PUBLIC_KEY' => \yuxblank\phackp\core\Application::$ROOT . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'public.key',
+            'ENCRYPTION_KEY' => 'FpXzmrNwbztlOmkg4avXhsDa8YVVhTzqC0wUyAtdjhk='
+        ]
+
     ],
 
     'app.http' => [

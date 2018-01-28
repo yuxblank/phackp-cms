@@ -1,0 +1,21 @@
+POST {{host}}/admin/authentication/token
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: application/json
+
+{
+  "grant_type": "password",
+  "client_id"  : "TEST_CLIENT",
+  "username"   : "info@yuriblanc.it",
+  "password"   : "muska88"
+
+}
+
+<> 2017-12-10T071845.400.json
+<> 2017-12-10T071753.400.json
+
+###
+
+GET {{host}}/admin/authentication/verify/eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjVhMzljMWYzMGY3Njk1Ljg5NTQwMDA1In0.eyJhdWQiOiJURVNUX0NMSUVOVCIsImp0aSI6IjVhMzljMWYzMGY3Njk1Ljg5NTQwMDA1IiwiaWF0IjoxNTEzNzM0NjQzLCJuYmYiOjE1MTM3MzQ2NDMsImV4cCI6MTUxMzczODI0Mywic3ViIjoiMSIsInNjb3BlcyI6bnVsbH0.ePkF9uFQM_vktwEblCXxDlziTcmk6YaGtYh7v7WYh4bJC09BlpQxNxUM_gdRVxWM2W9yIttD7JeO93rvppZXpsSV7Y-Yl3SydnXFYEolerQnCmH3jHhC24vUz7aGxlUMoLul5bgADy09SqfETVtQm5VTPe4e2ikADN4krqwJM1o%22%2C%22refresh_token%22%3A%22def502007952fba7fb7f181dd99d9e21b15c36d4164508e249a42aeb4b86d4fa88f19830e05586bdf933b65fed071f3fc3f3ef59b85df99a94af2790c8bc3441836c585af3ffffbc28bb69978c8b672c4de5b95c292cdcf1585fbf1eae512a0de9a9fbf59427b5c0b977efca0fe442f33dd542046368e7702333208e724e323d8acd4599b41433fc61633391d2db79611f141cd3711eeabbfc6f0bc40ad18cdd11c5bf95a8870d2d9b46fa221cbc0dffd97b54b760f4402cdc8117310685346e564f5e38e571c2adee8dd5754b5bb9ff65d13a5d3f471bf64233c97b18ba25c4a77c8977d511c8079fae0ea532fae12588da8b2a144be084ca60dc
+Cookie: XDEBUG_SESSION=PHPSTORM
+Content-Type: application/json
+###

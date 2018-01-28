@@ -3,6 +3,7 @@ namespace cms\doctrine\model;
 use cms\doctrine\BaseEntity;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use League\OAuth2\Server\Entities\UserEntityInterface;
 
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class User
  * @package cms\doctrine\model
  */
-class User extends BaseEntity
+class User extends BaseEntity implements UserEntityInterface
 {
     /**
      * @ORM\Column (name="username",type="string", length=255, nullable=false,unique=true)
@@ -139,8 +140,10 @@ class User extends BaseEntity
         return false;
     }
 
-
-
+    public function getIdentifier()
+    {
+        return $this;
+    }
 
 
 }

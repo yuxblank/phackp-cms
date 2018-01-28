@@ -13,12 +13,16 @@ use cms\doctrine\model\User;
 use cms\doctrine\model\UserRole;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\Query;
+use League\OAuth2\Server\Entities\ClientEntityInterface;
+use League\OAuth2\Server\Entities\UserEntityInterface;
+use League\OAuth2\Server\Repositories\UserRepositoryInterface;
 use yuxblank\phackp\database\EntityRepository;
 use Zend\Crypt\Password\Bcrypt;
 use Zend\Crypt\Password\Exception\InvalidArgumentException;
 
-class UserRepository extends EntityRepository
+class UserRepository extends EntityRepository implements UserRepositoryInterface
 {
     /** @var  Bcrypt */
     protected $bcrypt;
@@ -33,7 +37,7 @@ class UserRepository extends EntityRepository
     public function __construct(EntityManagerInterface $entityManager, Bcrypt $bcrypt)
     {
         parent::__construct($entityManager, User::class);
-        $this->bcrypt =  $bcrypt;
+        $this->bcrypt = $bcrypt;
     }
 
     /**
@@ -45,7 +49,8 @@ class UserRepository extends EntityRepository
      * @throws \Zend\Crypt\Password\Exception\RuntimeException
      * @return User
      */
-    public function createUser(string $username, string $unsafePassword, string $email, UserRole $role):User{
+    public function createUser(string $username, string $unsafePassword, string $email, UserRole $role): User
+    {
         $user = new User();
         $user->setUsername($username);
         $user->setEmail($email);
@@ -69,9 +74,10 @@ class UserRepository extends EntityRepository
      * @throws \Zend\Crypt\Password\Exception\InvalidArgumentException
      * @throws \Zend\Crypt\Password\Exception\RuntimeException
      */
-    public function updateUser(string $username, string $oldPassword, string $newPassword, string $email, UserRole $role){
+    public function updateUser(string $username, string $oldPassword, string $newPassword, string $email, UserRole $role)
+    {
         $user = $this->findUser($username);
-        if (!$this->bcrypt->verify($oldPassword, $user->getPassword())){
+        if (!$this->bcrypt->verify($oldPassword, $user->getPassword())) {
             throw new InvalidArgumentException('Password is not valid');
         }
         $user->setEmail($email);
@@ -93,7 +99,8 @@ class UserRepository extends EntityRepository
      * @throws \Doctrine\ORM\ORMInvalidArgumentException
      * @throws \Zend\Crypt\Password\Exception\RuntimeException
      */
-    public function updateUserDetails(string $username, string $email, int $status, UserRole $role,string $password=null){
+    public function updateUserDetails(string $username, string $email, int $status, UserRole $role, string $password = null)
+    {
         $user = $this->findUser($username);
         $user->setEmail($email);
         if ($password) {
@@ -112,7 +119,8 @@ class UserRepository extends EntityRepository
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Doctrine\ORM\NoResultException
      */
-    public function findUser(string $email){
+    public function findUser(string $email)
+    {
 
         return $this->_em->createQuery("SELECT u FROM cms\doctrine\model\User u WHERE u.email = :email")
             ->setParameter(':email', $email)
@@ -125,11 +133,12 @@ class UserRepository extends EntityRepository
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Doctrine\ORM\NoResultException
      */
-    public function removeUsers(array $id){
+    public function removeUsers(array $id)
+    {
 
         return $this->_em->createQuery("DELETE FROM cms\doctrine\model\User u WHERE u.id IN (:ids)")
-                ->setParameters(array('ids' => $id))
-                ->execute();
+            ->setParameters(array('ids' => $id))
+            ->execute();
     }
 
     /**
@@ -140,7 +149,8 @@ class UserRepository extends EntityRepository
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Doctrine\ORM\NoResultException
      */
-    public function authenticateUser($username, $password, $level){
+    public function authenticateUser($username, $password, $level)
+    {
         $user = $this->findUser($username);
         return $this->bcrypt->verify($password, $user->getPassword()) && ($user->isAdmin() || $user->isSuperUser());
     }
@@ -151,7 +161,8 @@ class UserRepository extends EntityRepository
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @throws \Doctrine\ORM\NoResultException
      */
-    public function count(bool $active = false){
+    public function count(bool $active = false)
+    {
         $query = $this->_em->createQuery("SELECT COUNT(u) FROM cms\doctrine\model\User u WHERE u.status = :state");
         $query->setParameter('state', $active ? 1 : 0);
         return $query->getSingleScalarResult();
@@ -159,12 +170,39 @@ class UserRepository extends EntityRepository
 
 
     // todo ACL
-    public function isAuthorizedFor(User $user, string $task){
+    public function isAuthorizedFor(User $user, string $task)
+    {
 
     }
 
+    /**
+     * @param string $username
+     * @param string $password
+     * @param string $grantType
+     * @param ClientEntityInterface $clientEntity
+     * @return UserEntityInterface|mixed
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function getUserEntityByUserCredentials(
+        $username,
+        $password,
+        $grantType,
+        ClientEntityInterface $clientEntity
+    )
+    {
+        /** @var User $user */
+        $user = $this->
+        _em->createQuery(
+            'SELECT u FROM ' . User::class . ' u WHERE u.username=:username')
+            ->setParameter('username', $username)
+            ->getSingleResult();
 
-
+        if ($this->bcrypt->verify($password, $user->getPassword())) {
+            return $user;
+        }
+        throw new NoResultException();
+    }
 
 
 }

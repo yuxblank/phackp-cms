@@ -33,7 +33,6 @@
       "cms\\overrides\\": "admin/src/override",
       "cms\\model\\": "admin/src/model",
       "cms\\doctrine\\": "admin/src/doctrine",
-      "cms\\oauth2\\": "admin/src/oauth2",
       "cms\\doctrine\\model\\": "admin/src/doctrine/model",
       "cms\\doctrine\\repository\\": "admin/src/doctrine/repository",
       "controller\\": "src/controller",

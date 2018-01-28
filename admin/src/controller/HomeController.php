@@ -23,23 +23,6 @@ class HomeController extends Admin
     /** @var  ArticleRepository */
     private $articleRepository;
 
-    /**
-     * HomeController constructor.
-     * @param View $view
-     * @param Session $session
-     * @param Router $router
-     * @param UserRepository $userRepository
-     * @param ArticleCategoryRepository $articleCategoryRepository
-     * @param ArticleRepository $articleRepository
-     */
-    public function __construct(View $view, Session $session, Router $router, UserRepository $userRepository
-
-    )
-    {
-        parent::__construct($view,$session,$router,$userRepository);
-  /*      $this->articleCategoryRepository = $articleCategoryRepository;
-        $this->articleRepository = $articleRepository;*/
-    }
 
     public function index(ServerRequestInterface $request)
 

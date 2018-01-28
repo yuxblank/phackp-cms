@@ -1,8 +1,18 @@
-<?php return
+<?php
+
+return
     [
         'routes' => [
 
             'GET' => [
+
+                [
+                    'url' => '/admin/authentication/verify/{access_token}',
+                    'method' => 'verifyToken',
+                    'class' => cms\controller\AuthController::class
+
+                ],
+
                 [
                     'url' => '/admin/login',
                     'class' => cms\controller\AuthController::class,
@@ -55,6 +65,11 @@
             ],
 
             'POST' => [
+                [
+                    'url' => '/admin/auth/login',
+                    'method' => 'getToken',
+                    'class' =>  cms\controller\AuthController::class,
+                ],
                 [
                     'url' => '/admin/auth',
                     'class' => cms\controller\AuthController::class,
