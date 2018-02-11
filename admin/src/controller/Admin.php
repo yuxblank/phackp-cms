@@ -62,15 +62,15 @@ abstract class Admin extends Controller
         try {
             $this->serverRequest = $this->server->validateAuthenticatedRequest($this->serverRequest);
         } catch (OAuthServerException $e) {
-             Response::error(401);
+             // todo Response::error(401);
         }
 
-        $this->controlHeader = new \stdClass();
+      /*  $this->controlHeader = new \stdClass();
         if ($this->loadUser() === null) {
             $this->keep('success', 'Devi prima autenticarti');
             exit($this->router->switchAction('admin/login'));
         }
-        $this->buildMenu();
+        $this->buildMenu();*/
     }
 
     public function onAfter()

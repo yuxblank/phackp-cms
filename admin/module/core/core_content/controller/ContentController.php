@@ -5,11 +5,13 @@
  * Date: 25/06/2017
  * Time: 20:55
  */
+
 namespace core\core_content\controller;
 
 use cms\controller\Admin;
 use cms\doctrine\repository\UserRepository;
 use cms\library\crud\CrudController;
+use cms\library\crud\Response;
 use cms\library\StringUtils;
 use cms\model\Item;
 use cms\overrides\View;
@@ -18,6 +20,7 @@ use core\core_content\database\repository\ArticleCategoryRepository;
 use core\core_content\database\repository\ArticleRepository;
 use DI\Annotation\Inject;
 use Doctrine\ORM\Persisters\PersisterException;
+use League\OAuth2\Server\ResourceServer;
 use yuxblank\phackp\core\Session;
 use yuxblank\phackp\http\api\ServerRequestInterface;
 use yuxblank\phackp\routing\api\Router;
@@ -46,9 +49,9 @@ class ContentController extends Admin implements CrudController
      * @param ArticleCategoryRepository $articleCategoryRepository
      * @param StringUtils $stringUtils
      */
-    public function __construct(View $view, Session $session, Router $router, UserRepository $userRepository, ArticleRepository $articleRepository, ArticleCategoryRepository $articleCategoryRepository, StringUtils $stringUtils)
+    public function __construct(View $view, Session $session, Router $router, UserRepository $userRepository, ArticleRepository $articleRepository, ArticleCategoryRepository $articleCategoryRepository, StringUtils $stringUtils, ResourceServer $server, ServerRequestInterface $serverRequest)
     {
-        parent::__construct($view, $session, $router, $userRepository);
+        parent::__construct($view, $session, $router, $userRepository, $server, $serverRequest);
         $this->stringUtils = $stringUtils;
         $this->articleRepository = $articleRepository;
         $this->articleCategoryRepository = $articleCategoryRepository;
@@ -112,7 +115,7 @@ class ContentController extends Admin implements CrudController
                    }*/
 
                 // do new save
-            } else if ($article->getTitle() !== null && $article->getContent() !== null && $article->getStatus() !== null && $article->getCategories()   !== null) {
+            } else if ($article->getTitle() !== null && $article->getContent() !== null && $article->getStatus() !== null && $article->getCategories() !== null) {
 
                 $article->setDateCreated(new \DateTime());
 
@@ -147,26 +150,29 @@ class ContentController extends Admin implements CrudController
         if ($id) {
             $article = $this->articleRepository->find($id);
             if ($article) {
-                $this->view->renderArgs("item", $article);
+   /*             $this->view->renderArgs("item", $article);*/
+                return Response::ok($article)->build();
             } else {
-                $this->keep("warning", "Nessun elemento trovato");
+              /*  $this->keep("warning", "Nessun elemento trovato");*/
+                return Response::error(503)->build();
             }
-            $this->view->renderArgs("categories", $this->articleRepository->getCategories());
+         /*   $this->view->renderArgs("categories", $this->articleRepository->getCategories());
             $this->controlHeader->save = "#";
             $this->view->renderArgs("states", $this->states);
             $this->view->renderArgs('controlHeader', $this->controlHeader);
-            $this->view->render("/admin/content/new");
+            $this->view->render("/admin/content/new");*/
         } else {
-            $user = $this->loadUser();
-            if ($user->isSuperUser()) {
-                $this->view->renderArgs('articles', $this->articleRepository->findAll());
-            } else if ($this->loadUser()->isAdmin()) {
-                $this->view->renderArgs('items', $this->articleRepository->getUserArticles($user));
-            }
-            $this->controlHeader->new = $this->router->link('admin/content/new');
-            $this->controlHeader->delete = true;
-            $this->view->renderArgs('controlHeader', $this->controlHeader);
-            $this->view->render("/admin/content/index");
+            /*            $user = $this->loadUser();
+                        if ($user->isSuperUser()) {*/
+            /*        $this->view->renderArgs('articles', $this->articleRepository->findAll());*/
+            /* } else if ($this->loadUser()->isAdmin()) {
+                 $this->view->renderArgs('items', $this->articleRepository->getUserArticles($user));
+             }*/
+            /*  $this->controlHeader->new = $this->router->link('admin/content/new');
+              $this->controlHeader->delete = true;
+              $this->view->renderArgs('controlHeader', $this->controlHeader);
+              $this->view->render("/admin/content/index");*/
+            return Response::ok($this->articleRepository->findAll())->build();
         }
 
     }
@@ -196,7 +202,7 @@ class ContentController extends Admin implements CrudController
 
                 $ItemFind = new Item();
 
-                    $ItemFind = $ItemFind->findById($id);
+                $ItemFind = $ItemFind->findById($id);
 
 
                 if ($User->isAuthorized($ItemFind->user()->role)) {

@@ -12,12 +12,13 @@ use cms\doctrine\BaseEntity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * @ORM\Entity @ORM\Table(name="article")
  * Class Article
  */
-class Article extends BaseEntity
+class Article extends BaseEntity implements JsonSerializable
 {
     /**
      * @ORM\Id @ORM\Column(type="integer",name="id") @ORM\GeneratedValue
@@ -200,6 +201,20 @@ class Article extends BaseEntity
     public function setAlias($alias)
     {
         $this->alias = $alias;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'title' => $this->getTitle(),
+            'alias' => $this->getAlias(),
+            'categories' => $this->getCategories(),
+            'content' => html_entity_decode($this->getContent()),
+            'user' => $this->getUser(),
+            'meta_title' => $this->getMetaTitle(),
+            'meta_tags' => $this->getMetaTags(),
+            'status' => $this->getStatus()
+        ];
     }
 
 

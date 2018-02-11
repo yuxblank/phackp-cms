@@ -16,8 +16,7 @@ use cms\library\crud\CrudResult;
 use cms\module\core\core_menu\database\repository\MenuRepository;
 use cms\overrides\View;
 use core\core_menu\database\entity\Menu;
-use Doctrine\ORM\NonUniqueResultException;
-use Doctrine\ORM\NoResultException;
+use League\OAuth2\Server\ResourceServer;
 use yuxblank\phackp\core\Session;
 use yuxblank\phackp\http\api\ServerRequestInterface;
 use yuxblank\phackp\routing\api\Router;
@@ -27,9 +26,9 @@ abstract class BaseMenuController extends Admin implements CrudController
 
     protected $menuRepository;
 
-    public function __construct(View $view, Session $session, Router $router, UserRepository $userRepository, MenuRepository $menuRepository)
+    public function __construct(View $view, Session $session, Router $router, UserRepository $userRepository, MenuRepository $menuRepository, ResourceServer $resourceServer, ServerRequestInterface $serverRequest)
     {
-        parent::__construct($view, $session, $router, $userRepository);
+        parent::__construct($view, $session, $router, $userRepository, $resourceServer, $serverRequest);
         $this->menuRepository = $menuRepository;
     }
 

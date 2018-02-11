@@ -1,0 +1,6 @@
+GET {{host}}/admin/menu
+Content-Type: application/json
+Authorization: {{token}}
+Cookie: {{xdebug}}
+
+###

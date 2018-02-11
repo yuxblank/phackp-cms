@@ -9,6 +9,7 @@ namespace core\core_content\controller;
 
 
 use cms\doctrine\repository\UserRepository;
+use cms\library\crud\Response;
 use cms\library\StringUtils;
 use cms\overrides\View;
 use core\core_content\database\repository\ArticleCategoryRepository;
@@ -23,19 +24,6 @@ use Zend\Diactoros\Response\JsonResponse;
 class CategoriesController extends BaseCategoryController
 {
 
-    /**
-     * CategoriesController constructor.
-     * @param View $view
-     * @param Session $session
-     * @param Router $router
-     * @param StringUtils $stringUtils
-     * @param UserRepository $userRepository
-     * @param \core\core_content\controller\ArticleCategoryRepository $articleCategoryRepository
-     */
-    public function __construct(View $view, Session $session, Router $router, StringUtils $stringUtils, UserRepository $userRepository, ArticleCategoryRepository $articleCategoryRepository)
-    {
-        parent::__construct($view, $session, $router, $stringUtils, $userRepository, $articleCategoryRepository);
-    }
 
 
     public function create(ServerRequestInterface $serverRequest)
@@ -68,18 +56,21 @@ class CategoriesController extends BaseCategoryController
         $result = parent::read($serverRequest);
 
         if ($result->offsetExists('article.category')){
-            $this->view->renderArgs("category", $result->offsetGet('article.category'));
+     /*       $this->view->renderArgs("category", $result->offsetGet('article.category'));
             $this->controlHeader->save = "#";
             $this->view->renderArgs('controlHeader', $this->controlHeader);
-            $this->view->render("/admin/content/newCategory");
+            $this->view->render("/admin/content/newCategory");*/
+            return Response::ok($result->offsetGet('article.category'))->build();
         } else if ($result->offsetExists('article.categories')){
-            $this->controlHeader->new = $this->router->link('admin/category/new');
+/*            $this->controlHeader->new = $this->router->link('admin/category/new');
             $this->controlHeader->delete = true;
             $this->view->renderArgs('controlHeader', $this->controlHeader);
             $this->view->renderArgs('categories', $result->offsetGet('article.categories'));
-            $this->view->render("/admin/content/categories");
+            $this->view->render("/admin/content/categories");*/
+            return Response::ok($result->offsetGet('article.categories'))->build();
         } else {
-            $this->keep("warning", "Nessun elemento trovato");
+/*            $this->keep("warning", "Nessun elemento trovato");*/
+            return Response::error(503)->build();
         }
     }
 
