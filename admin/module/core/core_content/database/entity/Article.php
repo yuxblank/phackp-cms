@@ -51,7 +51,7 @@ class Article extends BaseEntity implements JsonSerializable
      * @ORM\JoinTable(
      *     name="article_categories",
      *     joinColumns= {@ORM\JoinColumn(name="article_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="article_category_id", referencedColumnName="id", unique=true)}
+     *     inverseJoinColumns={@ORM\JoinColumn(name="article_category_id", referencedColumnName="id")}
      *  )
      * @var Collection
      */
@@ -149,7 +149,7 @@ class Article extends BaseEntity implements JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return Collection
      */
     public function getCategories()
     {
@@ -157,9 +157,9 @@ class Article extends BaseEntity implements JsonSerializable
     }
 
     /**
-     * @param mixed $categories
+     * @param Collection $categories
      */
-    public function setCategories($categories)
+    public function setCategories(Collection $categories)
     {
         $this->categories = $categories;
     }
@@ -174,7 +174,7 @@ class Article extends BaseEntity implements JsonSerializable
     /**
      * @return User
      */
-    public function getUser(): User
+    public function getUser()
     {
         return $this->user;
     }
@@ -206,10 +206,11 @@ class Article extends BaseEntity implements JsonSerializable
     public function jsonSerialize()
     {
         return [
+            'id' => $this->getId(),
             'title' => $this->getTitle(),
             'alias' => $this->getAlias(),
-            'categories' => $this->getCategories(),
-            'content' => html_entity_decode($this->getContent()),
+            'categories' => $this->getCategories()->getValues(),
+            'content' => htmlspecialchars_decode($this->getContent()),
             'user' => $this->getUser(),
             'meta_title' => $this->getMetaTitle(),
             'meta_tags' => $this->getMetaTags(),

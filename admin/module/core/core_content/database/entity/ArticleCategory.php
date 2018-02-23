@@ -13,7 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity @ORM\Table(name="article_category")
  * Class Article
- * @package cms\doctrine\model
  */
 class ArticleCategory extends BaseEntity implements \JsonSerializable
 {
@@ -102,8 +101,9 @@ class ArticleCategory extends BaseEntity implements \JsonSerializable
     public function jsonSerialize()
     {
         return [
+            'id' => $this->getId(),
             'title' => $this->getTitle(),
-            'content' => html_entity_decode($this->getContent()),
+            'content' => htmlspecialchars_decode($this->getContent()),
             'date_created' => $this->getDateCreated(),
             'date_updated' => $this->getDateUpdated(),
             'meta_tags' => $this->getMetaTags(),

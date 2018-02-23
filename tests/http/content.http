@@ -1,0 +1,8 @@
+POST {{host}}/admin/content/save
+Content-Type: application/json
+Authorization: {{token}}
+Cookie: {{xdebug}}
+
+{"title":"Test","content":"<p>Test</p>\n","categories":[{"id": 1,"title":"TEST1","content":"This is my textarea to be replaced with CKEditor.\r\n","date_created":null,"date_updated":null,"meta_tags":"","alias":"test1"}],"status":0,"meta_description":"test","meta_tags":"test1"}
+
+###
