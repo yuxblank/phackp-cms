@@ -25,10 +25,16 @@ return [
             'alias' => 'content.create'
         ],
         [
-            'url' => '/admin/content/edit/{id}',
+            'url' => '/admin/content/{id}',
             'class' => ContentController::class,
             'method' => 'read',
             'alias' => 'content.edit'
+        ],
+        [
+            'url' => '/admin/api/articles',
+            'class' => \cms\module\core\core_content\controller\ContentApi::class,
+            'method' => 'getArticles',
+            'alias' => 'api.articles'
         ],
         /**
          * Categories
@@ -51,17 +57,18 @@ return [
             'method' => 'read',
             'alias' => 'category.edit'
         ],
+        [
+            'url' => '/admin/api/categories',
+            'class' => \cms\module\core\core_content\controller\ContentApi::class,
+            'method' => 'getCategories',
+            'alias' => 'api.categories'
+        ],
     ],
     'POST' => [
         [
-            'url' => '/admin/content/save',
+            'url' => '/admin/content',
             'class' => ContentController::class,
             'method' => 'create',
-        ],
-        [
-            'url' => '/admin/content/delete',
-            'class' => ContentController::class,
-            'method' => 'delete',
         ],
         /**
          * Categories
@@ -74,6 +81,20 @@ return [
         [
             'url' => '/admin/category/delete',
             'class' => CategoriesController::class,
+            'method' => 'delete',
+        ],
+    ],
+    'PUT' => [
+        [
+            'url' => '/admin/content',
+            'class' => ContentController::class,
+            'method' => 'update',
+        ],
+    ],
+    'DELETE' => [
+        [
+            'url' => '/admin/content/{id}',
+            'class' => ContentController::class,
             'method' => 'delete',
         ],
     ]

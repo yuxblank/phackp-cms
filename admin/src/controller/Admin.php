@@ -62,15 +62,8 @@ abstract class Admin extends Controller
         try {
             $this->serverRequest = $this->server->validateAuthenticatedRequest($this->serverRequest);
         } catch (OAuthServerException $e) {
-             // todo Response::error(401);
+             return Response::error(401, "Not authorized!")->build();
         }
-
-      /*  $this->controlHeader = new \stdClass();
-        if ($this->loadUser() === null) {
-            $this->keep('success', 'Devi prima autenticarti');
-            exit($this->router->switchAction('admin/login'));
-        }
-        $this->buildMenu();*/
     }
 
     public function onAfter()
@@ -86,7 +79,7 @@ abstract class Admin extends Controller
      */
     public function loadUser()
     {
-        $user = $this->session->getValue('user');
+        $user = $this->serverRequest->getAttribute("oauth_user_id");
         if ($user) {
             return $this->userRepository->findUser($user);
         }

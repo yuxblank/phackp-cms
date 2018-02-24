@@ -54,19 +54,9 @@ class CategoriesController extends BaseCategoryController
     {
 
         $result = parent::read($serverRequest);
-
         if ($result->offsetExists('article.category')){
-     /*       $this->view->renderArgs("category", $result->offsetGet('article.category'));
-            $this->controlHeader->save = "#";
-            $this->view->renderArgs('controlHeader', $this->controlHeader);
-            $this->view->render("/admin/content/newCategory");*/
             return Response::ok($result->offsetGet('article.category'))->build();
         } else if ($result->offsetExists('article.categories')){
-/*            $this->controlHeader->new = $this->router->link('admin/category/new');
-            $this->controlHeader->delete = true;
-            $this->view->renderArgs('controlHeader', $this->controlHeader);
-            $this->view->renderArgs('categories', $result->offsetGet('article.categories'));
-            $this->view->render("/admin/content/categories");*/
             return Response::ok($result->offsetGet('article.categories'))->build();
         } else {
 /*            $this->keep("warning", "Nessun elemento trovato");*/

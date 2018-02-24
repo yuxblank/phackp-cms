@@ -59,4 +59,11 @@ class ArticleCategoryRepository extends EntityRepository
             ->setParameters(array('ids' => $ids))
             ->execute();
     }
+
+    public function getCategoriesFrom(int $from, int $max){
+        return $this->_em->createQuery("SELECT u FROM " . ArticleCategory::class ." u")
+            ->setFirstResult($from)
+            ->setMaxResults($max)
+            ->getResult();
+    }
 }

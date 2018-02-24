@@ -8,20 +8,18 @@
 
 namespace core\core_content\controller;
 
-use Ardent\Collection\Collection;
 use cms\controller\Admin;
 use cms\doctrine\repository\UserRepository;
 use cms\library\crud\CrudController;
 use cms\library\crud\Response;
 use cms\library\StringUtils;
-use cms\model\Item;
 use cms\overrides\View;
 use core\core_content\database\entity\Article;
-use core\core_content\database\entity\ArticleCategory;
 use core\core_content\database\repository\ArticleCategoryRepository;
 use core\core_content\database\repository\ArticleRepository;
 use DI\Annotation\Inject;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\Persisters\PersisterException;
 use League\OAuth2\Server\ResourceServer;
 use yuxblank\phackp\core\Session;
@@ -76,9 +74,9 @@ class ContentController extends Admin implements CrudController
         try {
             $this->articleRepository->save($article);
         } catch (PersisterException $exception) {
-            $this->keep('danger', "Un errore ha impedito il salvataggio");
-            $this->router->switchAction('admin/content');
-            return Response::error(503)->build();
+            return Response::error(503, $exception->getTrace())->build();
+        } catch (OptimisticLockException $e) {
+            return Response::error(503, $e->getTrace())->build();
         }
         return Response::ok($article)->build();
     }
@@ -90,28 +88,11 @@ class ContentController extends Admin implements CrudController
         if ($id) {
             $article = $this->articleRepository->find($id);
             if ($article) {
-                /*             $this->view->renderArgs("item", $article);*/
                 return Response::ok($article)->build();
             } else {
-                /*  $this->keep("warning", "Nessun elemento trovato");*/
                 return Response::error(503)->build();
             }
-            /*   $this->view->renderArgs("categories", $this->articleRepository->getCategories());
-               $this->controlHeader->save = "#";
-               $this->view->renderArgs("states", $this->states);
-               $this->view->renderArgs('controlHeader', $this->controlHeader);
-               $this->view->render("/admin/content/new");*/
         } else {
-            /*            $user = $this->loadUser();
-                        if ($user->isSuperUser()) {*/
-            /*        $this->view->renderArgs('articles', $this->articleRepository->findAll());*/
-            /* } else if ($this->loadUser()->isAdmin()) {
-                 $this->view->renderArgs('items', $this->articleRepository->getUserArticles($user));
-             }*/
-            /*  $this->controlHeader->new = $this->router->link('admin/content/new');
-              $this->controlHeader->delete = true;
-              $this->view->renderArgs('controlHeader', $this->controlHeader);
-              $this->view->render("/admin/content/index");*/
             return Response::ok($this->articleRepository->findAll())->build();
         }
 
@@ -130,6 +111,8 @@ class ContentController extends Admin implements CrudController
                 $this->articleRepository->update($article);
             } catch (PersisterException $exception) {
                 return Response::error(503)->build();
+            } catch (OptimisticLockException $e) {
+                return Response::error(503)->build();
             }
 
         }
@@ -139,42 +122,16 @@ class ContentController extends Admin implements CrudController
     public
     function delete(ServerRequestInterface $serverRequest)
     {
-        $User = $this->loadUser();
-
-        $ids = $serverRequest->getQueryParams()['ids'];
-
-        $Item = new item();
-
-        $deleted = 0;
-
-        if ($ids !== null && count($ids) > 0) {
-
-
-            foreach ($ids as $id) {
-
-
-                $ItemFind = new Item();
-
-                $ItemFind = $ItemFind->findById($id);
-
-
-                if ($User->isAuthorized($ItemFind->user()->role)) {
-
-                    $Item->delete($id);
-
-                    $deleted++;
-
-                } else {
-
-                    echo 'Non hai permessi sufficenti per cancellare questo elemento: ' . $ItemFind->title . '<br>';
-
-                }
-
+        if ($serverRequest->getPathParams()) {
+            try {
+                $articleId = (int)$serverRequest->getPathParams()['id'];
+                $article = $this->articleRepository->find($articleId);
+                $this->articleRepository->delete($article);
+            } catch (PersisterException $exception) {
+                return Response::error(503, $exception)->build();
             }
-
         }
-
-        echo $deleted;
+        return Response::ok()->build();
     }
 
 
@@ -190,7 +147,7 @@ class ContentController extends Admin implements CrudController
 
         $article->setTitle(strip_tags(filter_var($serverRequest->getParsedBody()['title'], FILTER_SANITIZE_STRING)));
         $article->setContent(htmlspecialchars($serverRequest->getParsedBody()['content']));
-        $article->setStatus($serverRequest->getParsedBody()['status']);
+        $article->setStatus((int)$serverRequest->getParsedBody()['status']);
 
 
         $categories = $serverRequest->getParsedBody()['categories'];
@@ -207,7 +164,7 @@ class ContentController extends Admin implements CrudController
         $article->setMetaDesc(strip_tags($serverRequest->getParsedBody()['meta_description']));
         $article->setMetaTags(strip_tags($serverRequest->getParsedBody()['meta_tags']));
         $article->setMetaTitle($article->getTitle());
-/*        $article->setUser($this->loadUser());*/
+        $article->setUser($this->loadUser());
         $article->setAlias($this->stringUtils->toAscii(filter_var($serverRequest->getParsedBody()['title'], FILTER_SANITIZE_STRING)));
         return $article;
     }

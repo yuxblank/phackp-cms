@@ -1,4 +1,4 @@
-POST {{host}}/admin/content/save
+POST {{host}}/admin/content
 Content-Type: application/json
 Authorization: {{token}}
 Cookie: {{xdebug}}

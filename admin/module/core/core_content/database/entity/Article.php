@@ -59,7 +59,7 @@ class Article extends BaseEntity implements JsonSerializable
     /**
      * @ORM\ManyToOne (targetEntity="cms\doctrine\model\User", fetch="EAGER")
      * @ORM\JoinTable(name="user")
-     * @ORM\JoinColumn(name="user_id")
+     * @ORM\JoinColumn(name="user_id",nullable=false)
      * @var User
      */
     protected $user;

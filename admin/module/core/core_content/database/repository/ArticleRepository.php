@@ -73,7 +73,6 @@ class ArticleRepository extends EntityRepository
     public function save(Article $article)
     {
         $this->_em->persist($article);
-        $this->_em->flush($article);
     }
 
     /**
@@ -84,7 +83,17 @@ class ArticleRepository extends EntityRepository
     public function update(Article $article)
     {
         $this->_em->merge($article);
-        $this->_em->flush($article);
+    }
+
+    public function delete(Article $article){
+        $this->_em->remove($article);
+    }
+
+    public function getArticlesFrom(int $from, int $max) {
+        return $this->_em->createQuery("SELECT a FROM  " . Article::class . ' a')
+            ->setFirstResult($from)
+            ->setMaxResults($max)
+            ->getResult();
     }
 
 
