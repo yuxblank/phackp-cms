@@ -1,4 +1,4 @@
-POST {{host}}/admin/authentication/token
+POST {{host}}/admin/auth/login
 Cookie: XDEBUG_SESSION=PHPSTORM
 Content-Type: application/json
 

@@ -15,6 +15,7 @@ return [
                 'user'     => 'root',
                 'password' => 'muska88',
                 'dbname'   => 'phackpcms',
-            ]
+            ],
+        'transaction' => \yuxblank\phackp\database\driver\DoctrineDriver::CONTAINER_MANAGED
     ]
 ];

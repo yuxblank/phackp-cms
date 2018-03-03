@@ -41,6 +41,16 @@ class BaseEntity
     }
 
     /**
+     * @param int $id
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
+
+
+    /**
      * @return \DateTime|null
      */
     public function getDateCreated()

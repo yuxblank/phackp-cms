@@ -8,6 +8,7 @@
     "psr-4": {
       "core\\core_content\\" : "core/core_content/",
       "core\\core_content\\controller\\" : "core/core_content/controller/",
+      "core\\core_content\\factory\\" : "core/core_content/factory/",
       "core\\core_content\\database\\entity\\" : "core/core_content/database/entity/",
       "core\\core_content\\database\\repository\\" : "core/core_content/database/repository/"
     }

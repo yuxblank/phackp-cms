@@ -9,13 +9,17 @@
 namespace cms\controller;
 
 
+use cms\library\crud\Response;
 use cms\overrides\View;
+use DI\Annotation\Inject;
 use yuxblank\phackp\core\Controller;
 
 class Errors extends Controller
 {
 
     private $view;
+    /** @Inject("app.globals") */
+    private $appConfig;
 
     /**
      * Errors constructor.
@@ -38,10 +42,13 @@ class Errors extends Controller
     }
 
 
-    public function error($throwable){
+    public function error(\Throwable $throwable){
 
-        $this->view->renderArgs('exceptions', $throwable);
-        $this->view->render('error/500');
+        $isDev = $this->appConfig['APP_MODE'] === 'DEV';
+
+        return Response::error(500, (($isDev) ? $throwable->getMessage() : "error"))->build();
+        /*$this->view->renderArgs('exceptions', $throwable);
+        $this->view->render('error/500');*/
     }
 
 }

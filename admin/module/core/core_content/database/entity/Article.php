@@ -26,7 +26,7 @@ class Article extends BaseEntity implements JsonSerializable
      */
     protected $id;
     /**
-     * @ORM\Column (name="title", type="string")
+     * @ORM\Column (name="title", type="string", unique=true)
      */
     protected $title;
     /**
@@ -168,7 +168,9 @@ class Article extends BaseEntity implements JsonSerializable
         if ($this->categories===null){
             $this->categories = new ArrayCollection();
         }
-        $this->categories->add($category);
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+        }
     }
 
     /**

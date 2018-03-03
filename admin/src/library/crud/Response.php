@@ -26,44 +26,49 @@ class Response
         $this->status = $status;
     }
 
-    public static function ok($data = [], int $status=200)
+    public static function ok($data = [], int $status = 200)
     {
-        if (self::$instance === null){
-            self::$instance = new Response($data,$status);
-        } else {
-            throw new InvocationException("Response object was already created");
-        }
+
+        self::$instance = new Response(['result' => $data ], $status);
         return self::$instance;
     }
 
     public static function error(int $status, $data = [])
     {
-        if (self::$instance === null){
-            self::$instance = new Response($data, $status);
-        }
+
+        self::$instance = new Response(['error' => $data], $status);
+
         return self::$instance;
     }
 
 
-    public function status(int $status){
+    public function status(int $status)
+    {
         $this->status = $status;
     }
 
-    public function withHeaders(array $headers){
+    public function withHeaders(array $headers)
+    {
         $this->headers = $headers;
     }
-    public function addHeader(string $header){
+
+    public function addHeader(string $header)
+    {
         $this->headers[] = $header;
     }
-    public function options(int $options){
+
+    public function options(int $options)
+    {
         $this->options = $options;
     }
+
+    /**
+     * @return JsonResponse
+     * @throws \InvalidArgumentException
+     */
     public function build(): JsonResponse
     {
-        return new JsonResponse($result = array(
-            'result' => $this->data
-        )
-            , $this->status,$this->headers, $this->options);
+        return new JsonResponse($result = $this->data, $this->status, $this->headers, $this->options);
     }
 
 

@@ -13,15 +13,17 @@ use cms\doctrine\repository\UserRepository;
 use cms\library\crud\CrudController;
 use cms\library\crud\Response;
 use cms\library\StringUtils;
+use cms\module\core\core_content\factory\ContentFactory;
 use cms\overrides\View;
-use core\core_content\database\entity\Article;
 use core\core_content\database\repository\ArticleCategoryRepository;
 use core\core_content\database\repository\ArticleRepository;
 use DI\Annotation\Inject;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMInvalidArgumentException;
 use Doctrine\ORM\Persisters\PersisterException;
 use League\OAuth2\Server\ResourceServer;
+use UnexpectedValueException;
 use yuxblank\phackp\core\Session;
 use yuxblank\phackp\http\api\ServerRequestInterface;
 use yuxblank\phackp\routing\api\Router;
@@ -60,24 +62,27 @@ class ContentController extends Admin implements CrudController
 
 
     /**
-     * Todo refactor to use update instead of create
      * @param ServerRequestInterface $serverRequest
-     * @throws \Doctrine\ORM\Persisters\PersisterException
+     * @return \Zend\Diactoros\Response\JsonResponse
+     * @throws OptimisticLockException
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function create(ServerRequestInterface $serverRequest)
     {
-        $article = $this->parseContentRequest($serverRequest);
+        $article = ContentFactory::ArticleFactory($serverRequest->getParsedBody(), $this->loadUser());
         // check authorization todo ACL
+        $categories = new ArrayCollection();
+        foreach ($article->getCategories() as $category){
+            $categories->add($this->articleCategoryRepository->find($category->getId()));
+        }
+        $article->setCategories($categories);
         /*            if ($user->isAuthorized($ItemLoad->find($article->getId())->user()->role)) {*/
         $article->date_edit = new \DateTime();
         // do update
-        try {
-            $this->articleRepository->save($article);
-        } catch (PersisterException $exception) {
-            return Response::error(503, $exception->getTrace())->build();
-        } catch (OptimisticLockException $e) {
-            return Response::error(503, $e->getTrace())->build();
-        }
+
+        $this->articleRepository->save($article);
+
         return Response::ok($article)->build();
     }
 
@@ -98,10 +103,9 @@ class ContentController extends Admin implements CrudController
 
     }
 
-    public
-    function update(ServerRequestInterface $serverRequest)
+    public function update(ServerRequestInterface $serverRequest)
     {
-        $article = $this->parseContentRequest($serverRequest);
+        $article = ContentFactory::ArticleFactory($serverRequest->getParsedBody(), $this->loadUser());
         if ($article->getId() !== null && ($article->getTitle() !== null && $article->getContent() !== null && $article->getStatus() !== null && $article->getCategories() !== null)) {
             // check authorization todo ACL
             /*            if ($user->isAuthorized($ItemLoad->find($article->getId())->user()->role)) {*/
@@ -133,41 +137,5 @@ class ContentController extends Admin implements CrudController
         }
         return Response::ok()->build();
     }
-
-
-    protected function parseContentRequest(ServerRequestInterface $serverRequest): Article
-    {
-
-        $article = new Article();
-
-        if ($serverRequest->getParsedBody()['id'] !== null && $serverRequest->getParsedBody()['id'] !== '') {
-            $id = filter_var($serverRequest->getParsedBody()['id'], FILTER_SANITIZE_NUMBER_INT);
-            $article = $this->articleRepository->find($id);
-        }
-
-        $article->setTitle(strip_tags(filter_var($serverRequest->getParsedBody()['title'], FILTER_SANITIZE_STRING)));
-        $article->setContent(htmlspecialchars($serverRequest->getParsedBody()['content']));
-        $article->setStatus((int)$serverRequest->getParsedBody()['status']);
-
-
-        $categories = $serverRequest->getParsedBody()['categories'];
-/*        $category = $this->articleCategoryRepository->find($categoryId['id']);*/
-
-        $fetchedCats= new ArrayCollection();
-        foreach ($categories as $category){
-            $fetchedCats->add($this->articleCategoryRepository->find($category['id']));
-        }
-
-
-        $article->setCategories($fetchedCats);
-
-        $article->setMetaDesc(strip_tags($serverRequest->getParsedBody()['meta_description']));
-        $article->setMetaTags(strip_tags($serverRequest->getParsedBody()['meta_tags']));
-        $article->setMetaTitle($article->getTitle());
-        $article->setUser($this->loadUser());
-        $article->setAlias($this->stringUtils->toAscii(filter_var($serverRequest->getParsedBody()['title'], FILTER_SANITIZE_STRING)));
-        return $article;
-    }
-
 
 }

@@ -31,7 +31,7 @@ return [
          * App status
          */
 
-        "APP_MODE" => "PRO",
+        "APP_MODE" => "DEV",
 
         'OFFLINE' => false,
 

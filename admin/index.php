@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 $app->bootstrap(__DIR__);
 $app->container()->set(\cms\library\module\ModuleWire::class, new \cms\library\module\ModuleWire());
+//$app->registerService(\yuxblank\phackp\services\ErrorHandlerProvider::class,true);
 try {
     /** @var \cms\library\module\ModuleWire $moduleWire */
     $moduleWire = $app->container()->make(\cms\library\module\ModuleWire::class);
