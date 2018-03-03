@@ -18,7 +18,9 @@ class ContentFactory
 
     public static function ArticleFactory(array $values, User $user):Article{
         $article = new Article();
-        $article->setId(null ?? ((int)$values['id']));
+        if (array_key_exists('id', $values)){
+            $article->setId((int)$values['id']);
+        }
         $article->setTitle(null ?? filter_var($values['title'], FILTER_SANITIZE_STRING));
         $article->setContent(null ?? htmlspecialchars($values['content']));
         $article->setMetaDesc(null ?? filter_var($values['meta_description'], FILTER_SANITIZE_STRING));
@@ -39,7 +41,9 @@ class ContentFactory
     }
     public static function ArticleCategoryFactory(array $values):ArticleCategory{
         $articleCategory = new ArticleCategory();
-        $articleCategory->setId(null ?? ((int)$values['id']));
+        if (array_key_exists('id', $values)){
+            $articleCategory->setId((int)$values['id']);
+        }
         $articleCategory->setTitle(null ?? $values['title']);
         $articleCategory->setContent(null ?? $values['content']);
         $articleCategory->setMetaTags(null ?? $values['meta_tags']);

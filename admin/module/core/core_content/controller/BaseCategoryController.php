@@ -119,10 +119,10 @@ abstract class BaseCategoryController extends Admin
     public function delete(ServerRequestInterface $serverRequest)
     {
         $crudResult = new CrudResult();
-        $ids = $serverRequest->getQueryParams()['ids'];
-        if ($ids !== null && count($ids) > 0) {
-            $crudResult->offsetSet('removed.categories', $this->articleCategoryRepository->deleteArticles($ids));
-        }
+        $id = (int) $serverRequest->getPathParams()['id'];
+        $category = $this->articleCategoryRepository->find($id);
+        $crudResult->offsetSet('removed.categories', $this->articleCategoryRepository->delete($category));
+
         return $crudResult;
     }
 

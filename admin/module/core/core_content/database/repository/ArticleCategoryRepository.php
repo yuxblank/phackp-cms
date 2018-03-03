@@ -34,7 +34,7 @@ class ArticleCategoryRepository extends EntityRepository
      */
     public function save(ArticleCategory $articleCategory){
         $this->_em->persist($articleCategory);
-        $this->_em->flush($articleCategory);
+
         return $articleCategory;
     }
 
@@ -46,15 +46,18 @@ class ArticleCategoryRepository extends EntityRepository
      */
     public function update(ArticleCategory $articleCategory){
         $this->_em->merge($articleCategory);
-        $this->_em->flush($articleCategory);
         return $articleCategory;
+    }
+
+    public function delete(ArticleCategory $category) {
+        $this->_em->remove($category);
     }
 
     /**
      * @param array $ids
      * @return mixed
      */
-    public function deleteArticles(array $ids){
+    public function deleteCategories(array $ids){
         return $this->_em->createQuery("DELETE FROM " . ArticleCategory::class ." u WHERE u.id IN (:ids)")
             ->setParameters(array('ids' => $ids))
             ->execute();

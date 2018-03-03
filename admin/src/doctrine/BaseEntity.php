@@ -98,6 +98,15 @@ class BaseEntity
         $this->status = $status;
     }
 
+    /** @ORM\PrePersist */
+    public function prePersist(){
+        $this->dateCreated = new \DateTime();
+    }
+    /** @ORM\PreUpdate */
+    public function preUpdate(){
+        $this->dateUpdated = new \DateTime();
+    }
+
 
 
 }

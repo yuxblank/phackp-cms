@@ -52,7 +52,7 @@ return [
             'alias' => 'category.create'
         ],
         [
-            'url' => '/admin/category/edit/{id}',
+            'url' => '/admin/category/{id}',
             'class' => CategoriesController::class,
             'method' => 'read',
             'alias' => 'category.edit'
@@ -78,11 +78,6 @@ return [
             'class' => CategoriesController::class,
             'method' => 'create',
         ],
-        [
-            'url' => '/admin/category/delete',
-            'class' => CategoriesController::class,
-            'method' => 'delete',
-        ],
     ],
     'PUT' => [
         [
@@ -95,6 +90,11 @@ return [
         [
             'url' => '/admin/content/{id}',
             'class' => ContentController::class,
+            'method' => 'delete',
+        ],
+        [
+            'url' => '/admin/category/{id}',
+            'class' => CategoriesController::class,
             'method' => 'delete',
         ],
     ]

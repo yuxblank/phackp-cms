@@ -20,10 +20,8 @@ use core\core_content\database\repository\ArticleRepository;
 use DI\Annotation\Inject;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\ORMInvalidArgumentException;
 use Doctrine\ORM\Persisters\PersisterException;
 use League\OAuth2\Server\ResourceServer;
-use UnexpectedValueException;
 use yuxblank\phackp\core\Session;
 use yuxblank\phackp\http\api\ServerRequestInterface;
 use yuxblank\phackp\routing\api\Router;
@@ -73,7 +71,7 @@ class ContentController extends Admin implements CrudController
         $article = ContentFactory::ArticleFactory($serverRequest->getParsedBody(), $this->loadUser());
         // check authorization todo ACL
         $categories = new ArrayCollection();
-        foreach ($article->getCategories() as $category){
+        foreach ($article->getCategories() as $category) {
             $categories->add($this->articleCategoryRepository->find($category->getId()));
         }
         $article->setCategories($categories);
@@ -95,7 +93,7 @@ class ContentController extends Admin implements CrudController
             if ($article) {
                 return Response::ok($article)->build();
             } else {
-                return Response::error(503)->build();
+                return Response::error(400)->build();
             }
         } else {
             return Response::ok($this->articleRepository->findAll())->build();
@@ -106,20 +104,16 @@ class ContentController extends Admin implements CrudController
     public function update(ServerRequestInterface $serverRequest)
     {
         $article = ContentFactory::ArticleFactory($serverRequest->getParsedBody(), $this->loadUser());
-        if ($article->getId() !== null && ($article->getTitle() !== null && $article->getContent() !== null && $article->getStatus() !== null && $article->getCategories() !== null)) {
-            // check authorization todo ACL
-            /*            if ($user->isAuthorized($ItemLoad->find($article->getId())->user()->role)) {*/
-            $article->date_edit = new \DateTime();
-            // do update
-            try {
-                $this->articleRepository->update($article);
-            } catch (PersisterException $exception) {
-                return Response::error(503)->build();
-            } catch (OptimisticLockException $e) {
-                return Response::error(503)->build();
-            }
 
+        if ($article->getId()=== null){
+            return Response::error(400, "Article does not exist")->build();
         }
+        if($article->getCategories() === null) {
+            return Response::error(400, "No category has been choosen for the article")->build();
+        }
+
+        $this->articleRepository->update($article);
+
         return Response::ok($article)->build();
     }
 

@@ -220,5 +220,4 @@ class Article extends BaseEntity implements JsonSerializable
         ];
     }
 
-
 }

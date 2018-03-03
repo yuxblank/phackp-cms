@@ -25,6 +25,15 @@ class ArticleCategory extends BaseEntity implements \JsonSerializable
      * @ORM\Column (name="content", type="text")
      */
     protected $content;
+
+    /**
+     * @ORM\Column (name="meta_title", type="string")
+     */
+    protected $meta_title;
+    /**
+     * @ORM\Column (name="meta_desc", type="string")
+     */
+    protected $meta_desc;
     /**
      * @ORM\Column (name="meta_tags", type="string")
      */
@@ -67,6 +76,39 @@ class ArticleCategory extends BaseEntity implements \JsonSerializable
     }
 
     /**
+     * @return mixed
+     */
+    public function getMetaTitle()
+    {
+        return $this->meta_title;
+    }
+
+    /**
+     * @param mixed $meta_title
+     */
+    public function setMetaTitle($meta_title)
+    {
+        $this->meta_title = $meta_title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMetaDesc()
+    {
+        return $this->meta_desc;
+    }
+
+    /**
+     * @param mixed $meta_desc
+     */
+    public function setMetaDesc($meta_desc)
+    {
+        $this->meta_desc = $meta_desc;
+    }
+
+
+    /**
      * @return string
      */
     public function getMetaTags()
@@ -106,6 +148,8 @@ class ArticleCategory extends BaseEntity implements \JsonSerializable
             'content' => htmlspecialchars_decode($this->getContent()),
             'date_created' => $this->getDateCreated(),
             'date_updated' => $this->getDateUpdated(),
+            'meta_title' => $this->getMetaTitle(),
+            'meta_descr' => $this->getMetaDesc(),
             'meta_tags' => $this->getMetaTags(),
             'alias' => $this->getAlias()
         ];

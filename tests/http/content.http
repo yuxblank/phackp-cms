@@ -6,3 +6,20 @@ Cookie: {{xdebug}}
 {"title":"Test","content":"<p>Test</p>\n","categories":[{"id": 1,"title":"TEST1","content":"This is my textarea to be replaced with CKEditor.\r\n","date_created":null,"date_updated":null,"meta_tags":"","alias":"test1"}],"status":0,"meta_description":"test","meta_tags":"test1"}
 
 ###
+
+PUT {{host}}/admin/content
+Content-Type: application/json
+Authorization: {{token}}
+Cookie: {{xdebug}}
+
+{"title":"Test","content":"<p>Test</p>\n","categories":[{"id": 1,"title":"TEST1","content":"This is my textarea to be replaced with CKEditor.\r\n","date_created":null,"date_updated":null,"meta_tags":"","alias":"test1"}],"status":0,"meta_description":"test","meta_tags":"test1"}
+
+###
+PUT {{host}}/admin/content
+Content-Type: application/json
+Authorization: {{token}}
+Cookie: {{xdebug}}
+
+{"id":2,"title":"Test 2","content":"<p>Test</p>\n","meta_tags":"test1","meta_title":"Test","alias":"test"}
+
+###
