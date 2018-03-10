@@ -82,7 +82,7 @@ class ArticleRepository extends EntityRepository
      */
     public function update(Article $article)
     {
-        $this->_em->merge($article);
+        return $this->_em->merge($article);
     }
 
     public function delete(Article $article){

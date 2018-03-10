@@ -46,12 +46,6 @@ return [
             'alias' => 'category.list'
         ],
         [
-            'url' => '/admin/category/new',
-            'class' => CategoriesController::class,
-            'method' => 'create',
-            'alias' => 'category.create'
-        ],
-        [
             'url' => '/admin/category/{id}',
             'class' => CategoriesController::class,
             'method' => 'read',
@@ -74,7 +68,7 @@ return [
          * Categories
          */
         [
-            'url' => '/admin/category/save',
+            'url' => '/admin/category',
             'class' => CategoriesController::class,
             'method' => 'create',
         ],
@@ -83,6 +77,11 @@ return [
         [
             'url' => '/admin/content',
             'class' => ContentController::class,
+            'method' => 'update',
+        ],
+        [
+            'url' => '/admin/category',
+            'class' => CategoriesController::class,
             'method' => 'update',
         ],
     ],

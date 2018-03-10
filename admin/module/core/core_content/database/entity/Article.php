@@ -30,24 +30,24 @@ class Article extends BaseEntity implements JsonSerializable
      */
     protected $title;
     /**
-     * @ORM\Column (name="content", type="text")
+     * @ORM\Column (name="content", type="text",nullable=false)
      */
     protected $content;
     /**
-     * @ORM\Column (name="meta_title", type="string")
+     * @ORM\Column (name="meta_title", type="string",nullable=true)
      */
     protected $meta_title;
     /**
-     * @ORM\Column (name="meta_desc", type="string")
+     * @ORM\Column (name="meta_desc", type="string",nullable=true)
      */
     protected $meta_desc;
     /**
-     * @ORM\Column (name="meta_tags", type="string")
+     * @ORM\Column (name="meta_tags", type="string", nullable=true)
      */
     protected $meta_tags;
 
     /**
-     * @ORM\ManyToMany (targetEntity="ArticleCategory", fetch="EAGER")
+     * @ORM\ManyToMany (targetEntity="ArticleCategory", fetch="EAGER", orphanRemoval=true, cascade={"merge"})
      * @ORM\JoinTable(
      *     name="article_categories",
      *     joinColumns= {@ORM\JoinColumn(name="article_id", referencedColumnName="id")},
@@ -67,6 +67,16 @@ class Article extends BaseEntity implements JsonSerializable
      * @ORM\Column (name="alias", type="string")
      */
     protected $alias;
+
+    /**
+     * Article constructor.
+     * @param int $id
+     */
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
+
 
     /**
      * @return mixed
@@ -161,13 +171,11 @@ class Article extends BaseEntity implements JsonSerializable
      */
     public function setCategories(Collection $categories)
     {
-        $this->categories = $categories;
+        $this->categories->clear();
+        $this->categories = new ArrayCollection($categories->getValues());
     }
 
     public function addCategory(ArticleCategory $category){
-        if ($this->categories===null){
-            $this->categories = new ArrayCollection();
-        }
         if (!$this->categories->contains($category)) {
             $this->categories->add($category);
         }

@@ -23,3 +23,20 @@ Cookie: {{xdebug}}
 {"id":2,"title":"Test 2","content":"<p>Test</p>\n","meta_tags":"test1","meta_title":"Test","alias":"test"}
 
 ###
+
+PUT {{host}}/admin/content
+Content-Type: application/json
+Authorization: {{token}}
+Cookie: {{xdebug}}
+
+{"id":45,"title":"tres","content":"","meta_tags":"asd","meta_title":"","alias":"","categories":[{"id":1,"title":"TEST1","content":"This is my textarea to be replaced with CKEditor.\r\n","date_created":null,"date_updated":null,"meta_title":"","meta_descr":"","meta_tags":"","alias":"test1"},{"id":2,"title":"TEST2","content":"sdf","date_created":null,"date_updated":null,"meta_title":"aewaq","meta_descr":"asd","meta_tags":"qwe","alias":"test2"}]}
+
+###
+
+GET {{host}}/admin/categories?active=1
+Content-Type: application/json
+Authorization: {{token}}
+Cookie: {{xdebug}}
+
+
+###

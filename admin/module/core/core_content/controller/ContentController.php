@@ -112,7 +112,7 @@ class ContentController extends Admin implements CrudController
             return Response::error(400, "No category has been choosen for the article")->build();
         }
 
-        $this->articleRepository->update($article);
+       $article = $this->articleRepository->update($article);
 
         return Response::ok($article)->build();
     }

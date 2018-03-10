@@ -77,7 +77,12 @@ abstract class BaseCategoryController extends Admin
             $cat = $this->articleCategoryRepository->find($id);
             $crudResult->offsetSet('article.category', $cat);
         } else {
-            $crudResult->offsetSet('article.categories', $this->articleCategoryRepository->findAll());
+            if (!$serverRequest->getQueryParams()) {
+                $crudResult->offsetSet('article.categories', $this->articleCategoryRepository->findAll());
+            }
+            else {
+                $crudResult->offsetSet('article.categories', $this->articleCategoryRepository->findBy($serverRequest->getQueryParams()));
+            }
         }
         return $crudResult;
     }

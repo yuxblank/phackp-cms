@@ -18,28 +18,28 @@ class ArticleCategory extends BaseEntity implements \JsonSerializable
 {
 
     /**
-     * @ORM\Column (name="title", type="string")
+     * @ORM\Column (name="title", type="string",nullable=false, unique=true)
      */
     protected $title;
     /**
-     * @ORM\Column (name="content", type="text")
+     * @ORM\Column (name="content", type="text",nullable=true)
      */
     protected $content;
 
     /**
-     * @ORM\Column (name="meta_title", type="string")
+     * @ORM\Column (name="meta_title", type="string",nullable=true)
      */
     protected $meta_title;
     /**
-     * @ORM\Column (name="meta_desc", type="string")
+     * @ORM\Column (name="meta_desc", type="string",nullable=true)
      */
     protected $meta_desc;
     /**
-     * @ORM\Column (name="meta_tags", type="string")
+     * @ORM\Column (name="meta_tags", type="string",nullable=true)
      */
     protected $meta_tags;
     /**
-     * @ORM\Column (name="alias", type="string")
+     * @ORM\Column (name="alias", type="string",nullable=true)
      */
     protected $alias;
 
@@ -151,7 +151,8 @@ class ArticleCategory extends BaseEntity implements \JsonSerializable
             'meta_title' => $this->getMetaTitle(),
             'meta_descr' => $this->getMetaDesc(),
             'meta_tags' => $this->getMetaTags(),
-            'alias' => $this->getAlias()
+            'alias' => $this->getAlias(),
+            'status' => $this->getStatus()
         ];
     }
 

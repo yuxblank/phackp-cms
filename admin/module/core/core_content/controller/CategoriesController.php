@@ -5,12 +5,14 @@
  * Date: 25/06/2017
  * Time: 21:16
  */
+
 namespace core\core_content\controller;
 
 
 use cms\doctrine\repository\UserRepository;
 use cms\library\crud\Response;
 use cms\library\StringUtils;
+use cms\module\core\core_content\factory\ContentFactory;
 use cms\overrides\View;
 use core\core_content\database\repository\ArticleCategoryRepository;
 use Doctrine\ORM\OptimisticLockException;
@@ -23,7 +25,6 @@ use Zend\Diactoros\Response\JsonResponse;
 
 class CategoriesController extends BaseCategoryController
 {
-
 
 
     public function create(ServerRequestInterface $serverRequest)
@@ -54,27 +55,23 @@ class CategoriesController extends BaseCategoryController
     {
 
         $result = parent::read($serverRequest);
-        if ($result->offsetExists('article.category')){
+        if ($result->offsetExists('article.category')) {
             return Response::ok($result->offsetGet('article.category'))->build();
-        } else if ($result->offsetExists('article.categories')){
+        } else if ($result->offsetExists('article.categories')) {
             return Response::ok($result->offsetGet('article.categories'))->build();
         } else {
-/*            $this->keep("warning", "Nessun elemento trovato");*/
+            /*            $this->keep("warning", "Nessun elemento trovato");*/
             return Response::error(503)->build();
         }
     }
 
     public function update(ServerRequestInterface $serverRequest)
     {
-        $result = null;
-        try {
-            $result = parent::update($serverRequest);
-            if ($result->offsetExists('article.category')){
-                $this->router->_switchAction('category.list');
-            }
-        } catch (OptimisticLockException $e) {
 
-        }
+        $category = ContentFactory::ArticleCategoryFactory($serverRequest->getParsedBody());
+        $category = $this->articleCategoryRepository->update($category);
+        return Response::ok($category)->build();
+
     }
 
     public function delete(ServerRequestInterface $serverRequest)
