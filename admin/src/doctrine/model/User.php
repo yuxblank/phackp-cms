@@ -1,6 +1,7 @@
 <?php
 namespace cms\doctrine\model;
 use cms\doctrine\BaseEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use League\OAuth2\Server\Entities\UserEntityInterface;
@@ -11,7 +12,7 @@ use League\OAuth2\Server\Entities\UserEntityInterface;
  * Class User
  * @package cms\doctrine\model
  */
-class User extends BaseEntity implements UserEntityInterface
+class User extends BaseEntity implements UserEntityInterface, \JsonSerializable
 {
     /**
      * @ORM\Column (name="username",type="string", length=255, nullable=false,unique=true)
@@ -31,15 +32,21 @@ class User extends BaseEntity implements UserEntityInterface
     protected $password;
 
     /**
-     * @ORM\ManyToMany (targetEntity="UserRole", fetch="EAGER")
+     * @ORM\ManyToMany (targetEntity="UserRole", fetch="EAGER", orphanRemoval=true)
      * @ORM\JoinTable(
      *     name="user_roles",
      *     joinColumns= {@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="user_role_id", referencedColumnName="id", unique=true)}
+     *     inverseJoinColumns={@ORM\JoinColumn(name="user_role_id", referencedColumnName="id")}
      *  )
      * @var Collection
      */
     protected $roles;
+
+
+    public function __construct()
+    {
+        $this->roles = new ArrayCollection();
+    }
 
 
     /**
@@ -78,7 +85,7 @@ class User extends BaseEntity implements UserEntityInterface
     /**
      * @return string
      */
-    public function getPassword(): string
+    public function getPassword()
     {
         return $this->password;
     }
@@ -100,9 +107,19 @@ class User extends BaseEntity implements UserEntityInterface
     /**
      * @param UserRole $role
      */
-    public function setRole(UserRole $role)
+    public function addRole(UserRole $role)
     {
-        $this->roles[] = $role;
+        if (!$this->roles->contains($role)) {
+            $this->roles->add($role);
+        }
+    }
+
+    public function setRoles(Collection $roles)
+    {
+        $this->roles->clear();
+        foreach ($roles as $role){
+            $this->roles->add($role);
+        }
     }
 
     public function isCustomer(): bool
@@ -143,6 +160,17 @@ class User extends BaseEntity implements UserEntityInterface
     public function getIdentifier()
     {
         return $this;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'username' => $this->getUsername(),
+            'email' => $this->getEmail(),
+            'roles' => $this->getRoles()->getValues(),
+            'status' => $this->getStatus()
+        ];
     }
 
 

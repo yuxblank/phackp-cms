@@ -1,0 +1,22 @@
+GET {{host}}/admin/user
+Content-Type: application/json
+Authorization: {{token}}
+Cookie: {{xdebug}}
+
+###
+
+GET {{host}}/admin/user/1
+Content-Type: application/json
+Authorization: {{token}}
+Cookie: {{xdebug}}
+
+###
+
+PUT {{host}}/admin/user
+Content-Type: application/json
+Authorization: {{token}}
+Cookie: {{xdebug}}
+
+{"id":2,"username":"TEST","email":"test@email.com","roles":[],"status":0}
+
+###

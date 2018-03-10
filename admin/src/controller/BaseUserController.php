@@ -14,6 +14,7 @@ use cms\doctrine\repository\UserRoleRepository;
 use cms\library\crud\CrudResult;
 use cms\overrides\View;
 use Doctrine\ORM\Persisters\PersisterException;
+use League\OAuth2\Server\ResourceServer;
 use yuxblank\phackp\core\Session;
 use yuxblank\phackp\http\api\ServerRequestInterface;
 use yuxblank\phackp\routing\api\Router;
@@ -32,9 +33,9 @@ abstract class BaseUserController extends Admin
      * @param Router $router
      * @internal param UserRoleServices $userRoleServices
      */
-    public function __construct(UserRepository $userRepository, UserRoleRepository $userRoleRepository, View $view, Session $session, Router $router)
+    public function __construct(UserRepository $userRepository, UserRoleRepository $userRoleRepository,ResourceServer $resourceServer, View $view, Session $session, Router $router, ServerRequestInterface $serverRequest)
     {
-        parent::__construct($view, $session, $router, $userRepository);
+        parent::__construct($view, $session, $router, $userRepository,$resourceServer, $serverRequest);
         $this->userRoleRepository = $userRoleRepository;
     }
 
@@ -76,13 +77,11 @@ abstract class BaseUserController extends Admin
         $crudResult = new CrudResult();
         if ($serverRequest->getPathParams()) {
             $id = filter_var($serverRequest->getPathParams()['id'], FILTER_SANITIZE_NUMBER_INT);
-            $crudResult->offsetSet('rolesList', $this->userRoleRepository->findAll());
             $crudResult->offsetSet('user', $this->userRepository->find($id));
             return $crudResult;
         }
 
         $crudResult->offsetSet('users', $this->userRepository->findAll());
-        $crudResult->offsetSet('rolesList', $this->userRoleRepository->findAll());
 
         return $crudResult;
     }

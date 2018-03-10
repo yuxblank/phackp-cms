@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class UserRole
  * @package cms\doctrine\model
  */
-class UserRole extends BaseEntity
+class UserRole extends BaseEntity implements \JsonSerializable
 {
 
     const CUSTOMER = 'customer';
@@ -68,8 +68,15 @@ class UserRole extends BaseEntity
         $this->level = $level;
     }
 
-
-
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'title' => $this->getTitle(),
+            'level' => $this->getLevel(),
+            'status' => $this->getStatus()
+        ];
+    }
 
 
 }

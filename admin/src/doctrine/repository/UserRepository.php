@@ -204,5 +204,14 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
         throw new NoResultException();
     }
 
+    public function save(User $user){
+        $password = $this->bcrypt->create($user->getPassword());
+        $user->setPassword($password);
+        $this->_em->persist($user);
+    }
+    public function update(User $user){
+        return $this->_em->merge($user);
+    }
+
 
 }

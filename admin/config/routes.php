@@ -41,13 +41,7 @@ return
                     'alias' => 'user.list'
                 ],
                 [
-                    'url' => '/admin/user/new',
-                    'class' => cms\controller\UserController::class,
-                    'method' => 'create',
-                    'alias' => 'user.create'
-                ],
-                [
-                    'url' => '/admin/user/edit/{id}',
+                    'url' => '/admin/user/{id}',
                     'class' => cms\controller\UserController::class,
                     'method' => 'read',
                     'alias' => 'user.edit'
@@ -61,6 +55,14 @@ return
                     'url' => 'clienti',
                     'class' => cms\controller\Admin::class,
                     'method' => 'customers'
+                ],
+
+                /** Roles */
+                [
+                    'url' => '/admin/roles',
+                    'class' => cms\controller\RolesController::class,
+                    'method' => 'read',
+                    'alias' => 'roles.list'
                 ],
             ],
 
@@ -76,7 +78,7 @@ return
                     'method' => 'authenticate',
                 ],
                 [
-                    'url' => '/admin/user/save',
+                    'url' => '/admin/user',
                     'class' => cms\controller\UserController::class,
                     'method' => 'create',
                     'alias' => 'user.save'
@@ -99,6 +101,12 @@ return
                 ],
             ],
             'PUT' => [
+                [
+                    'url' => '/admin/user',
+                    'class' => cms\controller\UserController::class,
+                    'method' => 'update',
+                    'alias' => 'user.update'
+                ],
             ],
 
             'PATCH' => [
