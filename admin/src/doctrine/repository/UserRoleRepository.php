@@ -33,5 +33,8 @@ class UserRoleRepository extends EntityRepository
             ->getResult();
     }
 
+    public function update(UserRole $role){
+        return $this->_em->merge($role);
+    }
 
 }

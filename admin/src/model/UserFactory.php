@@ -36,7 +36,7 @@ class UserFactory
         $role = new \cms\doctrine\model\UserRole();
         $role->setId($params['id'] ? (int) $params['id'] : null);
         $role->setStatus((int) $params['status']);
-        $role->setTitle($params['title'] ? filter_var($params['tile'], FILTER_SANITIZE_STRING) : null);
+        $role->setTitle($params['title'] ? filter_var($params['title'], FILTER_SANITIZE_STRING) : null);
         $role->setLevel($params['level'] !== null ? (int)$params['level'] : null);
         return $role;
     }

@@ -9,8 +9,10 @@
 namespace cms\controller;
 
 
+use cms\doctrine\model\User;
 use cms\library\crud\Response;
 use cms\model\UserFactory;
+use Doctrine\Common\Collections\ArrayCollection;
 use yuxblank\phackp\http\api\ServerRequestInterface;
 use Zend\Diactoros\Response\JsonResponse;
 
@@ -46,8 +48,17 @@ class UserController extends BaseUserController
 
         $user = UserFactory::userFactory($this->serverRequest->getParsedBody());
 
+        /** @var User $storedUser */
+        $storedUser = $this->userRepository->findOneBy(['id' => $user->getId()]);
+        $storedUser->setStatus($user->getStatus());
+        $storedUser->setEmail($user->getEmail());
 
-        $user = $this->userRepository->update($user);
+        $roles = new ArrayCollection();
+        foreach ($user->getRoles() as $role){
+            $roles->add($this->userRoleRepository->findOneBy(['id' => $role->getId()]));
+        }
+        $storedUser->setRoles($roles);
+        $user = $this->userRepository->update($storedUser);
 
         return Response::ok($user)->build();
 

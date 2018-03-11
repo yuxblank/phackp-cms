@@ -20,3 +20,12 @@ Cookie: {{xdebug}}
 {"id":2,"username":"TEST","email":"test@email.com","roles":[],"status":0}
 
 ###
+
+PUT {{host}}/admin/user
+Content-Type: application/json
+Authorization: {{token}}
+Cookie: {{xdebug}}
+
+{"id":2,"username":"TEST","email":"test@email.com","roles":[{"id":1,"title":"superuser","level":0,"status":1}],"status":0}
+
+###

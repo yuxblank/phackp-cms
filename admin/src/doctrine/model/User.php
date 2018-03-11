@@ -32,7 +32,7 @@ class User extends BaseEntity implements UserEntityInterface, \JsonSerializable
     protected $password;
 
     /**
-     * @ORM\ManyToMany (targetEntity="UserRole", fetch="EAGER", orphanRemoval=true)
+     * @ORM\ManyToMany (targetEntity="UserRole", fetch="EAGER")
      * @ORM\JoinTable(
      *     name="user_roles",
      *     joinColumns= {@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
@@ -117,7 +117,7 @@ class User extends BaseEntity implements UserEntityInterface, \JsonSerializable
     public function setRoles(Collection $roles)
     {
         $this->roles->clear();
-        foreach ($roles as $role){
+        foreach ($roles->getValues() as $role){
             $this->roles->add($role);
         }
     }
