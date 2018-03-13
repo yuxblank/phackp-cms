@@ -58,7 +58,6 @@ abstract class Admin extends Controller
 
     public function onBefore()
     {
-        // todo Handle Oauth Validation
         try {
             $this->serverRequest = $this->server->validateAuthenticatedRequest($this->serverRequest);
         } catch (OAuthServerException $e) {
@@ -81,7 +80,7 @@ abstract class Admin extends Controller
     {
         $user = $this->serverRequest->getAttribute("oauth_user_id");
         if ($user) {
-            return $this->userRepository->findUser($user);
+            return $this->userRepository->find($user);
         }
     }
 

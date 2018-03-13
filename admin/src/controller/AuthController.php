@@ -17,6 +17,7 @@ use Doctrine\ORM\NoResultException;
 use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Exception\OAuthServerException;
 use League\OAuth2\Server\Grant\PasswordGrant;
+use League\OAuth2\Server\Grant\RefreshTokenGrant;
 use yuxblank\phackp\core\Controller;
 use yuxblank\phackp\core\Session;
 use yuxblank\phackp\http\api\ServerRequestInterface;
@@ -50,6 +51,7 @@ class AuthController extends Controller
         $this->server = $authAuthorizationServer;
         $this->accessTokenRepository = $accessTokenRepository;
         $this->server->enableGrantType(new PasswordGrant($userRepository, $refreshTokenRepository));
+        $this->server->enableGrantType(new RefreshTokenGrant($refreshTokenRepository));
         $this->userRepository = $userRepository;
         $this->accessTokenRepository = $accessTokenRepository;
     }
@@ -129,5 +131,7 @@ class AuthController extends Controller
         }
         return \cms\library\crud\Response::ok(['access_token' => $response->getCodeChallenge()])->build();
     }
+
+
 
 }

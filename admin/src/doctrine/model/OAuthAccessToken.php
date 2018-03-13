@@ -29,9 +29,8 @@ class OAuthAccessToken extends BaseEntity implements AccessTokenEntityInterface
     protected $identifier;
 
 
-    /** @ORM\ManyToOne(targetEntity="User", fetch="EAGER")
-     * @ORM\JoinColumn(fieldName="id")
-     * @var User
+    /** @ORM\Column(name="user_id")
+     * @var int
      */
     protected $user;
     /** @ORM\Column(name="expires", type="datetime", nullable=false) */
@@ -112,7 +111,7 @@ class OAuthAccessToken extends BaseEntity implements AccessTokenEntityInterface
      */
     public function getUserIdentifier()
     {
-        return $this->user->getUsername();
+        return $this->user;
     }
 
     /**

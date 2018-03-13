@@ -12,7 +12,6 @@ return
                     'class' => cms\controller\AuthController::class
 
                 ],
-
                 [
                     'url' => '/admin/login',
                     'class' => cms\controller\AuthController::class,

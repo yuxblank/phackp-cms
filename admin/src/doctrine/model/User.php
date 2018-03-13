@@ -159,7 +159,7 @@ class User extends BaseEntity implements UserEntityInterface, \JsonSerializable
 
     public function getIdentifier()
     {
-        return $this;
+        return $this->getId();
     }
 
     public function jsonSerialize()
