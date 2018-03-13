@@ -31,7 +31,7 @@ class UserRole extends BaseEntity implements \JsonSerializable
      */
     protected $title;
     /**
-     * @ORM\Column(type="integer",name="level")
+     * @ORM\Column(type="integer",name="level", unique=true)
      * @var int
      */
     protected $level;

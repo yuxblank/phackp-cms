@@ -9,10 +9,12 @@
 namespace cms\controller;
 
 
+use cms\doctrine\model\UserRole;
 use cms\doctrine\repository\UserRepository;
 use cms\doctrine\repository\UserRoleRepository;
 use cms\library\crud\CrudController;
 use cms\library\crud\Response;
+use cms\model\UserFactory;
 use cms\overrides\View;
 use League\OAuth2\Server\ResourceServer;
 use yuxblank\phackp\core\Session;
@@ -36,13 +38,19 @@ class RolesController extends Admin implements CrudController
 
     public function create(ServerRequestInterface $serverRequest)
     {
-        // TODO: Implement create() method.
+        $role = UserFactory::roleFactory(new UserRole(), $serverRequest->getParsedBody());
+        $this->userRoleRepository->save($role);
+        return Response::ok($role)->build();
     }
 
     public function read(ServerRequestInterface $serverRequest)
     {
         if ($this->serverRequest->getPathParams()){
 
+            $role = $this->userRoleRepository->find($this->serverRequest->getPathParams()['id']);
+            if ($role) {
+                return Response::ok($role)->build();
+            }
         }
 
         $roles = $this->userRoleRepository->findAll();
@@ -51,11 +59,24 @@ class RolesController extends Admin implements CrudController
 
     public function update(ServerRequestInterface $serverRequest)
     {
-        // TODO: Implement update() method.
+        $role = $this->userRoleRepository->find($serverRequest->getParsedBody()['id']);
+        UserFactory::roleFactory($role, $serverRequest->getParsedBody());
+
+        $this->userRoleRepository->update($role);
+        return Response::ok($role)->build();
+
     }
 
     public function delete(ServerRequestInterface $serverRequest)
     {
-        // TODO: Implement delete() method.
+        $id = (int) $serverRequest->getPathParams()['id'];
+
+        $role = $this->userRoleRepository->find($id);
+
+        $this->userRoleRepository->delete($role);
+
+        return Response::ok($role)->build();
+
+
     }
 }

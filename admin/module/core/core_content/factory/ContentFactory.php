@@ -12,15 +12,12 @@ namespace cms\module\core\core_content\factory;
 use cms\doctrine\model\User;
 use core\core_content\database\entity\Article;
 use core\core_content\database\entity\ArticleCategory;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class ContentFactory
 {
 
-    public static function ArticleFactory(array $values, User $user):Article{
-        $article = new Article();
-        if (array_key_exists('id', $values)){
-            $article->setId((int)$values['id']);
-        }
+    public static function ArticleFactory(Article $article, array $values, User $user):Article{
         $article->setTitle(null ?? filter_var($values['title'], FILTER_SANITIZE_STRING));
         $article->setContent(null ?? htmlspecialchars($values['content']));
         $article->setMetaDesc(null ?? filter_var($values['meta_description'], FILTER_SANITIZE_STRING));
@@ -30,11 +27,13 @@ class ContentFactory
         $article->setStatus(null ?? (int)$values['status']);
         if (array_key_exists('categories',$values)){
 
+            $categories = new ArrayCollection();
             foreach ($values['categories'] as $submittedCats){
 
-                $article->addCategory(self::ArticleCategoryFactory($submittedCats));
+                $categories->add(self::ArticleCategoryFactory($submittedCats));
             }
 
+            $article->setCategories($categories);
         }
         $article->setUser($user);
         return $article;

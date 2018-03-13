@@ -213,6 +213,10 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
         return $this->_em->merge($user);
     }
 
+    public function delete(User $user)
+    {
+        $this->_em->remove($user);
+    }
 
 
 }

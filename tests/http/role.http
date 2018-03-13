@@ -1,0 +1,8 @@
+POST {{host}}/admin/role
+Content-Type: application/json
+Authorization: {{token}}
+Cookie: {{xdebug}}
+
+{"level":0,"title":"new","status":1}
+
+###

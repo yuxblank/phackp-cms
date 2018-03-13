@@ -37,4 +37,18 @@ class UserRoleRepository extends EntityRepository
         return $this->_em->merge($role);
     }
 
+    /**
+     * @param UserRole $role
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function save(UserRole $role)
+    {
+        $this->_em->persist($role);
+    }
+
+    public function delete(UserRole $role)
+    {
+        $this->_em->remove($role);
+    }
+
 }

@@ -59,10 +59,17 @@ return
 
                 /** Roles */
                 [
-                    'url' => '/admin/roles',
+                    'url' => '/admin/role',
                     'class' => cms\controller\RolesController::class,
                     'method' => 'read',
-                    'alias' => 'roles.list'
+                    'alias' => 'role.list'
+                ],
+                /** Roles */
+                [
+                    'url' => '/admin/role/{id}',
+                    'class' => cms\controller\RolesController::class,
+                    'method' => 'read',
+                    'alias' => 'role.edit'
                 ],
             ],
 
@@ -70,7 +77,7 @@ return
                 [
                     'url' => '/admin/auth/login',
                     'method' => 'getToken',
-                    'class' =>  cms\controller\AuthController::class,
+                    'class' => cms\controller\AuthController::class,
                 ],
                 [
                     'url' => '/admin/auth',
@@ -83,10 +90,12 @@ return
                     'method' => 'create',
                     'alias' => 'user.save'
                 ],
+
                 [
-                    'url' => '/admin/user/delete',
-                    'class' => cms\controller\Admin::class,
-                    'method' => 'deleteUser',
+                    'url' => '/admin/role',
+                    'class' => cms\controller\RolesController::class,
+                    'method' => 'create',
+                    'alias' => 'role.create'
                 ],
 
 
@@ -107,12 +116,30 @@ return
                     'method' => 'update',
                     'alias' => 'user.update'
                 ],
+                [
+                    'url' => '/admin/role',
+                    'class' => cms\controller\RolesController::class,
+                    'method' => 'update',
+                    'alias' => 'role.update'
+                ],
             ],
 
             'PATCH' => [
             ],
 
             'DELETE' => [
+                [
+                    'url' => '/admin/user/{id}',
+                    'class' => cms\controller\UserController::class,
+                    'method' => 'delete',
+                    'alias' => 'user.delete'
+                ],
+                [
+                    'url' => '/admin/role/{id}',
+                    'class' => cms\controller\RolesController::class,
+                    'method' => 'delete',
+                    'alias' => 'role.delete'
+                ],
             ],
 
             'HEAD' => [
@@ -125,7 +152,6 @@ return
             /**
              * ERROR is not HTTP. Is used for pHackp error page mapping.
              */
-
 
             'ERROR' => [
                 404 =>

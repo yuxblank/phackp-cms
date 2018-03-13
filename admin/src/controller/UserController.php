@@ -22,18 +22,24 @@ class UserController extends BaseUserController
     public function create(ServerRequestInterface $serverRequest)
     {
 
-      $user = UserFactory::userFactory($this->serverRequest->getParsedBody());
+        $user = UserFactory::userFactory($this->serverRequest->getParsedBody());
 
-      $this->userRepository->save($user);
+        $roles = new ArrayCollection();
+        foreach ($user->getRoles() as $role) {
+            $roles->add($this->userRoleRepository->findOneBy(['id' => $role->getId()]));
+        }
+        $user->setRoles($roles);
 
-      return Response::ok($user)->build();
+        $this->userRepository->save($user);
+
+        return Response::ok($user)->build();
 
 
     }
 
     public function read(ServerRequestInterface $serverRequest)
     {
-        if($this->serverRequest->getPathParams()){
+        if ($this->serverRequest->getPathParams()) {
             $id = $this->serverRequest->getPathParams()['id'] ?? null;
             $user = $this->userRepository->findOneBy(['id' => $id]);
             return Response::ok($user)->build();
@@ -54,7 +60,7 @@ class UserController extends BaseUserController
         $storedUser->setEmail($user->getEmail());
 
         $roles = new ArrayCollection();
-        foreach ($user->getRoles() as $role){
+        foreach ($user->getRoles() as $role) {
             $roles->add($this->userRoleRepository->findOneBy(['id' => $role->getId()]));
         }
         $storedUser->setRoles($roles);
@@ -67,7 +73,10 @@ class UserController extends BaseUserController
 
     public function delete(ServerRequestInterface $serverRequest)
     {
-        return new JsonResponse(['result' => parent::delete($serverRequest)->offsetGet('users.removed')]);
+        $id = (int)$this->serverRequest->getPathParams()['id'];
+        $user = $this->userRepository->find($id);
+        $this->userRepository->delete($user);
+        return Response::ok($user)->build();
     }
 
 

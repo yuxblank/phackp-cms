@@ -15,6 +15,7 @@ use cms\library\crud\Response;
 use cms\library\StringUtils;
 use cms\module\core\core_content\factory\ContentFactory;
 use cms\overrides\View;
+use core\core_content\database\entity\Article;
 use core\core_content\database\repository\ArticleCategoryRepository;
 use core\core_content\database\repository\ArticleRepository;
 use DI\Annotation\Inject;
@@ -68,7 +69,7 @@ class ContentController extends Admin implements CrudController
      */
     public function create(ServerRequestInterface $serverRequest)
     {
-        $article = ContentFactory::ArticleFactory($serverRequest->getParsedBody(), $this->loadUser());
+        $article = ContentFactory::ArticleFactory(new Article(), $serverRequest->getParsedBody(), $this->loadUser());
         // check authorization todo ACL
         $categories = new ArrayCollection();
         foreach ($article->getCategories() as $category) {
@@ -76,7 +77,6 @@ class ContentController extends Admin implements CrudController
         }
         $article->setCategories($categories);
         /*            if ($user->isAuthorized($ItemLoad->find($article->getId())->user()->role)) {*/
-        $article->date_edit = new \DateTime();
         // do update
 
         $this->articleRepository->save($article);
@@ -103,7 +103,10 @@ class ContentController extends Admin implements CrudController
 
     public function update(ServerRequestInterface $serverRequest)
     {
-        $article = ContentFactory::ArticleFactory($serverRequest->getParsedBody(), $this->loadUser());
+        $article = ContentFactory::ArticleFactory(
+            $this->articleRepository->find($serverRequest->getParsedBody()['id']),
+            $serverRequest->getParsedBody(), $this->loadUser()
+        );
 
         if ($article->getId()=== null){
             return Response::error(400, "Article does not exist")->build();
@@ -111,6 +114,13 @@ class ContentController extends Admin implements CrudController
         if($article->getCategories() === null) {
             return Response::error(400, "No category has been choosen for the article")->build();
         }
+
+
+        $articleCats = new ArrayCollection();
+        foreach ($article->getCategories() as $category){
+            $articleCats->add($this->articleCategoryRepository->findOneBy(['id' => $category->getId()]));
+        }
+        $article->setCategories($articleCats);
 
        $article = $this->articleRepository->update($article);
 

@@ -16,6 +16,7 @@ use JsonSerializable;
 
 /**
  * @ORM\Entity @ORM\Table(name="article")
+ * @ORM\HasLifecycleCallbacks()
  * Class Article
  */
 class Article extends BaseEntity implements JsonSerializable
@@ -47,7 +48,7 @@ class Article extends BaseEntity implements JsonSerializable
     protected $meta_tags;
 
     /**
-     * @ORM\ManyToMany (targetEntity="ArticleCategory", fetch="EAGER", orphanRemoval=true, cascade={"merge"})
+     * @ORM\ManyToMany (targetEntity="ArticleCategory", fetch="LAZY",indexBy="id")
      * @ORM\JoinTable(
      *     name="article_categories",
      *     joinColumns= {@ORM\JoinColumn(name="article_id", referencedColumnName="id")},
@@ -172,7 +173,9 @@ class Article extends BaseEntity implements JsonSerializable
     public function setCategories(Collection $categories)
     {
         $this->categories->clear();
-        $this->categories = new ArrayCollection($categories->getValues());
+        foreach ($categories->getValues() as $cat){
+            $this->categories->add($cat);
+        }
     }
 
     public function addCategory(ArticleCategory $category){
@@ -226,6 +229,15 @@ class Article extends BaseEntity implements JsonSerializable
             'meta_tags' => $this->getMetaTags(),
             'status' => $this->getStatus()
         ];
+    }
+
+    /** @ORM\PrePersist */
+    public function prePersist(){
+        $this->dateCreated = new \DateTime();
+    }
+    /** @ORM\PreUpdate */
+    public function preUpdate(){
+        $this->dateUpdated = new \DateTime();
     }
 
 }

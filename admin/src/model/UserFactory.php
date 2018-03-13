@@ -23,7 +23,7 @@ class UserFactory
         }
         if ($params['roles']){
             foreach ($params['roles'] as $role){
-                $user->addRole(self::roleFactory($role));
+                $user->addRole(self::roleFactory(new \cms\doctrine\model\UserRole(),$role));
             }
         }
         if ($params['password']){
@@ -32,9 +32,10 @@ class UserFactory
         return $user;
     }
 
-    public static function roleFactory(array $params):\cms\doctrine\model\UserRole {
-        $role = new \cms\doctrine\model\UserRole();
-        $role->setId($params['id'] ? (int) $params['id'] : null);
+    public static function roleFactory(\cms\doctrine\model\UserRole $role, array $params):\cms\doctrine\model\UserRole {
+        if ($params['id']) {
+            $role->setId((int)$params['id']);
+        }
         $role->setStatus((int) $params['status']);
         $role->setTitle($params['title'] ? filter_var($params['title'], FILTER_SANITIZE_STRING) : null);
         $role->setLevel($params['level'] !== null ? (int)$params['level'] : null);
