@@ -1,6 +1,0 @@
-[
-
-
-  {"action":"Errors@offline", "method":"GET", "url" : "offline"},
-  {"action" : "Errors@page404", "method" : "GET", "url" : "404"}
-]

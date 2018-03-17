@@ -1,1 +1,0 @@
-<h1><b>Oops,</b> pagina non trovata!</h1><p>Questa pagina non esiste oppure non e&grave; piu&grave; disponibile.</p><p><a class="uk-button uk-button-large uk-button-primary" href="<?php echo $this->router->link('/')?>" role="button">Ritorna alla home</a></p>

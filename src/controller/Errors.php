@@ -1,1 +1,57 @@
-<?phpnamespace controller;use Psr\Http\Message\ServerRequestInterface;use yuxblank\phackp\core\Controller;use yuxblank\phackp\core\Application;use yuxblank\phackp\routing\api\Router;use yuxblank\phackp\services\api\ExceptionHandler;use yuxblank\phackp\services\api\ThrowableHandler;use yuxblank\phackp\view\View;/* * Copyright (C) 2015 yuri.blanc * * This program is free software: you can redistribute it and/or modify * it under the terms of the GNU General Public License as published by * the Free Software Foundation, either version 3 of the License, or * (at your option) any later version. * * This program is distributed in the hope that it will be useful, * but WITHOUT ANY WARRANTY; without even the implied warranty of * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the * GNU General Public License for more details. * * You should have received a copy of the GNU General Public License * along with this program.  If not, see <http://www.gnu.org/licenses/>. *//** * Description of Errors * * @author yuri.blanc */class Errors extends Controller implements ExceptionHandler {    protected $view;    protected $router;    /**     * Errors constructor.     * @param View $view     * @param Router $router     */    public function __construct(View $view, Router $router)    {        parent::__construct();        $this->view = $view;        $this->router = $router;    }    public function onBefore()    {        // TODO: Implement onBefore() method.    }    public function onAfter()    {        // TODO: Implement onAfter() method.    }        public function page404 (ServerRequestInterface $serverRequest) {       $this->view->renderArgs("page_title", "Page not found");       $this->view->render("error/404");    }    public function page500($throwable){    }    public function onException(array $throwable)    {        $this->view->renderArgs("page_title", "Error dectected");        $this->view->render("error/500");    }    /**     * @Inject ({"config" = "app.globals"})     */    public function offline($config) {        if ($config['OFFLINE']) {            $this->view->render("error/offline");        } /*else {            $this->router->switchAction('/');        }*/    }}
+<?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: TheCo
+ * Date: 24/06/2017
+ * Time: 18:49
+ */
+
+namespace cms\controller;
+
+
+use cms\library\crud\Response;
+use cms\overrides\View;
+use DI\Annotation\Inject;
+use yuxblank\phackp\core\Controller;
+
+class Errors extends Controller
+{
+
+    private $view;
+    /** @Inject("app.globals") */
+    private $appConfig;
+
+    /**
+     * Errors constructor.
+     * @param View $view
+     */
+    public function __construct(View $view)
+    {
+        parent::__construct();
+        $this->view = $view;
+    }
+
+    public function onBefore()
+    {
+        // TODO: Implement onBefore() method.
+    }
+
+    public function onAfter()
+    {
+        // TODO: Implement onAfter() method.
+    }
+
+    public function page404(){
+        return Response::error(404, "Not found")->build();
+    }
+
+    public function error(\Throwable $throwable){
+
+        $isDev = $this->appConfig['APP_MODE'] === 'DEV';
+
+        return Response::error(500, (($isDev) ? $throwable->getMessage() : "error"))->build();
+        /*$this->view->renderArgs('exceptions', $throwable);
+        $this->view->render('error/500');*/
+    }
+
+}

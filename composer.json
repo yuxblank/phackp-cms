@@ -24,20 +24,16 @@
   },
   "autoload": {
     "psr-4": {
-      "cms\\module\\" : "admin/module",
-      "cms\\controller\\": "admin/src/controller",
-      "cms\\library\\": "admin/src/library",
-      "cms\\library\\crud\\": "admin/src/library/crud",
-      "cms\\library\\ui\\": "admin/src/library/ui",
-      "cms\\library\\module\\": "admin/src/library/module",
-      "cms\\overrides\\": "admin/src/override",
-      "cms\\model\\": "admin/src/model",
-      "cms\\doctrine\\": "admin/src/doctrine",
-      "cms\\doctrine\\model\\": "admin/src/doctrine/model",
-      "cms\\doctrine\\repository\\": "admin/src/doctrine/repository",
-      "controller\\": "src/controller",
-      "model\\": "src/model",
-      "classes\\routing\\" : "src/classes/routing"
+      "cms\\controller\\": "src/controller",
+      "cms\\library\\": "src/library",
+      "cms\\library\\crud\\": "src/library/crud",
+      "cms\\library\\ui\\": "src/library/ui",
+      "cms\\library\\module\\": "src/library/module",
+      "cms\\overrides\\": "src/override",
+      "cms\\model\\": "src/model",
+      "cms\\doctrine\\": "src/doctrine",
+      "cms\\doctrine\\model\\": "src/doctrine/model",
+      "cms\\doctrine\\repository\\": "src/doctrine/repository"
     }
   }
 }

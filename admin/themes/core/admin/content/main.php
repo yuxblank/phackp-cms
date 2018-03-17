@@ -1,1 +1,0 @@
-<?phpuse yuxblank\phackp\core\Application;$url = $APP_URL;$includes = <<<HTML        <script src="{$url}/resource/lachance/js/ckeditor/ckeditor.js"></script>HTML;include_once Application::$ROOT . "/" . $ROOT.'/admin/main.php';
