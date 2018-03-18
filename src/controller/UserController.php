@@ -44,6 +44,10 @@ class UserController extends BaseUserController
             $user = $this->userRepository->findOneBy(['id' => $id]);
             return Response::ok($user)->build();
         }
+        if ($this->serverRequest->getQueryParams()){
+            $user = $this->userRepository->findBy($serverRequest->getQueryParams());
+            return Response::ok($user)->build();
+        }
         $users = $this->userRepository->findAll();
         return Response::ok($users)->build();
 

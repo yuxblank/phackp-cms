@@ -69,7 +69,7 @@ class Article extends BaseEntity implements JsonSerializable
     protected $alias;
 
     /**
-     * @ORM\ManyToMany (targetEntity="Tag", fetch="LAZY",indexBy="id")
+     * @ORM\ManyToMany (targetEntity="Tag", fetch="LAZY",cascade={"all"})
      * @ORM\JoinTable(
      *     name="article_tags",
      *     joinColumns= {@ORM\JoinColumn(name="article_id", referencedColumnName="id")},
@@ -253,6 +253,7 @@ class Article extends BaseEntity implements JsonSerializable
             'alias' => $this->getAlias(),
             'categories' => $this->getCategories()->getValues(),
             'content' => htmlspecialchars_decode($this->getContent()),
+            'tags' => $this->getTags()->getValues(),
             'user' => $this->getUser(),
             'meta_title' => $this->getMetaTitle(),
             'meta_tags' => $this->getMetaTags(),
