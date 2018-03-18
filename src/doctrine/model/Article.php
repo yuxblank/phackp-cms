@@ -69,12 +69,24 @@ class Article extends BaseEntity implements JsonSerializable
     protected $alias;
 
     /**
+     * @ORM\ManyToMany (targetEntity="Tag", fetch="LAZY",indexBy="id")
+     * @ORM\JoinTable(
+     *     name="article_tags",
+     *     joinColumns= {@ORM\JoinColumn(name="article_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}
+     *  )
+     * @var Collection
+     */
+    protected $tags;
+
+    /**
      * Article constructor.
      * @param int $id
      */
     public function __construct()
     {
         $this->categories = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
 
@@ -214,6 +226,24 @@ class Article extends BaseEntity implements JsonSerializable
     {
         $this->alias = $alias;
     }
+
+    /**
+     * @return Collection
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param Collection $tags
+     */
+    public function setTags(Collection $tags)
+    {
+        $this->tags = $tags;
+    }
+
+
 
     public function jsonSerialize()
     {

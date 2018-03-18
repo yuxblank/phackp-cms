@@ -15,6 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity @ORM\Table(name="userrole")
  * Class UserRole
+ * @ORM\HasLifecycleCallbacks()
  * @package cms\doctrine\model
  */
 class UserRole extends BaseEntity implements \JsonSerializable
@@ -76,6 +77,15 @@ class UserRole extends BaseEntity implements \JsonSerializable
             'level' => $this->getLevel(),
             'status' => $this->getStatus()
         ];
+    }
+
+    /** @ORM\PrePersist */
+    public function prePersist(){
+        $this->dateCreated = new \DateTime();
+    }
+    /** @ORM\PreUpdate */
+    public function preUpdate(){
+        $this->dateUpdated = new \DateTime();
     }
 
 

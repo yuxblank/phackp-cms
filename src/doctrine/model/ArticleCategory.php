@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity @ORM\Table(name="article_category")
+ * @ORM\HasLifecycleCallbacks()
  * Class Article
  */
 class ArticleCategory extends BaseEntity implements \JsonSerializable
@@ -154,6 +155,15 @@ class ArticleCategory extends BaseEntity implements \JsonSerializable
             'alias' => $this->getAlias(),
             'status' => $this->getStatus()
         ];
+    }
+
+    /** @ORM\PrePersist */
+    public function prePersist(){
+        $this->dateCreated = new \DateTime();
+    }
+    /** @ORM\PreUpdate */
+    public function preUpdate(){
+        $this->dateUpdated = new \DateTime();
     }
 
 

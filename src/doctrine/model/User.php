@@ -10,6 +10,7 @@ use League\OAuth2\Server\Entities\UserEntityInterface;
 /**
  * @ORM\Entity @ORM\Table(name="user")
  * Class User
+ * @ORM\HasLifecycleCallbacks()
  * @package cms\doctrine\model
  */
 class User extends BaseEntity implements UserEntityInterface, \JsonSerializable
@@ -171,6 +172,15 @@ class User extends BaseEntity implements UserEntityInterface, \JsonSerializable
             'roles' => $this->getRoles()->getValues(),
             'status' => $this->getStatus()
         ];
+    }
+
+    /** @ORM\PrePersist */
+    public function prePersist(){
+        $this->dateCreated = new \DateTime();
+    }
+    /** @ORM\PreUpdate */
+    public function preUpdate(){
+        $this->dateUpdated = new \DateTime();
     }
 
 
