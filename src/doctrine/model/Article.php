@@ -30,6 +30,10 @@ class Article extends BaseEntity implements JsonSerializable
      */
     protected $title;
     /**
+     * @ORM\Column (name="introduction", type="text",nullable=false)
+     */
+    protected $introduction;
+    /**
      * @ORM\Column (name="content", type="text",nullable=false)
      */
     protected $content;
@@ -105,6 +109,23 @@ class Article extends BaseEntity implements JsonSerializable
     {
         $this->title = $title;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getIntroduction()
+    {
+        return $this->introduction;
+    }
+
+    /**
+     * @param mixed $introduction
+     */
+    public function setIntroduction($introduction)
+    {
+        $this->introduction = $introduction;
+    }
+
 
     /**
      * @return mixed
@@ -250,6 +271,7 @@ class Article extends BaseEntity implements JsonSerializable
         return [
             'id' => $this->getId(),
             'title' => $this->getTitle(),
+            'introduction' => $this->getIntroduction(),
             'alias' => $this->getAlias(),
             'categories' => $this->getCategories()->getValues(),
             'content' => htmlspecialchars_decode($this->getContent()),

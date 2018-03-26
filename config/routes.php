@@ -107,6 +107,12 @@ return
                     'method' => 'getArticles',
                     'alias' => 'api.articles'
                 ],
+                [
+                    'url' => '/admin/api/article/{id}',
+                    'class' => \cms\controller\ContentApi::class,
+                    'method' => 'getArticle',
+                    'alias' => 'api.article'
+                ],
                 /**
                  * Categories
                  */

@@ -66,6 +66,12 @@ class ContentApi extends PublicApi
         return Response::ok($articles)->build();
     }
 
+    public function getArticle(){
+        $id = (int) $this->serverRequest->getPathParams()['id'];
+        $article = $this->articleRepository->findOneBy(['id' => $id]);
+        return Response::ok($article)->build();
+    }
+
 
     private function parsePagination() : array {
         $max = (int)filter_var($this->serverRequest->getQueryParams()['results'], FILTER_SANITIZE_NUMBER_INT);
