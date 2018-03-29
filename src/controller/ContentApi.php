@@ -79,4 +79,10 @@ class ContentApi extends PublicApi
         return  ['from' => --$from, 'max' => --$max];
     }
 
+    private function parseArticleFilter() : array {
+        $categories = filter_var($this->serverRequest->getQueryParams()['category'], FILTER_FORCE_ARRAY);
+        $tags       = filter_var($this->serverRequest->getQueryParams()['tag'], FILTER_FORCE_ARRAY);
+        return ['categories' => $categories, 'tags' => $tags];
+    }
+
 }

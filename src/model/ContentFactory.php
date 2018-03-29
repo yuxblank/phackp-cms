@@ -59,6 +59,7 @@ class ContentFactory
         $articleCategory->setMetaTags(null ?? $values['meta_tags']);
         $articleCategory->setAlias(null ?? $values['alias']);
         $articleCategory->setStatus(null ?? (int)$values['status']);
+        $articleCategory->setParent(null ?? (int )$values['parent']);
         return $articleCategory;
     }
 

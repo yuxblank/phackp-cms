@@ -44,6 +44,9 @@ class ArticleCategory extends BaseEntity implements \JsonSerializable
      */
     protected $alias;
 
+    /** @ORM\Column(name="parent_id", type="integer", nullable=true) */
+    protected $parent;
+
     /**
      * @return string
      */
@@ -141,6 +144,24 @@ class ArticleCategory extends BaseEntity implements \JsonSerializable
         $this->alias = $alias;
     }
 
+    /**
+     * @return int|null parent id
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * @param int $parent
+     */
+    public function setParent($parent)
+    {
+        $this->parent = $parent;
+    }
+
+
+
     public function jsonSerialize()
     {
         return [
@@ -153,6 +174,7 @@ class ArticleCategory extends BaseEntity implements \JsonSerializable
             'meta_descr' => $this->getMetaDesc(),
             'meta_tags' => $this->getMetaTags(),
             'alias' => $this->getAlias(),
+            'parent' => $this->getParent(),
             'status' => $this->getStatus()
         ];
     }
