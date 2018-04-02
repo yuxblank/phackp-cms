@@ -97,5 +97,9 @@ class ArticleRepository extends EntityRepository
             ->getResult();
     }
 
+    public function findAllActive(){
+        return $this->findBy(['status' => 1]);
+    }
+
 
 }

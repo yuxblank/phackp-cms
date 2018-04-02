@@ -69,4 +69,8 @@ class ArticleCategoryRepository extends EntityRepository
             ->setMaxResults($max)
             ->getResult();
     }
+
+    public function findAllActive(){
+        return $this->findBy(['status' => 1]);
+    }
 }

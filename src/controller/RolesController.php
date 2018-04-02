@@ -28,10 +28,15 @@ class RolesController extends Admin implements CrudController
 
     /**
      * RolesController constructor.
+     * @param Router $router
+     * @param UserRepository $userRepository
+     * @param ResourceServer $resourceServer
+     * @param ServerRequestInterface $serverRequest
+     * @param UserRoleRepository $userRoleRepository
      */
-    public function __construct(View $view, Session $session, Router $router, UserRepository $userRepository,ResourceServer $resourceServer, ServerRequestInterface $serverRequest, UserRoleRepository $userRoleRepository)
+    public function __construct(Router $router, UserRepository $userRepository,ResourceServer $resourceServer, ServerRequestInterface $serverRequest, UserRoleRepository $userRoleRepository)
     {
-        parent::__construct($view,$session,$router,$userRepository,$resourceServer, $serverRequest);
+        parent::__construct($router,$userRepository,$resourceServer, $serverRequest);
         $this->userRoleRepository = $userRoleRepository;
     }
 

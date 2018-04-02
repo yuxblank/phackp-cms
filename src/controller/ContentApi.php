@@ -38,7 +38,7 @@ class ContentApi extends PublicApi
         $categories = [];
         try {
             if (!$this->serverRequest->getQueryParams()) {
-                $categories = $this->articleCategoryRepository->findAll();
+                $categories = $this->articleCategoryRepository->findAllActive();
             } else {
                 $pagination = $this->parsePagination();
                 $categories = $this->articleCategoryRepository->getCategoriesFrom($pagination['from'], $pagination['max']);
@@ -54,7 +54,7 @@ class ContentApi extends PublicApi
         $articles = [];
         try {
             if (!$this->serverRequest->getPathParams()) {
-                $articles = $this->articleRepository->findAll();
+                $articles = $this->articleRepository->findAllActive();
             } else {
                 $pagination = $this->parsePagination();
                 $articles = $this->articleRepository->getArticlesFrom($pagination['from'], $pagination['max']);
@@ -69,6 +69,9 @@ class ContentApi extends PublicApi
     public function getArticle(){
         $id = (int) $this->serverRequest->getPathParams()['id'];
         $article = $this->articleRepository->findOneBy(['id' => $id]);
+        if (!$article) {
+            return Response::error(404, "No article found for the given identifier")->build();
+        }
         return Response::ok($article)->build();
     }
 

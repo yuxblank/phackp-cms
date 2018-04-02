@@ -5,19 +5,11 @@ namespace cms\controller;
 
 use cms\doctrine\repository\UserRepository;
 use cms\library\crud\Response;
-use cms\model\Banner;
-use cms\model\Category;
-use cms\overrides\View;
-use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Exception\OAuthServerException;
 use League\OAuth2\Server\ResourceServer;
-use SitemapPHP\Sitemap;
-use yuxblank\phackp\core\Application;
 use yuxblank\phackp\core\Controller;
-use yuxblank\phackp\core\Session;
 use yuxblank\phackp\http\api\ServerRequestInterface;
 use yuxblank\phackp\routing\api\Router;
-use Zend\Diactoros\Response\JsonResponse;
 
 /**
  * Description of Admin
@@ -30,7 +22,6 @@ abstract class Admin extends Controller
     const USER_MIN_LEVEL = 1;
 
 
-    protected $view;
     protected $session;
     protected $server;
     protected $serverRequest;
@@ -43,13 +34,11 @@ abstract class Admin extends Controller
     protected $states = array(0 => "Non attivo", 1 => "Pubblicato");
 
 
-    public function __construct(View $view, Session $session, Router $router, UserRepository $userRepository,ResourceServer $resourceServer, ServerRequestInterface $serverRequest)
+    public function __construct(Router $router, UserRepository $userRepository,ResourceServer $resourceServer, ServerRequestInterface $serverRequest)
     {
         parent::__construct();
         $this->serverRequest = $serverRequest;
         $this->server = $resourceServer;
-        $this->view = $view;
-        $this->session = $session;
         $this->router = $router;
         $this->userRepository = $userRepository;
     }
@@ -84,17 +73,6 @@ abstract class Admin extends Controller
         }
     }
 
-
-    public function buildMenu()
-
-    {
-        $this->menu = json_decode(file_get_contents(Application::$ROOT . '/config/menu.json'));
-        if ($this->menu == null) {
-            die('unable to load menu');
-        }
-        $this->view->renderArgs('userRole', $this->loadUser()->getRoles());
-        $this->view->renderArgs('adminMenu', $this->menu);
-    }
 
 
     public function onlySuperAdmin()

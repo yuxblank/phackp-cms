@@ -48,8 +48,6 @@ class BaseEntity
         $this->id = $id;
     }
 
-
-
     /**
      * @return \DateTime|null
      */

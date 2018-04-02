@@ -29,9 +29,9 @@ abstract class BaseCategoryController extends Admin
     protected $articleCategoryRepository;
     protected $stringUtils;
 
-    public function __construct(View $view, Session $session, Router $router, StringUtils $stringUtils, UserRepository $userRepository, ResourceServer $resourceServer, ArticleCategoryRepository $articleCategoryRepository, ServerRequestInterface $serverRequest)
+    public function __construct(Router $router, StringUtils $stringUtils, UserRepository $userRepository, ResourceServer $resourceServer, ArticleCategoryRepository $articleCategoryRepository, ServerRequestInterface $serverRequest)
     {
-        parent::__construct($view, $session, $router, $userRepository, $resourceServer, $serverRequest);
+        parent::__construct($router, $userRepository, $resourceServer, $serverRequest);
         $this->stringUtils = $stringUtils;
         $this->articleCategoryRepository = $articleCategoryRepository;
     }

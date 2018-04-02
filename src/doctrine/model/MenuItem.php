@@ -8,33 +8,44 @@
 
 namespace cms\doctrine\model;
 use cms\doctrine\BaseEntity;
+use cms\library\crud\LinkableEntity;
 use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity @ORM\Table(name="menu_item")
+ * @ORM\HasLifecycleCallbacks()
  * Class MenuItem
  * @package cms\doctrine\model
  */
-class MenuItem extends BaseEntity
+class MenuItem extends BaseEntity implements \JsonSerializable, LinkableEntity
 {
     /**
-     * @ORM\Column(type="string", name="title", nullable=false, unique=true)
+     * @ORM\Column(type="string", name="title", nullable=false)
      */
     protected $title;
     /**
      * @ORM\Column(type="string", name="alias", unique=true)
      */
     protected $alias;
+
+
     /**
-     * @ORM\ManyToOne(targetEntity="Menu", inversedBy="menu_id")
-     * @ORM\JoinColumn(name="menu_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Menu")
+     * @var Menu
      */
     protected $menu;
 
     /**
-     * @ORM\ManyToOne(targetEntity="cms\doctrine\model\Action", inversedBy="action_id")
-     * @ORM\JoinColumn(name="action_id", referencedColumnName="id")
+     * @ORM\Column(type="string", nullable=false, name="action")
      */
     protected $action;
+
+    /**
+     * @ORM\Column(type="array", nullable=true, name="parameters")
+     */
+    protected $parameters;
+
+
+    protected $link;
 
     /**
      * @return mixed
@@ -69,11 +80,27 @@ class MenuItem extends BaseEntity
     }
 
     /**
+     * @return Menu
+     */
+    public function getMenu(): Menu
+    {
+        return $this->menu;
+    }
+
+    /**
+     * @param Menu $menu
+     */
+    public function setMenu(Menu $menu)
+    {
+        $this->menu = $menu;
+    }
+
+    /**
      * @return mixed
      */
     public function getAction()
     {
-        return $this->menu;
+        return $this->action;
     }
 
     /**
@@ -81,7 +108,58 @@ class MenuItem extends BaseEntity
      */
     public function setAction($action)
     {
-        $this->menu = $action;
+        $this->action = $action;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParameters()
+    {
+        return $this->parameters;
+    }
+
+    /**
+     * @param mixed $parameters
+     */
+    public function setParameters($parameters)
+    {
+        $this->parameters = $parameters;
+    }
+
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    public function setLink(string $link)
+    {
+        $this->link = $link;
+    }
+
+
+
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'title' => $this->getTitle(),
+            'alias' => $this->getAlias(),
+            'status' => $this->getStatus(),
+            'link' => $this->getLink(),
+            'date_created' => $this->getDateCreated(),
+            'date_updated' => $this->getDateUpdated()
+        ];
+    }
+
+    /** @ORM\PrePersist */
+    public function prePersist(){
+        $this->dateCreated = new \DateTime();
+    }
+    /** @ORM\PreUpdate */
+    public function preUpdate(){
+        $this->dateUpdated = new \DateTime();
     }
 
 

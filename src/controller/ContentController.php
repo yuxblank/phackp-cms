@@ -42,17 +42,15 @@ class ContentController extends Admin implements CrudController
 
     /**
      * ContentController constructor.
-     * @param View $view
-     * @param Session $session
      * @param Router $router
      * @param UserRepository $userRepository
      * @param ArticleRepository $articleRepository
      * @param ArticleCategoryRepository $articleCategoryRepository
      * @param StringUtils $stringUtils
      */
-    public function __construct(View $view, Session $session, Router $router, UserRepository $userRepository, ArticleRepository $articleRepository, ArticleCategoryRepository $articleCategoryRepository, StringUtils $stringUtils, ResourceServer $server, ServerRequestInterface $serverRequest)
+    public function __construct(Router $router, UserRepository $userRepository, ArticleRepository $articleRepository, ArticleCategoryRepository $articleCategoryRepository, StringUtils $stringUtils, ResourceServer $server, ServerRequestInterface $serverRequest)
     {
-        parent::__construct($view, $session, $router, $userRepository, $server, $serverRequest);
+        parent::__construct($router, $userRepository, $server, $serverRequest);
         $this->stringUtils = $stringUtils;
         $this->articleRepository = $articleRepository;
         $this->articleCategoryRepository = $articleCategoryRepository;

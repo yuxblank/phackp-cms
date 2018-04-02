@@ -4,3 +4,22 @@ Authorization: {{token}}
 Cookie: {{xdebug}}
 
 ###
+
+PUT {{host}}/admin/menu
+Content-Type: application/json
+Authorization: {{token}}
+Cookie: {{xdebug}}
+
+{"id":1,"title":"menu1","alias":"menu1","status":1,"dateCreated":null,"dateUpdated":null,
+"items": [
+{"id":1,"title":"1","alias":"1","status":1,"dateCreated":null,"dateUpdated":null,"link":"http://localhost:9001/admin/api/article/{id}", "action" : "api.article", "parameters": [1]}
+]}
+
+###
+
+GET {{host}}/admin/menu/1
+Content-Type: application/json
+Authorization: {{token}}
+Cookie: {{xdebug}}
+
+###

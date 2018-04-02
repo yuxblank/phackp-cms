@@ -11,11 +11,13 @@ namespace cms\doctrine\repository;
 
 
 use cms\doctrine\model\Menu;
+use cms\library\crud\EntityLinker;
 use Doctrine\ORM\EntityManager;
 use yuxblank\phackp\database\EntityRepository;
 
 class MenuRepository extends EntityRepository
 {
+    private $entityLinker;
     public function __construct(EntityManager $entityManager)
     {
         parent::__construct($entityManager, Menu::class);
@@ -31,6 +33,13 @@ class MenuRepository extends EntityRepository
         $this->_em->persist($menu);
         $this->_em->flush($menu);
 
+    }
+
+    public function update($menu)
+    {
+        $menu = $this->_em->merge($menu);
+        $this->_em->flush($menu);
+        return $menu;
     }
 
     /**

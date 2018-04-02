@@ -142,7 +142,7 @@ return
                     'alias' => 'menu.list'
                 ],
                 [
-                    'url' => '/admin/menu/{title}',
+                    'url' => '/admin/menu/{id}',
                     'class' => \cms\controller\MenuController::class,
                     'method' => 'read',
                     'alias' => 'menu.read'
@@ -206,6 +206,13 @@ return
                     'method' => 'create',
                 ],
 
+                [
+                    'url' => '/admin/menu',
+                    'class' => \cms\controller\MenuController::class,
+                    'method' => 'create',
+                    'alias' => 'menu.save'
+                ],
+
                 /**
                  * Sitemap
                  */
@@ -238,6 +245,12 @@ return
                     'url' => '/admin/category',
                     'class' => \cms\controller\CategoriesController::class,
                     'method' => 'update',
+                ],
+                [
+                    'url' => '/admin/menu',
+                    'class' => \cms\controller\MenuController::class,
+                    'method' => 'update',
+                    'alias' => 'menu.update'
                 ],
             ],
 

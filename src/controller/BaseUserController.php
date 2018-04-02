@@ -28,14 +28,14 @@ abstract class BaseUserController extends Admin
      * UserController constructor.
      * @param UserRepository $userRepository
      * @param UserRoleRepository $userRoleRepository
-     * @param View $view
-     * @param Session $session
+     * @param ResourceServer $resourceServer
      * @param Router $router
+     * @param ServerRequestInterface $serverRequest
      * @internal param UserRoleServices $userRoleServices
      */
-    public function __construct(UserRepository $userRepository, UserRoleRepository $userRoleRepository,ResourceServer $resourceServer, View $view, Session $session, Router $router, ServerRequestInterface $serverRequest)
+    public function __construct(UserRepository $userRepository, UserRoleRepository $userRoleRepository,ResourceServer $resourceServer, Router $router, ServerRequestInterface $serverRequest)
     {
-        parent::__construct($view, $session, $router, $userRepository,$resourceServer, $serverRequest);
+        parent::__construct($router, $userRepository,$resourceServer, $serverRequest);
         $this->userRoleRepository = $userRoleRepository;
     }
 

@@ -14,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity @ORM\Table(name="menu")
+ * @ORM\HasLifecycleCallbacks()
  * Class Menu
  * @package cms\doctrine\model
  */
@@ -29,12 +30,20 @@ class Menu extends BaseEntity implements \JsonSerializable
     protected $alias;
 
     /**
-     * @ORM\OneToMany(targetEntity="MenuItem",mappedBy="id")
-     * @ORM\JoinTable(name="menu")
+     * @ORM\OneToMany(targetEntity="MenuItem",mappedBy="menu", cascade={"all"}, fetch="EAGER")
      * @ORM\JoinColumn(name="menu_id")
      * @var Collection
      */
     protected $items;
+
+    /**
+     * Menu constructor.
+     */
+    public function __construct()
+    {
+        $this->items = new ArrayCollection();
+    }
+
 
     /**
      * @return mixed
@@ -69,7 +78,7 @@ class Menu extends BaseEntity implements \JsonSerializable
     }
 
     /**
-     * @return Menu
+     * @return Collection
      */
     public function getItems(): Collection
     {
@@ -79,14 +88,38 @@ class Menu extends BaseEntity implements \JsonSerializable
         return $this->items;
     }
 
-    public function jsonSerialize()
+    /**
+     * @param Collection $items
+     */
+    public function setItems(Collection $items)
     {
-        return [
-            'title' => $this->title,
-            'alias' => $this->alias,
-            'items' => $this->getItems()->getValues()
-        ];
+        $this->items->clear();
+        foreach ($items as $item) {
+            $this->items->add($item);
+        }
     }
 
 
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'title' => $this->title,
+            'alias' => $this->alias,
+            'items' => $this->getItems()->getValues(),
+            'status' => $this->getStatus(),
+            'date_created' => $this->getDateCreated(),
+            'date_updated' => $this->getDateUpdated()
+        ];
+    }
+
+    /** @ORM\PrePersist */
+    public function prePersist(){
+        $this->dateCreated = new \DateTime();
+    }
+    /** @ORM\PreUpdate */
+    public function preUpdate(){
+        $this->dateUpdated = new \DateTime();
+    }
 }
