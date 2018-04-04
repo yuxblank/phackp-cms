@@ -147,6 +147,12 @@ return
                     'method' => 'read',
                     'alias' => 'menu.read'
                 ],
+
+                [
+                    'url' => '/admin/action',
+                    'class' => cms\controller\ActionController::class,
+                    'method' => 'getActions'
+                ],
             ],
 
             'POST' => [
