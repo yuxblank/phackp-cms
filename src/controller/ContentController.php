@@ -92,6 +92,8 @@ class ContentController extends Admin implements CrudController
             } else {
                 return Response::error(400)->build();
             }
+        } else if ($serverRequest->getQueryParams()) {
+            return Response::ok(  $this->articleRepository->findBy($serverRequest->getQueryParams()))->build();
         } else {
             return Response::ok($this->articleRepository->findAll())->build();
         }
@@ -105,21 +107,21 @@ class ContentController extends Admin implements CrudController
             $serverRequest->getParsedBody(), $this->loadUser()
         );
 
-        if ($article->getId()=== null){
+        if ($article->getId() === null) {
             return Response::error(400, "Article does not exist")->build();
         }
-        if($article->getCategories() === null) {
+        if ($article->getCategories() === null) {
             return Response::error(400, "No category has been choosen for the article")->build();
         }
 
 
         $articleCats = new ArrayCollection();
-        foreach ($article->getCategories() as $category){
+        foreach ($article->getCategories() as $category) {
             $articleCats->add($this->articleCategoryRepository->findOneBy(['id' => $category->getId()]));
         }
         $article->setCategories($articleCats);
 
-       $article = $this->articleRepository->update($article);
+        $article = $this->articleRepository->update($article);
 
         return Response::ok($article)->build();
     }

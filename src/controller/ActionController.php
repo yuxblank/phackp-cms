@@ -10,17 +10,33 @@ namespace cms\controller;
 
 
 use cms\library\crud\Response;
+use DI\Annotation\Inject;
 
 class ActionController extends Admin
 {
-
+    /**
+     * @Inject("cms.actions")
+     */
+    private $actions;
 
     public function getActions() {
 
-        $actions = [["action" => 'api.articles', "title" => "Articles"]];
 
+        $parsedActions = [];
+        foreach ($this->actions as $action) {
+            $action['url'] = $this->router->alias($action['action']);
+            if ($action['filter']) {
+                foreach ($action['filter'] as &$filter) {
+                    if ($filter['action']) {
+                        $filter['url'] = $this->router->alias($filter['action']);
+                    }
+                    unset($filter);
+                }
+            }
+            $parsedActions[]  = $action;
+        }
 
-        return Response::ok($actions)->build();
+        return Response::ok($parsedActions)->build();
 
     }
 

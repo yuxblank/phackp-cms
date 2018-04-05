@@ -1,0 +1,6 @@
+GET {{host}}/admin/action
+Cookie: XDEBUG_SESSION=PHPSTORM
+Authorization: {{token}}
+Content-Type: application/json
+
+###
