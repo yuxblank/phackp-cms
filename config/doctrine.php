@@ -13,7 +13,7 @@ return [
             [
                 'driver'   => 'pdo_mysql',
                 'user'     => 'root',
-                'password' => 'muska88',
+                'password' => '',
                 'dbname'   => 'phackpcms',
             ],
         'transaction' => \yuxblank\phackp\database\driver\DoctrineDriver::CONTAINER_MANAGED
